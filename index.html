@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santa Casa da Misericórdia das Caldas da Rainha - Make a Dream Come True</title>
+    <title data-lang-key="pageTitle">Santa Casa da Misericórdia das Caldas da Rainha - Realize um Sonho</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* CSS Reset & Base Styles */
         :root {
             --primary-blue: #0A2F50; /* Deep, professional blue */
             --secondary-gold: #D4AF37; /* Warm, inviting gold */
-            --light-blue-bg: #EAF2F8; /* Soft background blue */
+            --soft-blue-bg: #E0EBF5; /* Softer background blue */
+            --soft-gold-gradient: linear-gradient(135deg, #F8F4ED 0%, #E8E0D5 100%); /* Subtle gold/cream gradient */
             --text-dark: #333333;
             --text-light: #666666;
             --white: #FFFFFF;
@@ -18,6 +19,7 @@
             --border-grey: #E0E0E0;
             --shadow-light: rgba(0, 0, 0, 0.08);
             --shadow-subtle: rgba(0, 0, 0, 0.04);
+            --rounded-corners: 12px; /* Consistent rounded edges */
             --breakpoint-md: 768px;
             --breakpoint-lg: 1024px;
         }
@@ -104,19 +106,44 @@
             border: 0;
         }
 
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+        .lang-switcher button {
+            background-color: transparent;
+            border: 1px solid var(--border-grey);
+            color: var(--text-dark);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .lang-switcher button.active,
+        .lang-switcher button:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+
         /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 0.8em 1.5em;
-            border-radius: 5px;
+            border-radius: var(--rounded-corners); /* Rounded buttons */
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
+            box-shadow: var(--shadow-subtle); /* Floating effect */
         }
 
         .btn--primary {
@@ -126,6 +153,7 @@
         .btn--primary:hover {
             background-color: var(--secondary-gold);
             color: var(--white);
+            box-shadow: var(--shadow-light);
         }
 
         .btn--secondary {
@@ -136,6 +164,7 @@
         .btn--secondary:hover {
             background-color: var(--primary-blue);
             color: var(--white);
+            box-shadow: var(--shadow-light);
         }
         .btn--outline-gold {
             background-color: transparent;
@@ -145,6 +174,7 @@
         .btn--outline-gold:hover {
             background-color: var(--secondary-gold);
             color: var(--white);
+            box-shadow: var(--shadow-light);
         }
 
 
@@ -161,6 +191,11 @@
         .header .container {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+
+        .header__left {
+            display: flex;
             align-items: center;
         }
 
@@ -195,7 +230,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--light-blue-bg) 0%, var(--white) 50%, #F5FAFF 100%);
+            background: var(--soft-gold-gradient); /* Soft gold gradient for warmth */
             padding: 6rem 0;
             text-align: center;
             position: relative;
@@ -275,9 +310,9 @@
 
         .dream-card {
             background-color: var(--white);
-            border-radius: 12px;
+            border-radius: var(--rounded-corners); /* Rounded cards */
             overflow: hidden;
-            box-shadow: var(--shadow-light);
+            box-shadow: var(--shadow-light); /* Floating effect */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -292,6 +327,8 @@
             height: 250px;
             overflow: hidden;
             position: relative;
+            border-top-left-radius: var(--rounded-corners);
+            border-top-right-radius: var(--rounded-corners);
         }
 
         .dream-card__image img {
@@ -330,6 +367,7 @@
         .dream-list-section {
             padding: 4rem 0;
             background-color: var(--light-grey);
+            background-image: linear-gradient(to bottom, var(--light-grey) 0%, var(--soft-blue-bg) 100%); /* Soft gradient */
         }
 
         .dream-list-section__header {
@@ -357,7 +395,7 @@
             background-color: var(--white);
             border: 1px solid var(--border-grey);
             padding: 0.7em 1.5em;
-            border-radius: 25px;
+            border-radius: 25px; /* Pill shape for filters */
             font-weight: 500;
             color: var(--text-dark);
             cursor: pointer;
@@ -381,9 +419,9 @@
 
         .dream-item {
             background-color: var(--white);
-            border-radius: 10px;
+            border-radius: var(--rounded-corners); /* Rounded dream items */
             padding: 1.8rem;
-            box-shadow: var(--shadow-subtle);
+            box-shadow: var(--shadow-subtle); /* Floating effect */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -426,7 +464,7 @@
             color: var(--primary-blue);
         }
         .dream-item__meta .status.fulfilled {
-            color: green; /* Consider a softer green */
+            color: #28a745; /* A standard, pleasant green for fulfilled */
         }
 
 
@@ -436,6 +474,25 @@
             color: var(--white);
             padding: 6rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .impact-section::before { /* Subtle background pattern for trust */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 1%, transparent 20%),
+                        radial-gradient(circle at bottom right, rgba(255,255,255,0.05) 1%, transparent 20%);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .impact-section .container {
+            position: relative; /* Bring content above pseudo-element */
+            z-index: 1;
         }
 
         .impact-section h2 {
@@ -464,7 +521,7 @@
             min-width: 250px;
             max-width: 350px;
             background-color: rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
+            border-radius: var(--rounded-corners); /* Rounded stat cards */
             padding: 2.5rem;
             box-shadow: var(--shadow-light);
         }
@@ -488,6 +545,7 @@
             background-color: var(--white);
             padding: 5rem 0;
             text-align: center;
+            background-image: linear-gradient(to top, var(--light-grey) 0%, var(--white) 100%); /* Soft gradient */
         }
 
         .cta-final h2 {
@@ -586,10 +644,10 @@
         .modal-content {
             background-color: var(--white);
             padding: 2.5rem;
-            border-radius: 12px;
+            border-radius: var(--rounded-corners); /* Rounded modal */
             max-width: 500px;
             width: 90%;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 35px -5px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 35px -5px; /* Floating effect */
             position: relative;
             transform: translateY(-20px);
             transition: transform 0.3s ease;
@@ -635,9 +693,11 @@
             padding: 0.8em 1em;
             margin-bottom: 1.5em;
             border: 1px solid var(--border-grey);
-            border-radius: 8px;
+            border-radius: var(--rounded-corners); /* Rounded inputs */
             font-size: 1em;
             color: var(--text-dark);
+            box-shadow: var(--shadow-subtle); /* Floating effect */
+            transition: all 0.2s ease;
         }
         .donation-form input[type="text"]:focus,
         .donation-form input[type="email"]:focus,
@@ -659,13 +719,14 @@
             min-width: 80px;
             background-color: var(--light-grey);
             border: 1px solid var(--border-grey);
-            border-radius: 8px;
+            border-radius: var(--rounded-corners); /* Rounded radio buttons */
             padding: 0.8em 0.5em;
             text-align: center;
             cursor: pointer;
             transition: all 0.2s ease;
             font-weight: 500;
             color: var(--text-light);
+            box-shadow: var(--shadow-subtle); /* Floating effect */
         }
         .donation-options input[type="radio"] {
             display: none;
@@ -674,6 +735,7 @@
             background-color: var(--primary-blue);
             color: var(--white);
             border-color: var(--primary-blue);
+            box-shadow: var(--shadow-light);
         }
         .donation-options label:hover {
             background-color: var(--border-grey);
@@ -711,6 +773,8 @@
             .header { padding: 0.8rem 0; }
             .header__nav { display: none; /* For simplicity, hide nav on small screens. A real site would have a hamburger menu */ }
             .header .container { justify-content: center; } /* Center logo when nav is hidden */
+            .header__left { justify-content: center; width: 100%;}
+            .lang-switcher { margin-left: auto; position: absolute; right: 1rem; top: 1rem; } /* Position switcher on smaller screens */
             h1 { font-size: 2.5em; }
             h2 { font-size: 1.8em; }
             h3 { font-size: 1.4em; }
@@ -747,22 +811,29 @@
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link" data-lang-key="skipLink">Skip to main content</a>
 
     <header class="header">
         <div class="container">
-            <div class="header__logo">
-                <a href="#hero">
-                    <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png" alt="Santa Casa da Misericórdia das Caldas da Rainha Logo">
-                    <span class="header__logo-text sr-only">Santa Casa da Misericórdia das Caldas da Rainha</span>
-                </a>
+            <div class="header__left">
+                <div class="header__logo">
+                    <a href="#hero">
+                        <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png" alt="Santa Casa da Misericórdia das Caldas da Rainha Logo">
+                        <span class="header__logo-text sr-only" data-lang-key="siteName">Santa Casa da Misericórdia das Caldas da Rainha</span>
+                    </a>
+                </div>
+                <div class="lang-switcher">
+                    <button id="lang-pt" class="active">PT</button>
+                    <button id="lang-en">EN</button>
+                    <button id="lang-fr">FR</button>
+                </div>
             </div>
             <nav class="header__nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="#dream-categories">Our Mission</a></li>
-                    <li><a href="#dream-list-section">Dream List</a></li>
-                    <li><a href="#impact-section">Our Impact</a></li>
-                    <li><a href="#cta-final">Become a Dream Maker</a></li>
+                    <li><a href="#dream-categories" data-lang-key="navMission">A Nossa Missão</a></li>
+                    <li><a href="#dream-list-section" data-lang-key="navDreamList">Lista de Sonhos</a></li>
+                    <li><a href="#impact-section" data-lang-key="navOurImpact">O Nosso Impacto</a></li>
+                    <li><a href="#cta-final" data-lang-key="navBecomeMaker">Torne-se um Realizador de Sonhos</a></li>
                 </ul>
             </nav>
         </div>
@@ -771,52 +842,52 @@
     <main id="main-content">
         <section class="hero" id="hero">
             <div class="container hero__content">
-                <p class="hero__overline">Celebrating 95 Years of Compassion</p>
-                <h1>Building Dreams, Shaping Futures</h1>
-                <p class="hero__subtitle">Join Santa Casa da Misericórdia das Caldas da Rainha in continuing a legacy of care, hope, and community transformation.</p>
-                <a href="#dream-list-section" class="btn btn--primary">Explore Dreams</a>
+                <p class="hero__overline" data-lang-key="heroOverline">Celebrando 95 Anos de Compaixão</p>
+                <h1 data-lang-key="heroTitle">Construindo Sonhos, Moldando Futuros</h1>
+                <p class="hero__subtitle" data-lang-key="heroSubtitle">Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.</p>
+                <a href="#dream-list-section" class="btn btn--primary" data-lang-key="heroCta">Explore os Sonhos</a>
             </div>
         </section>
 
         <section class="dream-categories" id="dream-categories">
             <div class="container text-center dream-categories__header">
-                <h2>Become a Dream Maker</h2>
-                <p>At Santa Casa da Misericórdia, we believe every life holds a dream. Explore the vital areas where your support can make a tangible difference, transforming aspirations into reality for our community.</p>
+                <h2 data-lang-key="dreamCategoriesTitle">Torne-se um Realizador de Sonhos</h2>
+                <p data-lang-key="dreamCategoriesSubtitle">Na Santa Casa da Misericórdia, acreditamos que cada vida guarda um sonho. Explore as áreas vitais onde o seu apoio pode fazer uma diferença tangível, transformando aspirações em realidade para a nossa comunidade.</p>
             </div>
             <div class="container dream-categories__grid">
                 <div class="dream-card" data-category="child">
                     <div class="dream-card__image">
-                        <img src="https://images.unsplash.com/photo-1579621970795-87facc2f935d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Child drawing with crayons">
-                        <span class="sr-only">Image of a child drawing, symbolizing a child's wish.</span>
+                        <img src="https://images.unsplash.com/photo-1574766526154-188b89815c4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Two young children playing with building blocks with an adult supervising.">
+                        <span class="sr-only" data-lang-key="altChildWish">Imagem de uma criança a brincar, simbolizando o desejo de uma criança.</span>
                     </div>
                     <div class="dream-card__content">
-                        <h3>A Child's Wish</h3>
-                        <p>Nurturing innocence, fostering learning, and ensuring a brighter tomorrow for our youngest community members. Your gift provides education, care, and joyful experiences.</p>
-                        <a href="#dream-list-section" class="btn btn--outline-gold">See Dreams</a>
+                        <h3 data-lang-key="cardChildTitle">O Desejo de uma Criança</h3>
+                        <p data-lang-key="cardChildText">Nutrir a inocência, fomentar a aprendizagem e garantir um futuro mais brilhante para os nossos membros mais jovens da comunidade. O seu presente oferece educação, cuidado e experiências alegres.</p>
+                        <a href="#dream-list-section" class="btn btn--outline-gold" data-lang-key="cardCtaSeeDreams">Ver Sonhos</a>
                     </div>
                 </div>
 
                 <div class="dream-card" data-category="senior">
                     <div class="dream-card__image">
-                        <img src="https://images.unsplash.com/photo-1590032049021-997f74813583?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Elderly couple smiling and holding hands">
-                        <span class="sr-only">Image of an elderly couple, symbolizing a senior's heart.</span>
+                        <img src="https://images.unsplash.com/photo-1590032049021-997f74813583?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="An elderly couple smiling warmly at each other, holding hands.">
+                        <span class="sr-only" data-lang-key="altSeniorHeart">Imagem de um casal idoso, simbolizando o coração de um sénior.</span>
                     </div>
                     <div class="dream-card__content">
-                        <h3>A Senior's Heart</h3>
-                        <p>Providing comfort, companionship, and dignified care for our elders. Your contribution supports health services, engaging activities, and a respectful environment.</p>
-                        <a href="#dream-list-section" class="btn btn--outline-gold">See Dreams</a>
+                        <h3 data-lang-key="cardSeniorTitle">O Coração de um Sénior</h3>
+                        <p data-lang-key="cardSeniorText">Proporcionar conforto, companhia e cuidados dignos aos nossos idosos. A sua contribuição apoia serviços de saúde, atividades envolventes e um ambiente respeitoso.</p>
+                        <a href="#dream-list-section" class="btn btn--outline-gold" data-lang-key="cardCtaSeeDreams">Ver Sonhos</a>
                     </div>
                 </div>
 
                 <div class="dream-card" data-category="community">
                     <div class="dream-card__image">
-                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Group of people collaborating around a table">
-                        <span class="sr-only">Image of people working together, symbolizing dreams of purpose and peace.</span>
+                        <img src="https://images.unsplash.com/photo-1520607162513-77705d09cb8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="A diverse group of young adults and women collaborating in a community garden.">
+                        <span class="sr-only" data-lang-key="altCommunityPeace">Imagem de pessoas a trabalhar em conjunto, simbolizando sonhos de propósito e paz.</span>
                     </div>
                     <div class="dream-card__content">
-                        <h3>Dreams of Purpose & Peace</h3>
-                        <p>Empowering youth, supporting families, and building a stronger, more resilient community for everyone. Funds go towards social integration and well-being programs.</p>
-                        <a href="#dream-list-section" class="btn btn--outline-gold">See Dreams</a>
+                        <h3 data-lang-key="cardCommunityTitle">Sonhos de Propósito & Paz</h3>
+                        <p data-lang-key="cardCommunityText">Capacitar jovens, apoiar famílias e construir uma comunidade mais forte e resiliente para todos. Os fundos são direcionados para programas de integração social e bem-estar.</p>
+                        <a href="#dream-list-section" class="btn btn--outline-gold" data-lang-key="cardCtaSeeDreams">Ver Sonhos</a>
                     </div>
                 </div>
             </div>
@@ -824,91 +895,91 @@
 
         <section class="dream-list-section" id="dream-list-section">
             <div class="container text-center dream-list-section__header">
-                <h2>Our Dream List: Your Opportunity to Impact</h2>
-                <p>Every item on this list represents a direct need and a profound opportunity to bring joy, security, or progress. Select a dream to learn more and become a vital part of its fulfillment.</p>
+                <h2 data-lang-key="dreamListTitle">A Nossa Lista de Sonhos: A Sua Oportunidade de Impacto</h2>
+                <p data-lang-key="dreamListSubtitle">Cada item nesta lista representa uma necessidade direta e uma profunda oportunidade para trazer alegria, segurança ou progresso. Selecione um sonho para saber mais e torne-se uma parte vital da sua realização.</p>
             </div>
             <div class="container">
-                <div class="dream-filters" role="group" aria-label="Filter dreams by category">
-                    <button class="btn dream-filter-btn active" data-filter="all">All Dreams</button>
-                    <button class="btn dream-filter-btn" data-filter="child">A Child's Wish</button>
-                    <button class="btn dream-filter-btn" data-filter="senior">A Senior's Heart</button>
-                    <button class="btn dream-filter-btn" data-filter="community">Purpose & Peace</button>
-                    <button class="btn dream-filter-btn" data-filter="fulfilled">Fulfilled Dreams</button>
-                    <button class="btn dream-filter-btn" data-filter="progress">Dreams in Progress</button>
+                <div class="dream-filters" role="group" aria-label="Filtrar sonhos por categoria">
+                    <button class="btn dream-filter-btn active" data-filter="all" data-lang-key="filterAll">Todos os Sonhos</button>
+                    <button class="btn dream-filter-btn" data-filter="child" data-lang-key="filterChild">Desejo de Criança</button>
+                    <button class="btn dream-filter-btn" data-filter="senior" data-lang-key="filterSenior">Coração de Sénior</button>
+                    <button class="btn dream-filter-btn" data-filter="community" data-lang-key="filterCommunity">Propósito & Paz</button>
+                    <button class="btn dream-filter-btn" data-filter="fulfilled" data-lang-key="filterFulfilled">Sonhos Realizados</button>
+                    <button class="btn dream-filter-btn" data-filter="progress" data-lang-key="filterProgress">Sonhos em Progresso</button>
                 </div>
 
                 <div class="dream-list">
                     <!-- Example Dream Items - Replace with actual data -->
                     <div class="dream-item" data-category="child" data-status="progress">
-                        <h4>New Books for Our Library</h4>
-                        <p>Our children's library needs an update! Help us acquire a diverse collection of new books to spark imagination and foster a love for reading.</p>
+                        <h4 data-lang-key="dream1Title">Novos Livros para a Nossa Biblioteca</h4>
+                        <p data-lang-key="dream1Text">A biblioteca dos nossos filhos precisa de uma atualização! Ajude-nos a adquirir uma coleção diversificada de novos livros para estimular a imaginação e fomentar o amor pela leitura.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €500</span>
-                            <span class="status">In Progress</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="New Books for Our Library">Make This Dream</button>
+                            <span data-lang-key="dreamGoal">Meta: €500</span>
+                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream1Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
                         </div>
                     </div>
                     <div class="dream-item" data-category="senior" data-status="fulfilled">
-                        <h4>Comfortable Wheelchairs for Seniors</h4>
-                        <p>Ensure mobility and comfort for our elderly residents with new, ergonomically designed wheelchairs, enhancing their daily lives and independence.</p>
+                        <h4 data-lang-key="dream2Title">Cadeiras de Rodas Confortáveis para Seniores</h4>
+                        <p data-lang-key="dream2Text">Garanta mobilidade e conforto aos nossos residentes idosos com cadeiras de rodas novas e ergonomicamente projetadas, melhorando o seu dia a dia e independência.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €1,200</span>
-                            <span class="status fulfilled">Fulfilled!</span>
-                            <button class="btn btn--secondary btn--small" disabled>Dream Made</button>
+                            <span data-lang-key="dreamGoal">Meta: €1,200</span>
+                            <span class="status fulfilled" data-lang-key="statusFulfilled">Realizado!</span>
+                            <button class="btn btn--secondary btn--small" disabled data-lang-key="dreamCtaMade">Sonho Realizado</button>
                         </div>
                     </div>
                     <div class="dream-item" data-category="community" data-status="progress">
-                        <h4>Community Garden Project</h4>
-                        <p>Support the creation of a vibrant community garden, providing fresh produce, educational opportunities, and a space for intergenerational connection.</p>
+                        <h4 data-lang-key="dream3Title">Projeto de Horta Comunitária</h4>
+                        <p data-lang-key="dream3Text">Apoie a criação de uma vibrante horta comunitária, oferecendo produtos frescos, oportunidades educacionais e um espaço para conexão intergeracional.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €2,500</span>
-                            <span class="status">In Progress</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Community Garden Project">Make This Dream</button>
+                            <span data-lang-key="dreamGoal">Meta: €2,500</span>
+                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream3Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
                         </div>
                     </div>
                     <div class="dream-item" data-category="child" data-status="progress">
-                        <h4>Art Supplies for Creative Workshops</h4>
-                        <p>Help us stock up on paints, brushes, clay, and other art materials for our weekly creative workshops, allowing children to express themselves freely.</p>
+                        <h4 data-lang-key="dream4Title">Material de Arte para Ateliers Criativos</h4>
+                        <p data-lang-key="dream4Text">Ajude-nos a abastecer com tintas, pincéis, barro e outros materiais de arte para os nossos ateliers criativos semanais, permitindo que as crianças se expressem livremente.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €350</span>
-                            <span class="status">In Progress</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Art Supplies for Creative Workshops">Make This Dream</button>
+                            <span data-lang-key="dreamGoal">Meta: €350</span>
+                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream4Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
                         </div>
                     </div>
                     <div class="dream-item" data-category="senior" data-status="progress">
-                        <h4>Therapeutic Music Program</h4>
-                        <p>Fund a therapeutic music program for our seniors, bringing joy, stimulating memory, and providing a calming, engaging experience.</p>
+                        <h4 data-lang-key="dream5Title">Programa de Música Terapêutica</h4>
+                        <p data-lang-key="dream5Text">Financie um programa de música terapêutica para os nossos idosos, trazendo alegria, estimulando a memória e proporcionando uma experiência calma e envolvente.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €800</span>
-                            <span class="status">In Progress</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Therapeutic Music Program">Make This Dream</button>
+                            <span data-lang-key="dreamGoal">Meta: €800</span>
+                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream5Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
                         </div>
                     </div>
                     <div class="dream-item" data-category="community" data-status="fulfilled">
-                        <h4>Digital Inclusion Initiative</h4>
-                        <p>Provide access to computers and internet for families in need, bridging the digital divide and enabling remote learning and job searching.</p>
+                        <h4 data-lang-key="dream6Title">Iniciativa de Inclusão Digital</h4>
+                        <p data-lang-key="dream6Text">Proporcione acesso a computadores e internet para famílias carenciadas, preenchendo a lacuna digital e possibilitando a aprendizagem remota e a procura de emprego.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €1,800</span>
-                            <span class="status fulfilled">Fulfilled!</span>
-                            <button class="btn btn--secondary btn--small" disabled>Dream Made</button>
+                            <span data-lang-key="dreamGoal">Meta: €1,800</span>
+                            <span class="status fulfilled" data-lang-key="statusFulfilled">Realizado!</span>
+                            <button class="btn btn--secondary btn--small" disabled data-lang-key="dreamCtaMade">Sonho Realizado</button>
                         </div>
                     </div>
                     <div class="dream-item" data-category="child" data-status="progress">
-                        <h4>New Playground Equipment</h4>
-                        <p>Our playground is well-loved but needs new, safe, and engaging equipment to encourage active play and development for our youngest.</p>
+                        <h4 data-lang-key="dream7Title">Novo Equipamento de Recreio</h4>
+                        <p data-lang-key="dream7Text">O nosso parque infantil é muito utilizado, mas precisa de um equipamento novo, seguro e envolvente para incentivar o brincar ativo e o desenvolvimento dos mais novos.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €3,000</span>
-                            <span class="status">In Progress</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="New Playground Equipment">Make This Dream</button>
+                            <span data-lang-key="dreamGoal">Meta: €3,000</span>
+                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream7Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
                         </div>
                     </div>
                     <div class="dream-item" data-category="senior" data-status="progress">
-                        <h4>Annual Excursion for Seniors</h4>
-                        <p>Support our annual trip, offering our seniors a memorable day out, fostering social connections, and creating cherished new memories.</p>
+                        <h4 data-lang-key="dream8Title">Excursão Anual para Seniores</h4>
+                        <p data-lang-key="dream8Text">Apoie a nossa viagem anual, oferecendo aos nossos idosos um dia memorável, fomentando as ligações sociais e criando novas e preciosas memórias.</p>
                         <div class="dream-item__meta">
-                            <span>Goal: €700</span>
-                            <span class="status">In Progress</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Annual Excursion for Seniors">Make This Dream</button>
+                            <span data-lang-key="dreamGoal">Meta: €700</span>
+                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream8Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
                         </div>
                     </div>
                 </div>
@@ -917,37 +988,37 @@
 
         <section class="impact-section" id="impact-section">
             <div class="container">
-                <h2>Our Legacy of Impact</h2>
-                <p>For 95 years, Santa Casa da Misericórdia das Caldas da Rainha has been a pillar of hope and support. Your trust allows us to transform lives daily, building a stronger, more compassionate community.</p>
+                <h2 data-lang-key="impactTitle">O Nosso Legado de Impacto</h2>
+                <p data-lang-key="impactSubtitle">Há 95 anos, a Santa Casa da Misericórdia das Caldas da Rainha tem sido um pilar de esperança e apoio. A sua confiança permite-nos transformar vidas diariamente, construindo uma comunidade mais forte e compassiva.</p>
 
                 <div class="impact-stats">
                     <div class="impact-stat-card">
                         <div class="impact-stat-card__number">95+</div>
-                        <div class="impact-stat-card__label">Years of Service</div>
+                        <div class="impact-stat-card__label" data-lang-key="statYears">Anos de Serviço</div>
                     </div>
                     <div class="impact-stat-card">
                         <div class="impact-stat-card__number">500+</div>
-                        <div class="impact-stat-card__label">Lives Touched Annually</div>
+                        <div class="impact-stat-card__label" data-lang-key="statLives">Vidas Tocadas Anualmente</div>
                     </div>
                     <div class="impact-stat-card">
                         <div class="impact-stat-card__number">30+</div>
-                        <div class="impact-stat-card__label">Programs & Initiatives</div>
+                        <div class="impact-stat-card__label" data-lang-key="statPrograms">Programas & Iniciativas</div>
                     </div>
                 </div>
                 <div class="text-center" style="margin-top: 3em;">
-                    <p style="font-size: 1.1em; color: rgba(255,255,255,0.7);">
-                        Every contribution is transparently managed and directly contributes to fulfilling these dreams.
+                    <p style="font-size: 1.1em; color: rgba(255,255,255,0.7);" data-lang-key="impactTransparencyText">
+                        Todas as contribuições são geridas de forma transparente e contribuem diretamente para a realização destes sonhos.
                     </p>
-                    <a href="#" class="btn btn--outline-gold" style="margin-top: 1.5em;">Learn More About Our Transparency</a>
+                    <a href="#" class="btn btn--outline-gold" style="margin-top: 1.5em;" data-lang-key="impactTransparencyCta">Saiba Mais Sobre a Nossa Transparência</a>
                 </div>
             </div>
         </section>
 
         <section class="cta-final" id="cta-final">
             <div class="container">
-                <h2>Your Journey as a Dream Maker Starts Here</h2>
-                <p>Ready to make a profound difference? Choose a dream, contribute what you can, and become a part of our continuing story of compassion and hope.</p>
-                <button class="btn btn--primary open-modal-btn">Make a Dream Come True</button>
+                <h2 data-lang-key="finalCtaTitle">A Sua Jornada como Realizador de Sonhos Começa Aqui</h2>
+                <p data-lang-key="finalCtaSubtitle">Pronto para fazer uma diferença profunda? Escolha um sonho, contribua com o que puder e faça parte da nossa história contínua de compaixão e esperança.</p>
+                <button class="btn btn--primary open-modal-btn" data-lang-key="finalCtaButton">Realize um Sonho</button>
             </div>
         </section>
     </main>
@@ -959,21 +1030,21 @@
             </div>
             <nav class="footer__nav" aria-label="Footer navigation">
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#dream-categories">Our Mission</a></li>
-                    <li><a href="#dream-list-section">Dream List</a></li>
-                    <li><a href="#impact-section">Our Impact</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#hero" data-lang-key="footerHome">Início</a></li>
+                    <li><a href="#dream-categories" data-lang-key="footerMission">A Nossa Missão</a></li>
+                    <li><a href="#dream-list-section" data-lang-key="footerDreamList">Lista de Sonhos</a></li>
+                    <li><a href="#impact-section" data-lang-key="footerImpact">O Nosso Impacto</a></li>
+                    <li><a href="#" data-lang-key="footerPrivacy">Política de Privacidade</a></li>
+                    <li><a href="#" data-lang-key="footerContact">Contacte-nos</a></li>
                 </ul>
             </nav>
             <div class="footer__social-links">
-                <!-- Placeholder for social media icons -->
+                <!-- Placeholder for social media icons - use actual icons in production -->
                 <a href="#" aria-label="Follow us on Facebook"><span class="sr-only">Facebook</span>&#x1F4F1;</a>
                 <a href="#" aria-label="Follow us on Instagram"><span class="sr-only">Instagram</span>&#x1F4F7;</a>
                 <a href="#" aria-label="Follow us on LinkedIn"><span class="sr-only">LinkedIn</span>&#x1F4BB;</a>
             </div>
-            <p class="footer__copyright">&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. All rights reserved.</p>
+            <p class="footer__copyright" data-lang-key="footerCopyright">&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -981,11 +1052,11 @@
     <div class="modal" id="donationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
             <button class="modal-close-btn" aria-label="Close donation form">&times;</button>
-            <h3 id="modalTitle">Become a Dream Maker</h3>
+            <h3 id="modalTitle" data-lang-key="modalTitle">Torne-se um Realizador de Sonhos</h3>
             <form class="donation-form">
-                <p>Your contribution directly supports the dream: <strong id="selectedDreamTitle">A General Dream</strong></p>
+                <p data-lang-key="modalDreamSupportText">A sua contribuição apoia diretamente o sonho: <strong id="selectedDreamTitle" data-lang-key="defaultDreamTitle">Um Sonho Geral</strong></p>
 
-                <label for="donationAmount">Choose your impact:</label>
+                <label for="donationAmount" data-lang-key="modalChooseImpact">Escolha o seu impacto:</label>
                 <div class="donation-options">
                     <input type="radio" id="amount10" name="donationAmount" value="10">
                     <label for="amount10">€10</label>
@@ -996,32 +1067,392 @@
                     <input type="radio" id="amount100" name="donationAmount" value="100">
                     <label for="amount100">€100</label>
                     <input type="radio" id="amountOther" name="donationAmount" value="other">
-                    <label for="amountOther">Other</label>
+                    <label for="amountOther" data-lang-key="modalAmountOther">Outro</label>
                 </div>
-                <input type="number" id="customAmount" placeholder="Enter custom amount" style="display: none; margin-top: -1em;" min="5">
+                <input type="number" id="customAmount" placeholder="Introduza um valor personalizado" style="display: none; margin-top: -1em;" min="5" data-lang-key="modalCustomAmountPlaceholder">
 
-                <label for="donorName">Your Name (Optional)</label>
-                <input type="text" id="donorName" placeholder="John Doe">
+                <label for="donorName" data-lang-key="modalDonorName">O Seu Nome (Opcional)</label>
+                <input type="text" id="donorName" placeholder="João Silva" data-lang-key="modalDonorNamePlaceholder">
 
-                <label for="donorEmail">Your Email</label>
-                <input type="email" id="donorEmail" placeholder="you@example.com" required>
+                <label for="donorEmail" data-lang-key="modalDonorEmail">O Seu Email</label>
+                <input type="email" id="donorEmail" placeholder="voce@exemplo.com" required data-lang-key="modalDonorEmailPlaceholder">
 
-                <label for="paymentMethod">Payment Method (Placeholder)</label>
+                <label for="paymentMethod" data-lang-key="modalPaymentMethod">Método de Pagamento (Exemplo)</label>
                 <select id="paymentMethod" required>
-                    <option value="">Select a method...</option>
-                    <option value="card">Credit Card</option>
-                    <option value="mbway">MB Way</option>
-                    <option value="banktransfer">Bank Transfer</option>
+                    <option value="" data-lang-key="modalPaymentSelect">Selecione um método...</option>
+                    <option value="card" data-lang-key="modalPaymentCard">Cartão de Crédito</option>
+                    <option value="mbway" data-lang-key="modalPaymentMbway">MB Way</option>
+                    <option value="banktransfer" data-lang-key="modalPaymentBank">Transferência Bancária</option>
                 </select>
 
-                <button type="submit" class="btn btn--primary">Make Dream Come True</button>
-                <p style="font-size: 0.85em; color: var(--text-light); text-align: center; margin-top: 1em;">All donations are securely processed and tax-deductible.</p>
+                <button type="submit" class="btn btn--primary" data-lang-key="modalSubmitBtn">Realize o Sonho</button>
+                <p style="font-size: 0.85em; color: var(--text-light); text-align: center; margin-top: 1em;" data-lang-key="modalDisclaimer">Todas as doações são processadas de forma segura e são dedutíveis nos impostos.</p>
             </form>
         </div>
     </div>
 
     <script>
+        const translations = {
+            'pt': {
+                // Page Meta & Nav
+                pageTitle: 'Santa Casa da Misericórdia das Caldas da Rainha - Realize um Sonho',
+                skipLink: 'Saltar para o conteúdo principal',
+                siteName: 'Santa Casa da Misericórdia das Caldas da Rainha',
+                navMission: 'A Nossa Missão',
+                navDreamList: 'Lista de Sonhos',
+                navOurImpact: 'O Nosso Impacto',
+                navBecomeMaker: 'Torne-se um Realizador de Sonhos',
+                // Hero Section
+                heroOverline: 'Celebrando 95 Anos de Compaixão',
+                heroTitle: 'Construindo Sonhos, Moldando Futuros',
+                heroSubtitle: 'Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.',
+                heroCta: 'Explore os Sonhos',
+                // Dream Categories
+                dreamCategoriesTitle: 'Torne-se um Realizador de Sonhos',
+                dreamCategoriesSubtitle: 'Na Santa Casa da Misericórdia, acreditamos que cada vida guarda um sonho. Explore as áreas vitais onde o seu apoio pode fazer uma diferença tangível, transformando aspirações em realidade para a nossa comunidade.',
+                altChildWish: 'Imagem de uma criança a brincar, simbolizando o desejo de uma criança.',
+                cardChildTitle: 'O Desejo de uma Criança',
+                cardChildText: 'Nutrir a inocência, fomentar a aprendizagem e garantir um futuro mais brilhante para os nossos membros mais jovens da comunidade. O seu presente oferece educação, cuidado e experiências alegres.',
+                altSeniorHeart: 'Imagem de um casal idoso, simbolizando o coração de um sénior.',
+                cardSeniorTitle: 'O Coração de um Sénior',
+                cardSeniorText: 'Proporcionar conforto, companhia e cuidados dignos aos nossos idosos. A sua contribuição apoia serviços de saúde, atividades envolventes e um ambiente respeitoso.',
+                altCommunityPeace: 'Imagem de pessoas a trabalhar em conjunto, simbolizando sonhos de propósito e paz.',
+                cardCommunityTitle: 'Sonhos de Propósito & Paz',
+                cardCommunityText: 'Capacitar jovens, apoiar famílias e construir uma comunidade mais forte e resiliente para todos. Os fundos são direcionados para programas de integração social e bem-estar.',
+                cardCtaSeeDreams: 'Ver Sonhos',
+                // Dream List Section
+                dreamListTitle: 'A Nossa Lista de Sonhos: A Sua Oportunidade de Impacto',
+                dreamListSubtitle: 'Cada item nesta lista representa uma necessidade direta e uma profunda oportunidade para trazer alegria, segurança ou progresso. Selecione um sonho para saber mais e torne-se uma parte vital da sua realização.',
+                filterAll: 'Todos os Sonhos',
+                filterChild: 'Desejo de Criança',
+                filterSenior: 'Coração de Sénior',
+                filterCommunity: 'Propósito & Paz',
+                filterFulfilled: 'Sonhos Realizados',
+                filterProgress: 'Sonhos em Progresso',
+                dreamGoal: 'Meta:',
+                statusProgress: 'Em Progresso',
+                statusFulfilled: 'Realizado!',
+                dreamCtaMake: 'Realize Este Sonho',
+                dreamCtaMade: 'Sonho Realizado',
+                dream1Title: 'Novos Livros para a Nossa Biblioteca',
+                dream1Text: 'A biblioteca dos nossos filhos precisa de uma atualização! Ajude-nos a adquirir uma coleção diversificada de novos livros para estimular a imaginação e fomentar o amor pela leitura.',
+                dream2Title: 'Cadeiras de Rodas Confortáveis para Seniores',
+                dream2Text: 'Garanta mobilidade e conforto aos nossos residentes idosos com cadeiras de rodas novas e ergonomicamente projetadas, melhorando o seu dia a dia e independência.',
+                dream3Title: 'Projeto de Horta Comunitária',
+                dream3Text: 'Apoie a criação de uma vibrante horta comunitária, oferecendo produtos frescos, oportunidades educacionais e um espaço para conexão intergeracional.',
+                dream4Title: 'Material de Arte para Ateliers Criativos',
+                dream4Text: 'Ajude-nos a abastecer com tintas, pincéis, barro e outros materiais de arte para os nossos ateliers criativos semanais, permitindo que as crianças se expressem livremente.',
+                dream5Title: 'Programa de Música Terapêutica',
+                dream5Text: 'Financie um programa de música terapêutica para os nossos idosos, trazendo alegria, estimulando a memória e proporcionando uma experiência calma e envolvente.',
+                dream6Title: 'Iniciativa de Inclusão Digital',
+                dream6Text: 'Proporcione acesso a computadores e internet para famílias carenciadas, preenchendo a lacuna digital e possibilitando a aprendizagem remota e a procura de emprego.',
+                dream7Title: 'Novo Equipamento de Recreio',
+                dream7Text: 'O nosso parque infantil é muito utilizado, mas precisa de um equipamento novo, seguro e envolvente para incentivar o brincar ativo e o desenvolvimento dos mais novos.',
+                dream8Title: 'Excursão Anual para Seniores',
+                dream8Text: 'Apoie a nossa viagem anual, oferecendo aos nossos idosos um dia memorável, fomentando as ligações sociais e criando novas e preciosas memórias.',
+                // Impact Section
+                impactTitle: 'O Nosso Legado de Impacto',
+                impactSubtitle: 'Há 95 anos, a Santa Casa da Misericórdia das Caldas da Rainha tem sido um pilar de esperança e apoio. A sua confiança permite-nos transformar vidas diariamente, construindo uma comunidade mais forte e compassiva.',
+                statYears: 'Anos de Serviço',
+                statLives: 'Vidas Tocadas Anualmente',
+                statPrograms: 'Programas & Iniciativas',
+                impactTransparencyText: 'Todas as contribuições são geridas de forma transparente e contribuem diretamente para a realização destes sonhos.',
+                impactTransparencyCta: 'Saiba Mais Sobre a Nossa Transparência',
+                // Final CTA
+                finalCtaTitle: 'A Sua Jornada como Realizador de Sonhos Começa Aqui',
+                finalCtaSubtitle: 'Pronto para fazer uma diferença profunda? Escolha um sonho, contribua com o que puder e faça parte da nossa história contínua de compaixão e esperança.',
+                finalCtaButton: 'Realize um Sonho',
+                // Footer
+                footerHome: 'Início',
+                footerMission: 'A Nossa Missão',
+                footerDreamList: 'Lista de Sonhos',
+                footerImpact: 'O Nosso Impacto',
+                footerPrivacy: 'Política de Privacidade',
+                footerContact: 'Contacte-nos',
+                footerCopyright: '&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.',
+                // Modal
+                modalTitle: 'Torne-se um Realizador de Sonhos',
+                modalDreamSupportText: 'A sua contribuição apoia diretamente o sonho: ',
+                defaultDreamTitle: 'Um Sonho Geral',
+                modalChooseImpact: 'Escolha o seu impacto:',
+                modalAmountOther: 'Outro',
+                modalCustomAmountPlaceholder: 'Introduza um valor personalizado',
+                modalDonorName: 'O Seu Nome (Opcional)',
+                modalDonorNamePlaceholder: 'João Silva',
+                modalDonorEmail: 'O Seu Email',
+                modalDonorEmailPlaceholder: 'voce@exemplo.com',
+                modalPaymentMethod: 'Método de Pagamento (Exemplo)',
+                modalPaymentSelect: 'Selecione um método...',
+                modalPaymentCard: 'Cartão de Crédito',
+                modalPaymentMbway: 'MB Way',
+                modalPaymentBank: 'Transferência Bancária',
+                modalSubmitBtn: 'Realize o Sonho',
+                modalDisclaimer: 'Todas as doações são processadas de forma segura e são dedutíveis nos impostos.'
+            },
+            'en': {
+                // Page Meta & Nav
+                pageTitle: 'Santa Casa da Misericórdia das Caldas da Rainha - Make a Dream Come True',
+                skipLink: 'Skip to main content',
+                siteName: 'Santa Casa da Misericórdia das Caldas da Rainha',
+                navMission: 'Our Mission',
+                navDreamList: 'Dream List',
+                navOurImpact: 'Our Impact',
+                navBecomeMaker: 'Become a Dream Maker',
+                // Hero Section
+                heroOverline: 'Celebrating 95 Years of Compassion',
+                heroTitle: 'Building Dreams, Shaping Futures',
+                heroSubtitle: 'Join Santa Casa da Misericórdia das Caldas da Rainha in continuing a legacy of care, hope, and community transformation.',
+                heroCta: 'Explore Dreams',
+                // Dream Categories
+                dreamCategoriesTitle: 'Become a Dream Maker',
+                dreamCategoriesSubtitle: 'At Santa Casa da Misericórdia, we believe every life holds a dream. Explore the vital areas where your support can make a tangible difference, transforming aspirations into reality for our community.',
+                altChildWish: 'Image of a child playing, symbolizing a child\'s wish.',
+                cardChildTitle: 'A Child\'s Wish',
+                cardChildText: 'Nurturing innocence, fostering learning, and ensuring a brighter tomorrow for our youngest community members. Your gift provides education, care, and joyful experiences.',
+                altSeniorHeart: 'Image of an elderly couple, symbolizing a senior\'s heart.',
+                cardSeniorTitle: 'A Senior\'s Heart',
+                cardSeniorText: 'Providing comfort, companionship, and dignified care for our elders. Your contribution supports health services, engaging activities, and a respectful environment.',
+                altCommunityPeace: 'Image of people working together, symbolizing dreams of purpose and peace.',
+                cardCommunityTitle: 'Dreams of Purpose & Peace',
+                cardCommunityText: 'Empowering youth, supporting families, and building a stronger, more resilient community for everyone. Funds go towards social integration and well-being programs.',
+                cardCtaSeeDreams: 'See Dreams',
+                // Dream List Section
+                dreamListTitle: 'Our Dream List: Your Opportunity to Impact',
+                dreamListSubtitle: 'Every item on this list represents a direct need and a profound opportunity to bring joy, security, or progress. Select a dream to learn more and become a vital part of its fulfillment.',
+                filterAll: 'All Dreams',
+                filterChild: 'A Child\'s Wish',
+                filterSenior: 'A Senior\'s Heart',
+                filterCommunity: 'Purpose & Peace',
+                filterFulfilled: 'Fulfilled Dreams',
+                filterProgress: 'Dreams in Progress',
+                dreamGoal: 'Goal:',
+                statusProgress: 'In Progress',
+                statusFulfilled: 'Fulfilled!',
+                dreamCtaMake: 'Make This Dream',
+                dreamCtaMade: 'Dream Made',
+                dream1Title: 'New Books for Our Library',
+                dream1Text: 'Our children\'s library needs an update! Help us acquire a diverse collection of new books to spark imagination and foster a love for reading.',
+                dream2Title: 'Comfortable Wheelchairs for Seniors',
+                dream2Text: 'Ensure mobility and comfort for our elderly residents with new, ergonomically designed wheelchairs, enhancing their daily lives and independence.',
+                dream3Title: 'Community Garden Project',
+                dream3Text: 'Support the creation of a vibrant community garden, providing fresh produce, educational opportunities, and a space for intergenerational connection.',
+                dream4Title: 'Art Supplies for Creative Workshops',
+                dream4Text: 'Help us stock up on paints, brushes, clay, and other art materials for our weekly creative workshops, allowing children to express themselves freely.',
+                dream5Title: 'Therapeutic Music Program',
+                dream5Text: 'Fund a therapeutic music program for our seniors, bringing joy, stimulating memory, and providing a calming, engaging experience.',
+                dream6Title: 'Digital Inclusion Initiative',
+                dream6Text: 'Provide access to computers and internet for families in need, bridging the digital divide and enabling remote learning and job searching.',
+                dream7Title: 'New Playground Equipment',
+                dream7Text: 'Our playground is well-loved but needs new, safe, and engaging equipment to encourage active play and development for our youngest.',
+                dream8Title: 'Annual Excursion for Seniors',
+                dream8Text: 'Support our annual trip, offering our seniors a memorable day out, fostering social connections, and creating cherished new memories.',
+                // Impact Section
+                impactTitle: 'Our Legacy of Impact',
+                impactSubtitle: 'For 95 years, Santa Casa da Misericórdia das Caldas da Rainha has been a pillar of hope and support. Your trust allows us to transform lives daily, building a stronger, more compassionate community.',
+                statYears: 'Years of Service',
+                statLives: 'Lives Touched Annually',
+                statPrograms: 'Programs & Initiatives',
+                impactTransparencyText: 'Every contribution is transparently managed and directly contributes to fulfilling these dreams.',
+                impactTransparencyCta: 'Learn More About Our Transparency',
+                // Final CTA
+                finalCtaTitle: 'Your Journey as a Dream Maker Starts Here',
+                finalCtaSubtitle: 'Ready to make a profound difference? Choose a dream, contribute what you can, and become a part of our continuing story of compassion and hope.',
+                finalCtaButton: 'Make a Dream Come True',
+                // Footer
+                footerHome: 'Home',
+                footerMission: 'Our Mission',
+                footerDreamList: 'Dream List',
+                footerImpact: 'Our Impact',
+                footerPrivacy: 'Privacy Policy',
+                footerContact: 'Contact Us',
+                footerCopyright: '&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. All rights reserved.',
+                // Modal
+                modalTitle: 'Become a Dream Maker',
+                modalDreamSupportText: 'Your contribution directly supports the dream: ',
+                defaultDreamTitle: 'A General Dream',
+                modalChooseImpact: 'Choose your impact:',
+                modalAmountOther: 'Other',
+                modalCustomAmountPlaceholder: 'Enter custom amount',
+                modalDonorName: 'Your Name (Optional)',
+                modalDonorNamePlaceholder: 'John Doe',
+                modalDonorEmail: 'Your Email',
+                modalDonorEmailPlaceholder: 'you@example.com',
+                modalPaymentMethod: 'Payment Method (Placeholder)',
+                modalPaymentSelect: 'Select a method...',
+                modalPaymentCard: 'Credit Card',
+                modalPaymentMbway: 'MB Way',
+                modalPaymentBank: 'Bank Transfer',
+                modalSubmitBtn: 'Make Dream Come True',
+                modalDisclaimer: 'All donations are securely processed and tax-deductible.'
+            },
+            'fr': {
+                // Page Meta & Nav
+                pageTitle: 'Santa Casa da Misericórdia das Caldas da Rainha - Réalisez un Rêve',
+                skipLink: 'Aller au contenu principal',
+                siteName: 'Santa Casa da Misericórdia das Caldas da Rainha',
+                navMission: 'Notre Mission',
+                navDreamList: 'Liste de Rêves',
+                navOurImpact: 'Notre Impact',
+                navBecomeMaker: 'Devenez un Réalisateur de Rêves',
+                // Hero Section
+                heroOverline: 'Célébrant 95 Ans de Compassion',
+                heroTitle: 'Construire des Rêves, Façonner l\'Avenir',
+                heroSubtitle: 'Rejoignez la Santa Casa da Misericórdia das Caldas da Rainha pour perpétuer un héritage de soins, d\'espoir et de transformation communautaire.',
+                heroCta: 'Explorer les Rêves',
+                // Dream Categories
+                dreamCategoriesTitle: 'Devenez un Réalisateur de Rêves',
+                dreamCategoriesSubtitle: 'À la Santa Casa da Misericórdia, nous croyons que chaque vie porte un rêve. Explorez les domaines vitaux où votre soutien peut faire une différence tangible, transformant les aspirations en réalité pour notre communauté.',
+                altChildWish: 'Image d\'un enfant jouant, symbolisant le souhait d\'un enfant.',
+                cardChildTitle: 'Le Souhait d\'un Enfant',
+                cardChildText: 'Nourrir l\'innocence, favoriser l\'apprentissage et assurer un avenir meilleur à nos plus jeunes membres de la communauté. Votre don offre éducation, soins et expériences joyeuses.',
+                altSeniorHeart: 'Image d\'un couple âgé, symbolisant le cœur d\'un senior.',
+                cardSeniorTitle: 'Le Cœur d\'un Senior',
+                cardSeniorText: 'Offrir confort, compagnie et soins dignes à nos aînés. Votre contribution soutient les services de santé, les activités engageantes et un environnement respectueux.',
+                altCommunityPeace: 'Image de personnes travaillant ensemble, symbolisant des rêves de but et de paix.',
+                cardCommunityTitle: 'Rêves de But & de Paix',
+                cardCommunityText: 'Autonomiser les jeunes, soutenir les familles et construire une communauté plus forte et plus résiliente pour tous. Les fonds sont alloués aux programmes d\'intégration sociale et de bien-être.',
+                cardCtaSeeDreams: 'Voir les Rêves',
+                // Dream List Section
+                dreamListTitle: 'Notre Liste de Rêves: Votre Opportunité d\'Impact',
+                dreamListSubtitle: 'Chaque élément de cette liste représente un besoin direct et une profonde opportunité d\'apporter joie, sécurité ou progrès. Sélectionnez un rêve pour en savoir plus et devenir un acteur essentiel de sa réalisation.',
+                filterAll: 'Tous les Rêves',
+                filterChild: 'Le Souhait d\'un Enfant',
+                filterSenior: 'Le Cœur d\'un Senior',
+                filterCommunity: 'But & Paix',
+                filterFulfilled: 'Rêves Réalisés',
+                filterProgress: 'Rêves en Cours',
+                dreamGoal: 'Objectif :',
+                statusProgress: 'En Cours',
+                statusFulfilled: 'Réalisé !',
+                dreamCtaMake: 'Réaliser Ce Rêve',
+                dreamCtaMade: 'Rêve Réalisé',
+                dream1Title: 'Nouveaux Livres pour Notre Bibliothèque',
+                dream1Text: 'La bibliothèque de nos enfants a besoin d\'une mise à jour ! Aidez-nous à acquérir une collection diversifiée de nouveaux livres pour stimuler l\'imagination et favoriser l\'amour de la lecture.',
+                dream2Title: 'Fauteuils Roulants Confortables pour Seniors',
+                dream2Text: 'Assurez mobilité et confort à nos résidents âgés avec de nouveaux fauteuils roulants ergonomiques, améliorant leur vie quotidienne et leur indépendance.',
+                dream3Title: 'Projet de Jardin Communautaire',
+                dream3Text: 'Soutenez la création d\'un jardin communautaire vibrant, offrant des produits frais, des opportunités éducatives et un espace de connexion intergénérationnelle.',
+                dream4Title: 'Matériel d\'Art pour Ateliers Créatifs',
+                dream4Text: 'Aidez-nous à nous approvisionner en peintures, pinceaux, argile et autres matériaux d\'art pour nos ateliers créatifs hebdomadaires, permettant aux enfants de s\'exprimer librement.',
+                dream5Title: 'Programme de Musique Thérapeutique',
+                dream5Text: 'Financez un programme de musique thérapeutique pour nos seniors, apportant joie, stimulant la mémoire et offrant une expérience calme et engageante.',
+                dream6Title: 'Initiative d\'Inclusion Numérique',
+                dream6Text: 'Offrez un accès aux ordinateurs et à internet aux familles dans le besoin, comblant la fracture numérique et permettant l\'apprentissage à distance et la recherche d\'emploi.',
+                dream7Title: 'Nouveaux Équipements de Jeu',
+                dream7Text: 'Notre aire de jeux est très appréciée mais a besoin de nouveaux équipements sûrs et stimulants pour encourager le jeu actif et le développement de nos plus jeunes.',
+                dream8Title: 'Excursion Annuelle pour Seniors',
+                dream8Text: 'Soutenez notre voyage annuel, offrant à nos seniors une journée mémorable, favorisant les liens sociaux et créant de nouveaux souvenirs précieux.',
+                // Impact Section
+                impactTitle: 'Notre Héritage d\'Impact',
+                impactSubtitle: 'Depuis 95 ans, la Santa Casa da Misericórdia das Caldas da Rainha est un pilier d\'espoir et de soutien. Votre confiance nous permet de transformer des vies au quotidien, construisant une communauté plus forte et plus compatissante.',
+                statYears: 'Ans de Service',
+                statLives: 'Vies Touchées Annuellement',
+                statPrograms: 'Programmes & Initiatives',
+                impactTransparencyText: 'Toutes les contributions sont gérées de manière transparente et contribuent directement à la réalisation de ces rêves.',
+                impactTransparencyCta: 'En Savoir Plus sur Notre Transparence',
+                // Final CTA
+                finalCtaTitle: 'Votre Parcours de Réalisateur de Rêves Commence Ici',
+                finalCtaSubtitle: 'Prêt à faire une différence profonde ? Choisissez un rêve, contribuez ce que vous pouvez et faites partie de notre histoire continue de compassion et d\'espoir.',
+                finalCtaButton: 'Réaliser un Rêve',
+                // Footer
+                footerHome: 'Accueil',
+                footerMission: 'Notre Mission',
+                footerDreamList: 'Liste de Rêves',
+                footerImpact: 'Notre Impact',
+                footerPrivacy: 'Politique de Confidentialité',
+                footerContact: 'Contactez-nous',
+                footerCopyright: '&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. Tous droits réservés.',
+                // Modal
+                modalTitle: 'Devenez un Réalisateur de Rêves',
+                modalDreamSupportText: 'Votre contribution soutient directement le rêve : ',
+                defaultDreamTitle: 'Un Rêve Général',
+                modalChooseImpact: 'Choisissez votre impact :',
+                modalAmountOther: 'Autre',
+                modalCustomAmountPlaceholder: 'Entrez un montant personnalisé',
+                modalDonorName: 'Votre Nom (Facultatif)',
+                modalDonorNamePlaceholder: 'Jean Dupont',
+                modalDonorEmail: 'Votre Email',
+                modalDonorEmailPlaceholder: 'vous@exemple.com',
+                modalPaymentMethod: 'Méthode de Paiement (Exemple)',
+                modalPaymentSelect: 'Sélectionnez une méthode...',
+                modalPaymentCard: 'Carte de Crédit',
+                modalPaymentMbway: 'MB Way',
+                modalPaymentBank: 'Virement Bancaire',
+                modalSubmitBtn: 'Réaliser le Rêve',
+                modalDisclaimer: 'Tous les dons sont traités en toute sécurité et sont déductibles des impôts.'
+            }
+        };
+
+        let currentLang = 'pt'; // Default language
+
         document.addEventListener('DOMContentLoaded', () => {
+            const langButtons = document.querySelectorAll('.lang-switcher button');
+            const elementsToTranslate = document.querySelectorAll('[data-lang-key]');
+            const dreamItemTitles = document.querySelectorAll('.dream-item h4');
+            const openModalButtons = document.querySelectorAll('.open-modal-btn');
+
+            function applyTranslation(lang) {
+                currentLang = lang;
+                document.documentElement.lang = lang; // Set HTML lang attribute
+                document.title = translations[lang].pageTitle; // Update page title
+
+                elementsToTranslate.forEach(element => {
+                    const key = element.dataset.langKey;
+                    if (translations[lang][key]) {
+                        // Handle specific attributes for placeholder, alt, etc.
+                        if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+                            element.placeholder = translations[lang][key];
+                        } else if (element.tagName === 'IMG' && element.hasAttribute('alt')) {
+                            element.alt = translations[lang][key];
+                        } else if (element.tagName === 'SELECT') {
+                             // Handle select options
+                            const options = element.querySelectorAll('option');
+                            options.forEach(option => {
+                                const optionKey = option.dataset.langKey;
+                                if (optionKey && translations[lang][optionKey]) {
+                                    option.textContent = translations[lang][optionKey];
+                                }
+                            });
+                        }
+                         else {
+                            element.textContent = translations[lang][key];
+                        }
+                    }
+                });
+
+                // Update modal dream title keys when modal opens
+                updateModalDreamTitle();
+
+                // Update active language button
+                langButtons.forEach(btn => {
+                    if (btn.id === `lang-${lang}`) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Function to update the modal's selected dream title dynamically
+            function updateModalDreamTitle() {
+                const selectedDreamTitleElement = document.getElementById('selectedDreamTitle');
+                if (selectedDreamTitleElement) {
+                     const currentKey = selectedDreamTitleElement.dataset.langKey || 'defaultDreamTitle';
+                     selectedDreamTitleElement.textContent = translations[currentLang][currentKey];
+                }
+            }
+
+
+            langButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const lang = button.id.split('-')[1];
+                    applyTranslation(lang);
+                });
+            });
+
+            // Initial translation load (default to 'pt')
+            applyTranslation(currentLang);
+
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1065,14 +1496,14 @@
             // Donation Modal Logic
             const modal = document.getElementById('donationModal');
             const closeModalBtn = modal.querySelector('.modal-close-btn');
-            const openModalButtons = document.querySelectorAll('.open-modal-btn');
             const selectedDreamTitle = document.getElementById('selectedDreamTitle');
             const donationForm = modal.querySelector('.donation-form');
             const customAmountInput = document.getElementById('customAmount');
             const amountRadios = document.querySelectorAll('input[name="donationAmount"]');
 
-            function openModal(dreamTitle = "A General Dream") {
-                selectedDreamTitle.textContent = dreamTitle;
+            function openModal(dreamTitleKey = "defaultDreamTitle") {
+                selectedDreamTitle.dataset.langKey = dreamTitleKey; // Store the key
+                selectedDreamTitle.textContent = translations[currentLang][dreamTitleKey];
                 modal.classList.add('is-open');
                 modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden'; // Prevent scrolling background
@@ -1087,8 +1518,8 @@
             openModalButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const dreamTitle = btn.dataset.dreamTitle || "A General Dream";
-                    openModal(dreamTitle);
+                    const dreamTitleKey = btn.dataset.dreamTitleKey || "defaultDreamTitle";
+                    openModal(dreamTitleKey);
                 });
             });
 
@@ -1124,7 +1555,7 @@
             // Handle form submission (client-side only for this example)
             donationForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                alert('Thank you for your generous donation! (This is a placeholder action.)');
+                alert(translations[currentLang].modalDisclaimer); // Use translated disclaimer
                 closeModal();
                 donationForm.reset();
                 customAmountInput.style.display = 'none'; // Hide custom amount after submission
