@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Casa da Misericórdia das Caldas da Rainha - Make a Dream Come True</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base Styles */
+        :root {
+            --primary-blue: #0A2F50; /* Deep, professional blue */
+            --secondary-gold: #D4AF37; /* Warm, inviting gold */
+            --light-blue-bg: #EAF2F8; /* Soft background blue */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --light-grey: #F8F8F8;
+            --border-grey: #E0E0E0;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-subtle: rgba(0, 0, 0, 0.04);
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 1024px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-grey);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Accessibility: Skip to Content */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--secondary-gold);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+        h4 { font-size: 1.4em; }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-light);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .text-center { text-align: center; }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8em 1.5em;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn--primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        .btn--primary:hover {
+            background-color: var(--secondary-gold);
+            color: var(--white);
+        }
+
+        .btn--secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        .btn--secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        .btn--outline-gold {
+            background-color: transparent;
+            color: var(--secondary-gold);
+            border: 2px solid var(--secondary-gold);
+        }
+        .btn--outline-gold:hover {
+            background-color: var(--secondary-gold);
+            color: var(--white);
+        }
+
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header__logo img {
+            height: 50px; /* Adjust as needed */
+            width: auto;
+        }
+        /* Assuming the logo is the SCMC cross symbol */
+        .header__logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .header__nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header__nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .header__nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-blue-bg) 0%, var(--white) 50%, #F5FAFF 100%);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: url('https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png') no-repeat center center; /* Placeholder for SCMC cross background */
+            background-size: contain;
+            opacity: 0.03; /* Very subtle */
+            transform: rotate(-15deg);
+            z-index: 0;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero__overline {
+            font-size: 1.2em;
+            color: var(--secondary-gold);
+            font-weight: 600;
+            margin-bottom: 0.5em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            margin-bottom: 0.4em;
+            color: var(--primary-blue);
+        }
+
+        .hero__subtitle {
+            font-size: 1.5em;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2em auto;
+        }
+        
+        /* Dream Categories Section */
+        .dream-categories {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+
+        .dream-categories__header {
+            margin-bottom: 3rem;
+        }
+
+        .dream-categories__header h2 {
+            font-size: 2.8em;
+            margin-bottom: 0.5em;
+        }
+
+        .dream-categories__header p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .dream-categories__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .dream-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dream-card:hover {
+            transform: translateY(-8px);
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 30px -5px;
+        }
+
+        .dream-card__image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dream-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dream-card:hover .dream-card__image img {
+            transform: scale(1.05);
+        }
+
+        .dream-card__content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dream-card__content h3 {
+            font-size: 1.6em;
+            color: var(--primary-blue);
+            margin-bottom: 0.6em;
+        }
+
+        .dream-card__content p {
+            font-size: 1em;
+            color: var(--text-light);
+            margin-bottom: 1.5em;
+            flex-grow: 1;
+        }
+
+        /* Dream List Section */
+        .dream-list-section {
+            padding: 4rem 0;
+            background-color: var(--light-grey);
+        }
+
+        .dream-list-section__header {
+            margin-bottom: 3rem;
+        }
+        .dream-list-section__header h2 {
+            font-size: 2.8em;
+            margin-bottom: 0.5em;
+        }
+        .dream-list-section__header p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .dream-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            margin-bottom: 3em;
+            flex-wrap: wrap;
+        }
+
+        .dream-filters button {
+            background-color: var(--white);
+            border: 1px solid var(--border-grey);
+            padding: 0.7em 1.5em;
+            border-radius: 25px;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .dream-filters button:hover,
+        .dream-filters button.active {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-light);
+        }
+
+        .dream-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .dream-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 5px solid var(--secondary-gold); /* Highlight */
+        }
+
+        .dream-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .dream-item h4 {
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+            color: var(--primary-blue);
+        }
+
+        .dream-item p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: var(--text-light);
+            margin-bottom: 1.2em;
+            flex-grow: 1;
+        }
+
+        .dream-item__meta {
+            font-size: 0.85em;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1em;
+            padding-top: 1em;
+            border-top: 1px solid var(--border-grey);
+        }
+
+        .dream-item__meta .status {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        .dream-item__meta .status.fulfilled {
+            color: green; /* Consider a softer green */
+        }
+
+
+        /* Impact & Transparency Section */
+        .impact-section {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .impact-section h2 {
+            color: var(--white);
+            font-size: 3em;
+            margin-bottom: 0.8em;
+        }
+
+        .impact-section p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto 2.5em auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-stat-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .impact-stat-card__number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            color: var(--secondary-gold);
+            margin-bottom: 0.3em;
+        }
+
+        .impact-stat-card__label {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Call to Action Section (Final) */
+        .cta-final {
+            background-color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: 3em;
+            margin-bottom: 0.8em;
+        }
+        .cta-final p {
+            font-size: 1.3em;
+            max-width: 700px;
+            margin: 0 auto 2.5em auto;
+            color: var(--text-light);
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 3rem 0;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer__logo img {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1); /* Makes the logo white */
+            margin-bottom: 1rem;
+        }
+
+        .footer__nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer__nav a {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+        .footer__nav a:hover {
+            color: var(--secondary-gold);
+        }
+
+        .footer__social-links {
+            margin-top: 1rem;
+        }
+
+        .footer__social-links a {
+            display: inline-block;
+            margin: 0 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5em;
+        }
+        .footer__social-links a:hover {
+            color: var(--secondary-gold);
+        }
+
+        .footer__copyright {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Modal for Donation */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 35px -5px;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        .modal.is-open .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: var(--text-light);
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-close-btn:hover {
+            color: var(--primary-blue);
+        }
+
+        .modal-content h3 {
+            font-size: 2em;
+            margin-bottom: 1em;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+
+        .donation-form label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .donation-form input[type="text"],
+        .donation-form input[type="email"],
+        .donation-form input[type="number"],
+        .donation-form select {
+            width: 100%;
+            padding: 0.8em 1em;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border-grey);
+            border-radius: 8px;
+            font-size: 1em;
+            color: var(--text-dark);
+        }
+        .donation-form input[type="text"]:focus,
+        .donation-form input[type="email"]:focus,
+        .donation-form input[type="number"]:focus,
+        .donation-form select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(10, 47, 80, 0.2);
+        }
+
+        .donation-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5em;
+            flex-wrap: wrap;
+        }
+        .donation-options label {
+            flex: 1;
+            min-width: 80px;
+            background-color: var(--light-grey);
+            border: 1px solid var(--border-grey);
+            border-radius: 8px;
+            padding: 0.8em 0.5em;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .donation-options input[type="radio"] {
+            display: none;
+        }
+        .donation-options input[type="radio"]:checked + label {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+        .donation-options label:hover {
+            background-color: var(--border-grey);
+        }
+        .donation-options input[type="radio"]:checked + label:hover {
+             background-color: var(--primary-blue); /* keep active background */
+        }
+        .donation-form .btn {
+            width: 100%;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: var(--breakpoint-lg)) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 2em; }
+            .hero { padding: 4rem 0; }
+            .hero__subtitle { font-size: 1.3em; }
+            .dream-categories__header h2, .dream-list-section__header h2, .impact-section h2, .cta-final h2 {
+                font-size: 2.2em;
+            }
+            .dream-categories__header p, .dream-list-section__header p, .impact-section p, .cta-final p {
+                font-size: 1em;
+            }
+            .impact-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            .impact-stat-card {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: var(--breakpoint-md)) {
+            .container { padding: 0 1rem; }
+            .header { padding: 0.8rem 0; }
+            .header__nav { display: none; /* For simplicity, hide nav on small screens. A real site would have a hamburger menu */ }
+            .header .container { justify-content: center; } /* Center logo when nav is hidden */
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+            .hero { padding: 3rem 0; }
+            .hero h1 { font-size: 2.5em; }
+            .hero__subtitle { font-size: 1.1em; }
+
+            .dream-categories__grid, .dream-list {
+                grid-template-columns: 1fr;
+            }
+            .dream-card { margin-bottom: 1.5rem; }
+            .dream-filters {
+                flex-direction: column;
+                gap: 0.8em;
+            }
+            .dream-filters button {
+                width: 100%;
+            }
+            .impact-section { padding: 4rem 0; }
+            .impact-section h2 { font-size: 2em; }
+            .impact-section p { font-size: 1em; }
+            .cta-final { padding: 3rem 0; }
+            .cta-final h2 { font-size: 2em; }
+            .footer .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .footer__nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .footer__social-links { margin-top: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__logo">
+                <a href="#hero">
+                    <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png" alt="Santa Casa da Misericórdia das Caldas da Rainha Logo">
+                    <span class="header__logo-text sr-only">Santa Casa da Misericórdia das Caldas da Rainha</span>
+                </a>
+            </div>
+            <nav class="header__nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="#dream-categories">Our Mission</a></li>
+                    <li><a href="#dream-list-section">Dream List</a></li>
+                    <li><a href="#impact-section">Our Impact</a></li>
+                    <li><a href="#cta-final">Become a Dream Maker</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" id="hero">
+            <div class="container hero__content">
+                <p class="hero__overline">Celebrating 95 Years of Compassion</p>
+                <h1>Building Dreams, Shaping Futures</h1>
+                <p class="hero__subtitle">Join Santa Casa da Misericórdia das Caldas da Rainha in continuing a legacy of care, hope, and community transformation.</p>
+                <a href="#dream-list-section" class="btn btn--primary">Explore Dreams</a>
+            </div>
+        </section>
+
+        <section class="dream-categories" id="dream-categories">
+            <div class="container text-center dream-categories__header">
+                <h2>Become a Dream Maker</h2>
+                <p>At Santa Casa da Misericórdia, we believe every life holds a dream. Explore the vital areas where your support can make a tangible difference, transforming aspirations into reality for our community.</p>
+            </div>
+            <div class="container dream-categories__grid">
+                <div class="dream-card" data-category="child">
+                    <div class="dream-card__image">
+                        <img src="https://images.unsplash.com/photo-1579621970795-87facc2f935d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Child drawing with crayons">
+                        <span class="sr-only">Image of a child drawing, symbolizing a child's wish.</span>
+                    </div>
+                    <div class="dream-card__content">
+                        <h3>A Child's Wish</h3>
+                        <p>Nurturing innocence, fostering learning, and ensuring a brighter tomorrow for our youngest community members. Your gift provides education, care, and joyful experiences.</p>
+                        <a href="#dream-list-section" class="btn btn--outline-gold">See Dreams</a>
+                    </div>
+                </div>
+
+                <div class="dream-card" data-category="senior">
+                    <div class="dream-card__image">
+                        <img src="https://images.unsplash.com/photo-1590032049021-997f74813583?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Elderly couple smiling and holding hands">
+                        <span class="sr-only">Image of an elderly couple, symbolizing a senior's heart.</span>
+                    </div>
+                    <div class="dream-card__content">
+                        <h3>A Senior's Heart</h3>
+                        <p>Providing comfort, companionship, and dignified care for our elders. Your contribution supports health services, engaging activities, and a respectful environment.</p>
+                        <a href="#dream-list-section" class="btn btn--outline-gold">See Dreams</a>
+                    </div>
+                </div>
+
+                <div class="dream-card" data-category="community">
+                    <div class="dream-card__image">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Group of people collaborating around a table">
+                        <span class="sr-only">Image of people working together, symbolizing dreams of purpose and peace.</span>
+                    </div>
+                    <div class="dream-card__content">
+                        <h3>Dreams of Purpose & Peace</h3>
+                        <p>Empowering youth, supporting families, and building a stronger, more resilient community for everyone. Funds go towards social integration and well-being programs.</p>
+                        <a href="#dream-list-section" class="btn btn--outline-gold">See Dreams</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dream-list-section" id="dream-list-section">
+            <div class="container text-center dream-list-section__header">
+                <h2>Our Dream List: Your Opportunity to Impact</h2>
+                <p>Every item on this list represents a direct need and a profound opportunity to bring joy, security, or progress. Select a dream to learn more and become a vital part of its fulfillment.</p>
+            </div>
+            <div class="container">
+                <div class="dream-filters" role="group" aria-label="Filter dreams by category">
+                    <button class="btn dream-filter-btn active" data-filter="all">All Dreams</button>
+                    <button class="btn dream-filter-btn" data-filter="child">A Child's Wish</button>
+                    <button class="btn dream-filter-btn" data-filter="senior">A Senior's Heart</button>
+                    <button class="btn dream-filter-btn" data-filter="community">Purpose & Peace</button>
+                    <button class="btn dream-filter-btn" data-filter="fulfilled">Fulfilled Dreams</button>
+                    <button class="btn dream-filter-btn" data-filter="progress">Dreams in Progress</button>
+                </div>
+
+                <div class="dream-list">
+                    <!-- Example Dream Items - Replace with actual data -->
+                    <div class="dream-item" data-category="child" data-status="progress">
+                        <h4>New Books for Our Library</h4>
+                        <p>Our children's library needs an update! Help us acquire a diverse collection of new books to spark imagination and foster a love for reading.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €500</span>
+                            <span class="status">In Progress</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="New Books for Our Library">Make This Dream</button>
+                        </div>
+                    </div>
+                    <div class="dream-item" data-category="senior" data-status="fulfilled">
+                        <h4>Comfortable Wheelchairs for Seniors</h4>
+                        <p>Ensure mobility and comfort for our elderly residents with new, ergonomically designed wheelchairs, enhancing their daily lives and independence.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €1,200</span>
+                            <span class="status fulfilled">Fulfilled!</span>
+                            <button class="btn btn--secondary btn--small" disabled>Dream Made</button>
+                        </div>
+                    </div>
+                    <div class="dream-item" data-category="community" data-status="progress">
+                        <h4>Community Garden Project</h4>
+                        <p>Support the creation of a vibrant community garden, providing fresh produce, educational opportunities, and a space for intergenerational connection.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €2,500</span>
+                            <span class="status">In Progress</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Community Garden Project">Make This Dream</button>
+                        </div>
+                    </div>
+                    <div class="dream-item" data-category="child" data-status="progress">
+                        <h4>Art Supplies for Creative Workshops</h4>
+                        <p>Help us stock up on paints, brushes, clay, and other art materials for our weekly creative workshops, allowing children to express themselves freely.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €350</span>
+                            <span class="status">In Progress</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Art Supplies for Creative Workshops">Make This Dream</button>
+                        </div>
+                    </div>
+                    <div class="dream-item" data-category="senior" data-status="progress">
+                        <h4>Therapeutic Music Program</h4>
+                        <p>Fund a therapeutic music program for our seniors, bringing joy, stimulating memory, and providing a calming, engaging experience.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €800</span>
+                            <span class="status">In Progress</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Therapeutic Music Program">Make This Dream</button>
+                        </div>
+                    </div>
+                    <div class="dream-item" data-category="community" data-status="fulfilled">
+                        <h4>Digital Inclusion Initiative</h4>
+                        <p>Provide access to computers and internet for families in need, bridging the digital divide and enabling remote learning and job searching.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €1,800</span>
+                            <span class="status fulfilled">Fulfilled!</span>
+                            <button class="btn btn--secondary btn--small" disabled>Dream Made</button>
+                        </div>
+                    </div>
+                    <div class="dream-item" data-category="child" data-status="progress">
+                        <h4>New Playground Equipment</h4>
+                        <p>Our playground is well-loved but needs new, safe, and engaging equipment to encourage active play and development for our youngest.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €3,000</span>
+                            <span class="status">In Progress</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="New Playground Equipment">Make This Dream</button>
+                        </div>
+                    </div>
+                    <div class="dream-item" data-category="senior" data-status="progress">
+                        <h4>Annual Excursion for Seniors</h4>
+                        <p>Support our annual trip, offering our seniors a memorable day out, fostering social connections, and creating cherished new memories.</p>
+                        <div class="dream-item__meta">
+                            <span>Goal: €700</span>
+                            <span class="status">In Progress</span>
+                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title="Annual Excursion for Seniors">Make This Dream</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-section" id="impact-section">
+            <div class="container">
+                <h2>Our Legacy of Impact</h2>
+                <p>For 95 years, Santa Casa da Misericórdia das Caldas da Rainha has been a pillar of hope and support. Your trust allows us to transform lives daily, building a stronger, more compassionate community.</p>
+
+                <div class="impact-stats">
+                    <div class="impact-stat-card">
+                        <div class="impact-stat-card__number">95+</div>
+                        <div class="impact-stat-card__label">Years of Service</div>
+                    </div>
+                    <div class="impact-stat-card">
+                        <div class="impact-stat-card__number">500+</div>
+                        <div class="impact-stat-card__label">Lives Touched Annually</div>
+                    </div>
+                    <div class="impact-stat-card">
+                        <div class="impact-stat-card__number">30+</div>
+                        <div class="impact-stat-card__label">Programs & Initiatives</div>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 3em;">
+                    <p style="font-size: 1.1em; color: rgba(255,255,255,0.7);">
+                        Every contribution is transparently managed and directly contributes to fulfilling these dreams.
+                    </p>
+                    <a href="#" class="btn btn--outline-gold" style="margin-top: 1.5em;">Learn More About Our Transparency</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-final" id="cta-final">
+            <div class="container">
+                <h2>Your Journey as a Dream Maker Starts Here</h2>
+                <p>Ready to make a profound difference? Choose a dream, contribute what you can, and become a part of our continuing story of compassion and hope.</p>
+                <button class="btn btn--primary open-modal-btn">Make a Dream Come True</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__logo">
+                <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png" alt="SCMC Logo">
+            </div>
+            <nav class="footer__nav" aria-label="Footer navigation">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#dream-categories">Our Mission</a></li>
+                    <li><a href="#dream-list-section">Dream List</a></li>
+                    <li><a href="#impact-section">Our Impact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="footer__social-links">
+                <!-- Placeholder for social media icons -->
+                <a href="#" aria-label="Follow us on Facebook"><span class="sr-only">Facebook</span>&#x1F4F1;</a>
+                <a href="#" aria-label="Follow us on Instagram"><span class="sr-only">Instagram</span>&#x1F4F7;</a>
+                <a href="#" aria-label="Follow us on LinkedIn"><span class="sr-only">LinkedIn</span>&#x1F4BB;</a>
+            </div>
+            <p class="footer__copyright">&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Donation Modal -->
+    <div class="modal" id="donationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close-btn" aria-label="Close donation form">&times;</button>
+            <h3 id="modalTitle">Become a Dream Maker</h3>
+            <form class="donation-form">
+                <p>Your contribution directly supports the dream: <strong id="selectedDreamTitle">A General Dream</strong></p>
+
+                <label for="donationAmount">Choose your impact:</label>
+                <div class="donation-options">
+                    <input type="radio" id="amount10" name="donationAmount" value="10">
+                    <label for="amount10">€10</label>
+                    <input type="radio" id="amount25" name="donationAmount" value="25" checked>
+                    <label for="amount25">€25</label>
+                    <input type="radio" id="amount50" name="donationAmount" value="50">
+                    <label for="amount50">€50</label>
+                    <input type="radio" id="amount100" name="donationAmount" value="100">
+                    <label for="amount100">€100</label>
+                    <input type="radio" id="amountOther" name="donationAmount" value="other">
+                    <label for="amountOther">Other</label>
+                </div>
+                <input type="number" id="customAmount" placeholder="Enter custom amount" style="display: none; margin-top: -1em;" min="5">
+
+                <label for="donorName">Your Name (Optional)</label>
+                <input type="text" id="donorName" placeholder="John Doe">
+
+                <label for="donorEmail">Your Email</label>
+                <input type="email" id="donorEmail" placeholder="you@example.com" required>
+
+                <label for="paymentMethod">Payment Method (Placeholder)</label>
+                <select id="paymentMethod" required>
+                    <option value="">Select a method...</option>
+                    <option value="card">Credit Card</option>
+                    <option value="mbway">MB Way</option>
+                    <option value="banktransfer">Bank Transfer</option>
+                </select>
+
+                <button type="submit" class="btn btn--primary">Make Dream Come True</button>
+                <p style="font-size: 0.85em; color: var(--text-light); text-align: center; margin-top: 1em;">All donations are securely processed and tax-deductible.</p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop;
+                        window.scrollTo({
+                            top: offsetTop - 80, // Adjust for fixed header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Dream List Filtering
+            const filterButtons = document.querySelectorAll('.dream-filter-btn');
+            const dreamItems = document.querySelectorAll('.dream-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter;
+
+                    dreamItems.forEach(item => {
+                        const category = item.dataset.category;
+                        const status = item.dataset.status;
+
+                        if (filter === 'all' || category === filter || status === filter) {
+                            item.style.display = 'flex'; // Show item
+                        } else {
+                            item.style.display = 'none'; // Hide item
+                        }
+                    });
+                });
+            });
+
+            // Donation Modal Logic
+            const modal = document.getElementById('donationModal');
+            const closeModalBtn = modal.querySelector('.modal-close-btn');
+            const openModalButtons = document.querySelectorAll('.open-modal-btn');
+            const selectedDreamTitle = document.getElementById('selectedDreamTitle');
+            const donationForm = modal.querySelector('.donation-form');
+            const customAmountInput = document.getElementById('customAmount');
+            const amountRadios = document.querySelectorAll('input[name="donationAmount"]');
+
+            function openModal(dreamTitle = "A General Dream") {
+                selectedDreamTitle.textContent = dreamTitle;
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            }
+
+            function closeModal() {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+
+            openModalButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dreamTitle = btn.dataset.dreamTitle || "A General Dream";
+                    openModal(dreamTitle);
+                });
+            });
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+
+            // Custom amount input visibility
+            amountRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (document.getElementById('amountOther').checked) {
+                        customAmountInput.style.display = 'block';
+                        customAmountInput.setAttribute('required', 'true');
+                        customAmountInput.focus();
+                    } else {
+                        customAmountInput.style.display = 'none';
+                        customAmountInput.removeAttribute('required');
+                        customAmountInput.value = '';
+                    }
+                });
+            });
+
+            // Handle form submission (client-side only for this example)
+            donationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your generous donation! (This is a placeholder action.)');
+                closeModal();
+                donationForm.reset();
+                customAmountInput.style.display = 'none'; // Hide custom amount after submission
+            });
+        });
+    </script>
+</body>
+</html>
