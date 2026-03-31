@@ -1,1566 +1,1775 @@
+
+SCMCR
+/
+
+<!DOCTYPE html> <html lang="pt"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title data-lang-key="pageTitle">Santa Casa da Misericórdia das Caldas da Rainha - Realize um Sonho</title> <link href="https://fonts.googleapis.com/c
+
+pasted
+
+COde attached is not delivering on the requirements below. check and give the code to paste to vercel/github. no tech skills beyond copy-paste-commit
+
+None of the images are loadingWhen a 'wish is fulfilled', on clicking it should show the amount collected, the number of donors and time taken to reach the goal, top 3 nationalities that made it happen. like a professional dashboradSame for all projects ongoing;   show the amount collected, the gap to be bridged in amount, the number of donors and time taken to reach the goal, top 3 nationalities that made it happen. like a professional dashboardThere should be 'admin' login via a password to be able to feed this data easily. Users are not tech savvy, so a dashboard should ask for details of projects in motion, setup new projects etcThe site should be very visual heavy. Add free images (that load) from silver coast Portugal.Allow small donations on people's birthdays anniversaries etc in exchange for a printable 'gift' as a note of thanksThe language choice should hover on the left or right sides and not take up space in the mastheadMention tax status to allow people to know they are legit and transparentShow photos of the team (dedicated smiling middleaged portuguese women in white uniforms)
+
+Here's a plan of action and the updated code:
+1. Image Loading: I will replace the Unsplash links with actual URLs for royalty-free images from Pexels, focusing on diverse representations of Portuguese life, the Silver Coast, elders, children, youth, and women, ensuring they load correctly. I'll add alt text to all of them.
+2. Dashboard for Dreams (Fulfilled & In Progress):
+   * Modal Integration: Clicking on a "Make This Dream" or "Dream Made" button will now open a new, dedicated "Dream Dashboard" modal. This modal will dynamically display project specifics.
+   * Data Display:
+      * Fulfilled Dreams: Will show "Amount Collected," "Number of Donors," "Time Taken," and "Top 3 Nationalities" (as placeholder data, of course).
+      * In Progress Dreams: Will show "Amount Collected," "Gap to be Bridged," "Number of Donors," and "Top 3 Nationalities."
+   * Visuals: I'll use simple, clear visual elements within the modal to represent this data.
+3. Admin Login & Dashboard:
+   * Login Interface: A simple, discreet "Admin Login" link will be added to the footer. Clicking it will bring up a modal with a password field.
+   * Backend Simulation: Upon successful (placeholder) login, the user will be presented with a simulated admin dashboard page. This page will have inputs for "Project Title," "Description," "Goal Amount," "Current Amount," "Status," "Category," "Donors," "Nationalities," and "Time Taken" to mimic data entry for both new and existing projects.
+   * User Experience: The design will be clean and intuitive, even though it's a front-end simulation.
+4. Visual Heavy & Silver Coast Imagery: I'll increase the use of relevant, high-quality images throughout the page, specifically integrating Silver Coast visuals where appropriate, to create a richer, more immersive experience.
+5. Birthday/Anniversary Donations with Printable Gift:
+   * Modal Extension: The main donation modal will include options for "Is this a gift?" and fields for "Recipient Name," "Occasion," and "Your Message."
+   * Printable Gift (Simulated): After a successful (simulated) gift donation, a new modal will appear with a mock-up of a printable thank-you note/gift certificate.
+6. Language Chooser Positioning: The language switcher will be moved to a floating position on the side of the viewport, not in the masthead, for a cleaner header.
+7. Tax Status: A clear, concise statement about the institution's tax-deductible status will be added to the footer and potentially within the donation modal.
+8. Team Photos: I'll add a new section showcasing the "Our Team" with placeholder images of "dedicated smiling middle-aged Portuguese women in white uniforms," conveying warmth and professionalism.
+
+Show more
+1:27 PM
+
+Architected comprehensive charity website with working images, admin dashboard, and donation features
+Architected comprehensive charity website with working images, admin dashboard, and donation features
+Let me build the complete, deployable file now.
+
+
+Created a file, read a file
+Created a file, read a file
+Download this single index.html file, then paste it into your GitHub repo and deploy to Vercel — no other files needed.
+
+Here's everything that was fixed and built:
+
+Images — all Pexels URLs are in the correct hotlink-friendly format with ?auto=compress&cs=tinysrgb&w=800, plus onerror fallbacks so nothing ever shows as broken.
+
+Silver Coast gallery — a full-width photo strip of Nazaré, Óbidos, Peniche and the Atlantic coast sits right below the hero.
+
+Team section — four cards with real Pexels photos of female healthcare workers in white, with names and roles.
+
+Dream dashboards — clicking "Ver Detalhes" on any dream opens a professional modal showing: amount raised, gap to bridge (for in-progress), donor count, time taken, and a visual nationality breakdown with flags and percentage bars. Fulfilled dreams show in green; in-progress in gold.
+
+Admin panel — click "Acesso Admin" in the footer, enter password scmcr2024 (you can change this in the code), and a full dashboard appears with forms to add new dreams, edit existing ones, update amounts/donors, and delete projects. All data persists in the browser.
+
+Birthday/gift donations — the gift section lets users pick an occasion (birthday, wedding, graduation, memory…), opens the donation form pre-filled, and on submit generates a printable certificate with the recipient's name, occasion, personal message and dream name.
+
+Language switcher — floats vertically on the left side, never touches the masthead.
+
+Tax status — shown in the impact section and footer with a gold badge ("IPSS Certificada · Benefícios Fiscais").
+
+Index
+Code · HTML 
+
+You are out of free messages until 6:00 PM
+Upgrade
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Index · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="pageTitle">Santa Casa da Misericórdia das Caldas da Rainha - Realize um Sonho</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Reset & Base Styles */
-        :root {
-            --primary-blue: #0A2F50; /* Deep, professional blue */
-            --secondary-gold: #D4AF37; /* Warm, inviting gold */
-            --soft-blue-bg: #E0EBF5; /* Softer background blue */
-            --soft-gold-gradient: linear-gradient(135deg, #F8F4ED 0%, #E8E0D5 100%); /* Subtle gold/cream gradient */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --white: #FFFFFF;
-            --light-grey: #F8F8F8;
-            --border-grey: #E0E0E0;
-            --shadow-light: rgba(0, 0, 0, 0.08);
-            --shadow-subtle: rgba(0, 0, 0, 0.04);
-            --rounded-corners: 12px; /* Consistent rounded edges */
-            --breakpoint-md: 768px;
-            --breakpoint-lg: 1024px;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--light-grey);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Accessibility: Skip to Content */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 8px;
-            z-index: 1000;
-            transition: top 0.3s;
-        }
-        .skip-link:focus {
-            top: 0;
-        }
-
-        a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: var(--secondary-gold);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-blue);
-            margin-bottom: 0.8em;
-            line-height: 1.2;
-        }
-
-        h1 { font-size: 2.8em; }
-        h2 { font-size: 2.2em; }
-        h3 { font-size: 1.8em; }
-        h4 { font-size: 1.4em; }
-
-        p {
-            margin-bottom: 1em;
-            color: var(--text-light);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .text-center { text-align: center; }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Language Switcher */
-        .lang-switcher {
-            display: flex;
-            gap: 5px;
-            margin-left: 20px;
-        }
-        .lang-switcher button {
-            background-color: transparent;
-            border: 1px solid var(--border-grey);
-            color: var(--text-dark);
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        .lang-switcher button.active,
-        .lang-switcher button:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
-        }
-
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8em 1.5em;
-            border-radius: var(--rounded-corners); /* Rounded buttons */
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            box-shadow: var(--shadow-subtle); /* Floating effect */
-        }
-
-        .btn--primary {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-        .btn--primary:hover {
-            background-color: var(--secondary-gold);
-            color: var(--white);
-            box-shadow: var(--shadow-light);
-        }
-
-        .btn--secondary {
-            background-color: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-        .btn--secondary:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            box-shadow: var(--shadow-light);
-        }
-        .btn--outline-gold {
-            background-color: transparent;
-            color: var(--secondary-gold);
-            border: 2px solid var(--secondary-gold);
-        }
-        .btn--outline-gold:hover {
-            background-color: var(--secondary-gold);
-            color: var(--white);
-            box-shadow: var(--shadow-light);
-        }
-
-
-        /* Header */
-        .header {
-            background-color: var(--white);
-            padding: 1rem 0;
-            box-shadow: var(--shadow-subtle);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header__left {
-            display: flex;
-            align-items: center;
-        }
-
-        .header__logo img {
-            height: 50px; /* Adjust as needed */
-            width: auto;
-        }
-        /* Assuming the logo is the SCMC cross symbol */
-        .header__logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-left: 10px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .header__nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .header__nav a {
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-        .header__nav a:hover {
-            color: var(--primary-blue);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: var(--soft-gold-gradient); /* Soft gold gradient for warmth */
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 4rem;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            background: url('https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png') no-repeat center center; /* Placeholder for SCMC cross background */
-            background-size: contain;
-            opacity: 0.03; /* Very subtle */
-            transform: rotate(-15deg);
-            z-index: 0;
-        }
-
-        .hero__content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero__overline {
-            font-size: 1.2em;
-            color: var(--secondary-gold);
-            font-weight: 600;
-            margin-bottom: 0.5em;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .hero h1 {
-            font-size: 3.8em;
-            margin-bottom: 0.4em;
-            color: var(--primary-blue);
-        }
-
-        .hero__subtitle {
-            font-size: 1.5em;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto 2em auto;
-        }
-        
-        /* Dream Categories Section */
-        .dream-categories {
-            padding: 4rem 0;
-            background-color: var(--white);
-        }
-
-        .dream-categories__header {
-            margin-bottom: 3rem;
-        }
-
-        .dream-categories__header h2 {
-            font-size: 2.8em;
-            margin-bottom: 0.5em;
-        }
-
-        .dream-categories__header p {
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .dream-categories__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .dream-card {
-            background-color: var(--white);
-            border-radius: var(--rounded-corners); /* Rounded cards */
-            overflow: hidden;
-            box-shadow: var(--shadow-light); /* Floating effect */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .dream-card:hover {
-            transform: translateY(-8px);
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 30px -5px;
-        }
-
-        .dream-card__image {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-            border-top-left-radius: var(--rounded-corners);
-            border-top-right-radius: var(--rounded-corners);
-        }
-
-        .dream-card__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .dream-card:hover .dream-card__image img {
-            transform: scale(1.05);
-        }
-
-        .dream-card__content {
-            padding: 1.8rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .dream-card__content h3 {
-            font-size: 1.6em;
-            color: var(--primary-blue);
-            margin-bottom: 0.6em;
-        }
-
-        .dream-card__content p {
-            font-size: 1em;
-            color: var(--text-light);
-            margin-bottom: 1.5em;
-            flex-grow: 1;
-        }
-
-        /* Dream List Section */
-        .dream-list-section {
-            padding: 4rem 0;
-            background-color: var(--light-grey);
-            background-image: linear-gradient(to bottom, var(--light-grey) 0%, var(--soft-blue-bg) 100%); /* Soft gradient */
-        }
-
-        .dream-list-section__header {
-            margin-bottom: 3rem;
-        }
-        .dream-list-section__header h2 {
-            font-size: 2.8em;
-            margin-bottom: 0.5em;
-        }
-        .dream-list-section__header p {
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .dream-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1em;
-            margin-bottom: 3em;
-            flex-wrap: wrap;
-        }
-
-        .dream-filters button {
-            background-color: var(--white);
-            border: 1px solid var(--border-grey);
-            padding: 0.7em 1.5em;
-            border-radius: 25px; /* Pill shape for filters */
-            font-weight: 500;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .dream-filters button:hover,
-        .dream-filters button.active {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
-            box-shadow: var(--shadow-light);
-        }
-
-        .dream-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .dream-item {
-            background-color: var(--white);
-            border-radius: var(--rounded-corners); /* Rounded dream items */
-            padding: 1.8rem;
-            box-shadow: var(--shadow-subtle); /* Floating effect */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-left: 5px solid var(--secondary-gold); /* Highlight */
-        }
-
-        .dream-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-light);
-        }
-
-        .dream-item h4 {
-            font-size: 1.3em;
-            margin-bottom: 0.5em;
-            color: var(--primary-blue);
-        }
-
-        .dream-item p {
-            font-size: 0.95em;
-            line-height: 1.5;
-            color: var(--text-light);
-            margin-bottom: 1.2em;
-            flex-grow: 1;
-        }
-
-        .dream-item__meta {
-            font-size: 0.85em;
-            color: var(--text-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1em;
-            padding-top: 1em;
-            border-top: 1px solid var(--border-grey);
-        }
-
-        .dream-item__meta .status {
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-        .dream-item__meta .status.fulfilled {
-            color: #28a745; /* A standard, pleasant green for fulfilled */
-        }
-
-
-        /* Impact & Transparency Section */
-        .impact-section {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .impact-section::before { /* Subtle background pattern for trust */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 1%, transparent 20%),
-                        radial-gradient(circle at bottom right, rgba(255,255,255,0.05) 1%, transparent 20%);
-            opacity: 0.3;
-            z-index: 0;
-        }
-
-        .impact-section .container {
-            position: relative; /* Bring content above pseudo-element */
-            z-index: 1;
-        }
-
-        .impact-section h2 {
-            color: var(--white);
-            font-size: 3em;
-            margin-bottom: 0.8em;
-        }
-
-        .impact-section p {
-            font-size: 1.3em;
-            max-width: 800px;
-            margin: 0 auto 2.5em auto;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .impact-stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .impact-stat-card {
-            flex: 1;
-            min-width: 250px;
-            max-width: 350px;
-            background-color: rgba(255, 255, 255, 0.08);
-            border-radius: var(--rounded-corners); /* Rounded stat cards */
-            padding: 2.5rem;
-            box-shadow: var(--shadow-light);
-        }
-
-        .impact-stat-card__number {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5em;
-            font-weight: 700;
-            color: var(--secondary-gold);
-            margin-bottom: 0.3em;
-        }
-
-        .impact-stat-card__label {
-            font-size: 1.2em;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Call to Action Section (Final) */
-        .cta-final {
-            background-color: var(--white);
-            padding: 5rem 0;
-            text-align: center;
-            background-image: linear-gradient(to top, var(--light-grey) 0%, var(--white) 100%); /* Soft gradient */
-        }
-
-        .cta-final h2 {
-            font-size: 3em;
-            margin-bottom: 0.8em;
-        }
-        .cta-final p {
-            font-size: 1.3em;
-            max-width: 700px;
-            margin: 0 auto 2.5em auto;
-            color: var(--text-light);
-        }
-
-
-        /* Footer */
-        .footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 3rem 0;
-            font-size: 0.9em;
-            text-align: center;
-        }
-
-        .footer .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .footer__logo img {
-            height: 60px;
-            width: auto;
-            filter: brightness(0) invert(1); /* Makes the logo white */
-            margin-bottom: 1rem;
-        }
-
-        .footer__nav ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer__nav a {
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 400;
-        }
-        .footer__nav a:hover {
-            color: var(--secondary-gold);
-        }
-
-        .footer__social-links {
-            margin-top: 1rem;
-        }
-
-        .footer__social-links a {
-            display: inline-block;
-            margin: 0 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.5em;
-        }
-        .footer__social-links a:hover {
-            color: var(--secondary-gold);
-        }
-
-        .footer__copyright {
-            margin-top: 2rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Modal for Donation */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .modal.is-open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background-color: var(--white);
-            padding: 2.5rem;
-            border-radius: var(--rounded-corners); /* Rounded modal */
-            max-width: 500px;
-            width: 90%;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 35px -5px; /* Floating effect */
-            position: relative;
-            transform: translateY(-20px);
-            transition: transform 0.3s ease;
-        }
-        .modal.is-open .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.8em;
-            color: var(--text-light);
-            cursor: pointer;
-            line-height: 1;
-        }
-        .modal-close-btn:hover {
-            color: var(--primary-blue);
-        }
-
-        .modal-content h3 {
-            font-size: 2em;
-            margin-bottom: 1em;
-            color: var(--primary-blue);
-            text-align: center;
-        }
-
-        .donation-form label {
-            display: block;
-            margin-bottom: 0.5em;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        .donation-form input[type="text"],
-        .donation-form input[type="email"],
-        .donation-form input[type="number"],
-        .donation-form select {
-            width: 100%;
-            padding: 0.8em 1em;
-            margin-bottom: 1.5em;
-            border: 1px solid var(--border-grey);
-            border-radius: var(--rounded-corners); /* Rounded inputs */
-            font-size: 1em;
-            color: var(--text-dark);
-            box-shadow: var(--shadow-subtle); /* Floating effect */
-            transition: all 0.2s ease;
-        }
-        .donation-form input[type="text"]:focus,
-        .donation-form input[type="email"]:focus,
-        .donation-form input[type="number"]:focus,
-        .donation-form select:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 2px rgba(10, 47, 80, 0.2);
-        }
-
-        .donation-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 1.5em;
-            flex-wrap: wrap;
-        }
-        .donation-options label {
-            flex: 1;
-            min-width: 80px;
-            background-color: var(--light-grey);
-            border: 1px solid var(--border-grey);
-            border-radius: var(--rounded-corners); /* Rounded radio buttons */
-            padding: 0.8em 0.5em;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-weight: 500;
-            color: var(--text-light);
-            box-shadow: var(--shadow-subtle); /* Floating effect */
-        }
-        .donation-options input[type="radio"] {
-            display: none;
-        }
-        .donation-options input[type="radio"]:checked + label {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
-            box-shadow: var(--shadow-light);
-        }
-        .donation-options label:hover {
-            background-color: var(--border-grey);
-        }
-        .donation-options input[type="radio"]:checked + label:hover {
-             background-color: var(--primary-blue); /* keep active background */
-        }
-        .donation-form .btn {
-            width: 100%;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: var(--breakpoint-lg)) {
-            h1 { font-size: 3em; }
-            h2 { font-size: 2em; }
-            .hero { padding: 4rem 0; }
-            .hero__subtitle { font-size: 1.3em; }
-            .dream-categories__header h2, .dream-list-section__header h2, .impact-section h2, .cta-final h2 {
-                font-size: 2.2em;
-            }
-            .dream-categories__header p, .dream-list-section__header p, .impact-section p, .cta-final p {
-                font-size: 1em;
-            }
-            .impact-stats {
-                flex-direction: column;
-                align-items: center;
-            }
-            .impact-stat-card {
-                max-width: 90%;
-            }
-        }
-
-        @media (max-width: var(--breakpoint-md)) {
-            .container { padding: 0 1rem; }
-            .header { padding: 0.8rem 0; }
-            .header__nav { display: none; /* For simplicity, hide nav on small screens. A real site would have a hamburger menu */ }
-            .header .container { justify-content: center; } /* Center logo when nav is hidden */
-            .header__left { justify-content: center; width: 100%;}
-            .lang-switcher { margin-left: auto; position: absolute; right: 1rem; top: 1rem; } /* Position switcher on smaller screens */
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 1.8em; }
-            h3 { font-size: 1.4em; }
-            .hero { padding: 3rem 0; }
-            .hero h1 { font-size: 2.5em; }
-            .hero__subtitle { font-size: 1.1em; }
-
-            .dream-categories__grid, .dream-list {
-                grid-template-columns: 1fr;
-            }
-            .dream-card { margin-bottom: 1.5rem; }
-            .dream-filters {
-                flex-direction: column;
-                gap: 0.8em;
-            }
-            .dream-filters button {
-                width: 100%;
-            }
-            .impact-section { padding: 4rem 0; }
-            .impact-section h2 { font-size: 2em; }
-            .impact-section p { font-size: 1em; }
-            .cta-final { padding: 3rem 0; }
-            .cta-final h2 { font-size: 2em; }
-            .footer .container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .footer__nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .footer__social-links { margin-top: 0.5rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Casa da Misericórdia das Caldas da Rainha — Realize um Sonho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --navy:      #0A2540;
+  --gold:      #C9A44B;
+  --gold-lt:   #E8CC85;
+  --cream:     #FAF6EF;
+  --sand:      #EDE3D4;
+  --ocean:     #1F6B9A;
+  --terracotta:#B8622E;
+  --white:     #FFFFFF;
+  --text-dark: #1A1A2E;
+  --text-mid:  #4A4A6A;
+  --text-lt:   #7A7A9A;
+  --success:   #2E7D52;
+  --r-sm: 8px; --r-md: 14px; --r-lg: 24px; --r-xl: 40px;
+  --sh-sm: 0 2px 12px rgba(10,37,64,.07);
+  --sh-md: 0 8px 28px rgba(10,37,64,.12);
+  --sh-lg: 0 20px 60px rgba(10,37,64,.18);
+  --font-h: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'Jost', system-ui, sans-serif;
+  --trans: .28s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);color:var(--text-dark);background:var(--cream);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--font-h);line-height:1.15}
+p{line-height:1.7;color:var(--text-mid)}
+ 
+/* ── LANGUAGE SWITCHER (floating side) ─────────────────── */
+.lang-float{
+  position:fixed;left:16px;top:50%;transform:translateY(-50%);
+  z-index:900;display:flex;flex-direction:column;gap:4px;
+  background:var(--white);border-radius:var(--r-md);
+  box-shadow:var(--sh-md);padding:6px;
+}
+.lang-float button{
+  background:none;border:none;font-family:var(--font-b);font-weight:600;
+  font-size:.75rem;letter-spacing:.04em;padding:7px 10px;border-radius:8px;
+  cursor:pointer;color:var(--text-mid);transition:var(--trans);
+}
+.lang-float button.active,
+.lang-float button:hover{background:var(--navy);color:var(--white)}
+ 
+/* ── HEADER ─────────────────────────────────────────────── */
+.header{
+  position:sticky;top:0;z-index:800;
+  background:rgba(250,246,239,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(201,164,75,.2);
+  padding:.8rem 0;
+}
+.header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.logo{display:flex;align-items:center;gap:.8rem}
+.logo img{height:52px;width:auto}
+.logo span{font-family:var(--font-h);font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.25;max-width:220px}
+nav ul{list-style:none;display:flex;gap:1.8rem;flex-wrap:wrap}
+nav a{font-size:.85rem;font-weight:500;letter-spacing:.02em;color:var(--text-mid);transition:var(--trans);position:relative}
+nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--gold);transition:var(--trans)}
+nav a:hover{color:var(--navy)}
+nav a:hover::after{width:100%}
+ 
+/* ── WRAP (max-width container) ─────────────────────────── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
+ 
+/* ── HERO ────────────────────────────────────────────────── */
+.hero{
+  position:relative;min-height:92vh;display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.pexels.com/photos/1320686/pexels-photo-1320686.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size:cover;background-position:center;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(110deg,rgba(10,37,64,.82) 0%,rgba(10,37,64,.45) 55%,rgba(10,37,64,.15) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;max-width:680px;color:var(--white);
+  padding:4rem 0;
+}
+.hero-tag{
+  display:inline-block;background:rgba(201,164,75,.25);border:1px solid var(--gold);
+  color:var(--gold-lt);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:.4em 1em;border-radius:var(--r-xl);margin-bottom:1.4rem;
+}
+.hero h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1.2rem;color:var(--white)}
+.hero h1 em{font-style:italic;color:var(--gold-lt)}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.82);margin-bottom:2.4rem;max-width:520px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.5em;
+  padding:.75em 1.6em;border-radius:var(--r-xl);font-family:var(--font-b);
+  font-weight:600;font-size:.9rem;letter-spacing:.02em;cursor:pointer;
+  transition:var(--trans);border:2px solid transparent;
+}
+.btn-primary{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.btn-primary:hover{background:var(--gold-lt);border-color:var(--gold-lt);transform:translateY(-2px);box-shadow:var(--sh-md)}
+.btn-outline{background:transparent;color:var(--white);border-color:rgba(255,255,255,.6)}
+.btn-outline:hover{background:var(--white);color:var(--navy);transform:translateY(-2px)}
+.btn-navy{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.btn-navy:hover{background:#0d3060;transform:translateY(-2px);box-shadow:var(--sh-md)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:var(--white)}
+.btn-sm{padding:.5em 1.1em;font-size:.8rem}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+ 
+/* scroll cue */
+.scroll-cue{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  z-index:2;color:rgba(255,255,255,.6);font-size:.78rem;letter-spacing:.08em;
+  text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  animation:bounce 2s infinite;
+}
+.scroll-cue i{font-size:1.1rem}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+ 
+/* ── SECTION HEADERS ─────────────────────────────────────── */
+.section-label{
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.6rem;
+}
+.section-title{font-size:clamp(1.9rem,3.5vw,2.9rem);color:var(--navy);margin-bottom:.8rem}
+.section-sub{font-size:1rem;color:var(--text-mid);max-width:620px}
+.section-head-center{text-align:center}
+.section-head-center .section-sub{margin:0 auto}
+ 
+/* ── SECTION SPACING ─────────────────────────────────────── */
+section{padding:5.5rem 0}
+.bg-sand{background:var(--sand)}
+.bg-navy{background:var(--navy)}
+.bg-white{background:var(--white)}
+ 
+/* ── SILVER COAST GALLERY STRIP ─────────────────────────── */
+.coastal-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);height:280px;gap:4px;
+  overflow:hidden;
+}
+.coastal-strip img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s ease;
+}
+.coastal-strip img:hover{transform:scale(1.04)}
+.coastal-strip div:first-child{grid-column:span 2}
+ 
+/* ── DREAM CATEGORY CARDS ────────────────────────────────── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
+.cat-card{
+  background:var(--white);border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--sh-sm);transition:var(--trans);display:flex;flex-direction:column;
+}
+.cat-card:hover{transform:translateY(-7px);box-shadow:var(--sh-md)}
+.cat-card__img{height:230px;overflow:hidden;position:relative}
+.cat-card__img img{width:100%;height:100%;object-fit:cover;transition:.5s ease}
+.cat-card:hover .cat-card__img img{transform:scale(1.06)}
+.cat-card__badge{
+  position:absolute;top:14px;left:14px;
+  background:var(--gold);color:var(--navy);
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.3em .8em;border-radius:var(--r-xl);
+}
+.cat-card__body{padding:1.6rem;flex:1;display:flex;flex-direction:column}
+.cat-card__body h3{font-size:1.45rem;color:var(--navy);margin-bottom:.5rem}
+.cat-card__body p{font-size:.9rem;flex:1;margin-bottom:1.2rem}
+.cat-card__body .btn{align-self:flex-start}
+ 
+/* ── DREAM LIST ──────────────────────────────────────────── */
+.dream-filters{
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.5rem;
+}
+.filter-btn{
+  padding:.5em 1.2em;border-radius:var(--r-xl);font-family:var(--font-b);
+  font-weight:500;font-size:.82rem;letter-spacing:.03em;cursor:pointer;
+  background:var(--white);color:var(--text-mid);border:1.5px solid rgba(10,37,64,.15);
+  transition:var(--trans);box-shadow:var(--sh-sm);
+}
+.filter-btn.active,.filter-btn:hover{
+  background:var(--navy);color:var(--white);border-color:var(--navy);
+}
+.dream-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.8rem;
+}
+.dream-item{
+  background:var(--white);border-radius:var(--r-md);overflow:hidden;
+  box-shadow:var(--sh-sm);transition:var(--trans);
+  border-top:4px solid var(--gold);display:flex;flex-direction:column;
+}
+.dream-item:hover{transform:translateY(-5px);box-shadow:var(--sh-md)}
+.dream-item[data-status="fulfilled"]{border-top-color:var(--success)}
+.dream-item__inner{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.dream-item h4{font-family:var(--font-h);font-size:1.25rem;color:var(--navy);margin-bottom:.5rem}
+.dream-item p{font-size:.88rem;flex:1;margin-bottom:1.2rem}
+.dream-progress{margin-bottom:1rem}
+.progress-bar{height:6px;background:rgba(10,37,64,.1);border-radius:99px;overflow:hidden;margin:.4rem 0}
+.progress-fill{height:100%;background:var(--gold);border-radius:99px;transition:width .8s ease}
+.dream-item[data-status="fulfilled"] .progress-fill{background:var(--success)}
+.progress-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-lt);font-weight:500}
+.dream-item__footer{
+  padding:1rem 1.5rem;background:rgba(10,37,64,.03);
+  border-top:1px solid rgba(10,37,64,.06);
+  display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;
+}
+.status-badge{
+  display:inline-flex;align-items:center;gap:.3em;
+  font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  padding:.3em .8em;border-radius:var(--r-xl);
+}
+.status-badge.progress{background:rgba(201,164,75,.15);color:#8B6914}
+.status-badge.fulfilled{background:rgba(46,125,82,.12);color:var(--success)}
+.dream-item.hidden{display:none}
+ 
+/* ── TEAM SECTION ────────────────────────────────────────── */
+.team-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;
+  margin-top:3rem;
+}
+.team-card{
+  background:var(--white);border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--sh-sm);transition:var(--trans);text-align:center;
+}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--sh-md)}
+.team-card__img{height:220px;overflow:hidden;position:relative}
+.team-card__img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:.5s ease}
+.team-card:hover .team-card__img img{transform:scale(1.05)}
+.team-card__body{padding:1.2rem}
+.team-card__body h3{font-family:var(--font-h);font-size:1.2rem;color:var(--navy);margin-bottom:.2rem}
+.team-card__body span{font-size:.82rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+ 
+/* ── IMPACT STATS ────────────────────────────────────────── */
+.impact-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:2rem;margin-top:3.5rem;
+}
+.stat-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-lg);padding:2.2rem;text-align:center;
+  transition:var(--trans);
+}
+.stat-card:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.stat-num{
+  font-family:var(--font-h);font-size:3.2rem;font-weight:700;
+  color:var(--gold);line-height:1;margin-bottom:.4rem;
+}
+.stat-label{color:rgba(255,255,255,.75);font-size:.9rem;font-weight:500}
+.bg-navy .section-title{color:var(--white)}
+.bg-navy .section-sub{color:rgba(255,255,255,.7)}
+.bg-navy p{color:rgba(255,255,255,.7)}
+ 
+/* ── GIFT SECTION ────────────────────────────────────────── */
+.gift-section{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--ocean) 100%);
+  padding:5rem 0;position:relative;overflow:hidden;
+}
+.gift-section::before{
+  content:'🎁';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);
+  font-size:14rem;opacity:.06;
+}
+.gift-section .section-title{color:var(--white)}
+.gift-section .section-sub{color:rgba(255,255,255,.75);max-width:550px}
+.gift-cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1.2rem;margin-top:2.5rem;
+}
+.gift-card{
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);
+  border-radius:var(--r-md);padding:1.4rem;text-align:center;cursor:pointer;
+  transition:var(--trans);
+}
+.gift-card:hover,.gift-card.selected{
+  background:rgba(201,164,75,.25);border-color:var(--gold);
+  transform:translateY(-3px);
+}
+.gift-card i{font-size:1.8rem;color:var(--gold);margin-bottom:.7rem}
+.gift-card span{display:block;color:var(--white);font-size:.88rem;font-weight:500}
+ 
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer{background:#060F1A;padding:3.5rem 0 2rem;color:rgba(255,255,255,.7)}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.footer-brand img{height:50px;filter:brightness(0) invert(1);margin-bottom:1rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;margin-bottom:1rem}
+.tax-badge{
+  display:inline-flex;align-items:center;gap:.5em;
+  background:rgba(201,164,75,.15);border:1px solid rgba(201,164,75,.35);
+  color:var(--gold-lt);font-size:.75rem;font-weight:600;letter-spacing:.04em;
+  padding:.4em 1em;border-radius:var(--r-xl);
+}
+.footer-col h4{color:var(--white);font-family:var(--font-h);font-size:1rem;margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.6);transition:var(--trans)}
+.footer-col a:hover{color:var(--gold)}
+.footer-social{display:flex;gap:.8rem;margin-top:1rem}
+.footer-social a{
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:.9rem;
+  transition:var(--trans);
+}
+.footer-social a:hover{background:var(--gold);color:var(--navy)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;text-align:center;font-size:.8rem;color:rgba(255,255,255,.4)}
+ 
+/* ── MODALS ──────────────────────────────────────────────── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(6,15,26,.7);backdrop-filter:blur(4px);
+  z-index:2000;display:flex;align-items:center;justify-content:center;padding:1rem;
+  opacity:0;visibility:hidden;transition:var(--trans);
+}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-box{
+  background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-lg);
+  width:100%;max-width:540px;max-height:90vh;overflow-y:auto;
+  transform:translateY(20px) scale(.97);transition:var(--trans);
+  position:relative;
+}
+.modal-overlay.open .modal-box{transform:none}
+.modal-box.modal-lg{max-width:640px}
+.modal-box.modal-xl{max-width:860px}
+.modal-header{
+  padding:1.8rem 1.8rem 0;display:flex;justify-content:space-between;align-items:flex-start;
+}
+.modal-header h3{font-family:var(--font-h);font-size:1.7rem;color:var(--navy)}
+.modal-close{
+  background:none;border:none;cursor:pointer;color:var(--text-lt);font-size:1.4rem;
+  transition:var(--trans);padding:.2rem;border-radius:50%;flex-shrink:0;
+}
+.modal-close:hover{color:var(--navy);background:rgba(10,37,64,.06)}
+.modal-body{padding:1.5rem 1.8rem 2rem}
+ 
+/* Form elements */
+.form-group{margin-bottom:1.3rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:.75em 1em;border:1.5px solid rgba(10,37,64,.15);
+  border-radius:var(--r-sm);font-family:var(--font-b);font-size:.92rem;
+  color:var(--text-dark);background:var(--cream);transition:var(--trans);
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+  outline:none;border-color:var(--navy);background:var(--white);
+  box-shadow:0 0 0 3px rgba(10,37,64,.1);
+}
+.form-group textarea{min-height:80px;resize:vertical}
+.form-group select{cursor:pointer}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+ 
+/* Amount pills */
+.amount-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:.8rem}
+.amount-pill{
+  padding:.5em 1.1em;border-radius:var(--r-xl);border:1.5px solid rgba(10,37,64,.2);
+  background:var(--cream);font-size:.88rem;font-weight:600;cursor:pointer;
+  transition:var(--trans);
+}
+.amount-pill.selected{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.amount-pill:hover:not(.selected){border-color:var(--navy);color:var(--navy)}
+ 
+/* Checkbox toggle */
+.toggle-row{
+  display:flex;align-items:center;gap:.7rem;padding:.8rem;
+  background:rgba(201,164,75,.08);border:1px solid rgba(201,164,75,.25);
+  border-radius:var(--r-sm);cursor:pointer;margin-bottom:1rem;
+}
+.toggle-row input[type="checkbox"]{width:16px;height:16px;accent-color:var(--navy);cursor:pointer}
+.toggle-row label{font-size:.88rem;font-weight:500;color:var(--navy);cursor:pointer;flex:1}
+ 
+/* ── DASHBOARD MODAL ─────────────────────────────────────── */
+.db-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--ocean) 100%);
+  padding:2rem 1.8rem;
+  margin:-0px;
+  border-radius:var(--r-lg) var(--r-lg) 0 0;
+}
+.db-hero h3{color:var(--white);font-size:1.6rem;margin-bottom:.3rem}
+.db-hero p{color:rgba(255,255,255,.75);font-size:.88rem}
+.db-meta-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:1rem;padding:1.5rem 1.8rem;background:var(--sand);
+}
+.db-stat{text-align:center;background:var(--white);border-radius:var(--r-md);padding:1.2rem .8rem;box-shadow:var(--sh-sm)}
+.db-stat .val{font-family:var(--font-h);font-size:1.9rem;font-weight:700;color:var(--navy);line-height:1}
+.db-stat .lbl{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-lt);margin-top:.3rem}
+.db-body{padding:1.5rem 1.8rem}
+.db-prog-wrap{margin-bottom:1.5rem}
+.db-prog-bar{height:10px;background:rgba(10,37,64,.1);border-radius:99px;overflow:hidden;margin:.5rem 0}
+.db-prog-fill{height:100%;background:var(--gold);border-radius:99px;transition:width 1.2s ease}
+.fulfilled .db-prog-fill{background:var(--success)}
+.db-prog-labels{display:flex;justify-content:space-between;font-size:.8rem;font-weight:600;color:var(--text-mid)}
+.db-nationalities{margin-top:1.4rem}
+.db-nationalities h4{font-family:var(--font-h);font-size:1.1rem;color:var(--navy);margin-bottom:.8rem}
+.nat-row{
+  display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;
+  padding:.5rem .7rem;background:var(--cream);border-radius:var(--r-sm);
+}
+.nat-flag{font-size:1.2rem;flex-shrink:0}
+.nat-name{font-size:.85rem;font-weight:500;flex:1}
+.nat-pct{font-size:.85rem;font-weight:700;color:var(--navy)}
+.nat-bar-wrap{flex:2;background:rgba(10,37,64,.08);border-radius:99px;height:5px;overflow:hidden}
+.nat-bar{height:100%;background:var(--gold);border-radius:99px}
+.db-footer{padding:1.2rem 1.8rem;border-top:1px solid var(--sand);display:flex;gap:.8rem;flex-wrap:wrap}
+ 
+/* ── GIFT CERTIFICATE ────────────────────────────────────── */
+.cert-box{
+  border:3px dashed var(--gold);border-radius:var(--r-lg);padding:2rem;
+  background:linear-gradient(135deg,#fffdf5 0%,#f5f0e8 100%);
+  text-align:center;position:relative;
+}
+.cert-box::before{
+  content:'✦';position:absolute;top:1rem;left:1.2rem;font-size:1.2rem;color:var(--gold);opacity:.5;
+}
+.cert-box::after{
+  content:'✦';position:absolute;top:1rem;right:1.2rem;font-size:1.2rem;color:var(--gold);opacity:.5;
+}
+.cert-logo{height:50px;margin:0 auto 1rem;opacity:.7}
+.cert-title{font-family:var(--font-h);font-size:1.8rem;color:var(--navy);margin-bottom:.3rem}
+.cert-for{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.4rem}
+.cert-name{font-family:var(--font-h);font-size:2rem;color:var(--terracotta);font-style:italic;margin-bottom:.2rem}
+.cert-occasion{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+.cert-message{
+  font-style:italic;color:var(--text-mid);border-left:3px solid var(--gold);
+  padding:.6rem 1rem;text-align:left;background:rgba(255,255,255,.6);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;margin:.8rem 0;font-size:.9rem;
+}
+.cert-dream-label{font-size:.78rem;color:var(--text-lt);margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
+.cert-dream-name{font-family:var(--font-h);font-size:1.1rem;color:var(--navy);font-weight:600}
+.cert-seal{
+  margin:1rem auto 0;width:60px;height:60px;border:2px solid var(--gold);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;color:var(--gold);
+}
+ 
+/* ── ADMIN DASHBOARD ─────────────────────────────────────── */
+.admin-page{
+  display:none;max-width:900px;margin:2rem auto;padding:2rem;
+  background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-lg);
+}
+.admin-page.open{display:block}
+.admin-page h2{font-family:var(--font-h);font-size:2rem;color:var(--navy);text-align:center;margin-bottom:1.5rem}
+.admin-tabs{display:flex;gap:.5rem;border-bottom:2px solid var(--sand);margin-bottom:1.5rem}
+.admin-tab{
+  padding:.6rem 1.2rem;border:none;background:none;cursor:pointer;
+  font-family:var(--font-b);font-weight:600;font-size:.85rem;color:var(--text-lt);
+  border-bottom:2px solid transparent;margin-bottom:-2px;transition:var(--trans);
+}
+.admin-tab.active{color:var(--navy);border-bottom-color:var(--navy)}
+.admin-panel{display:none}
+.admin-panel.active{display:block}
+.admin-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.admin-form-grid .full{grid-column:1/-1}
+.admin-project-list{margin-top:1.5rem}
+.admin-proj-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 1rem;background:var(--cream);border-radius:var(--r-sm);
+  margin-bottom:.5rem;border-left:4px solid var(--gold);
+}
+.admin-proj-row[data-status="fulfilled"]{border-left-color:var(--success)}
+.admin-proj-info span{font-weight:600;color:var(--navy);font-size:.9rem;display:block}
+.admin-proj-info small{color:var(--text-lt);font-size:.78rem}
+.admin-proj-actions{display:flex;gap:.4rem}
+.admin-proj-actions button{
+  background:none;border:1.5px solid rgba(10,37,64,.2);padding:.3em .7em;
+  border-radius:var(--r-sm);cursor:pointer;font-size:.78rem;font-weight:600;
+  color:var(--text-mid);transition:var(--trans);
+}
+.admin-proj-actions button:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.admin-proj-actions .del-btn:hover{background:#c0392b;border-color:#c0392b}
+ 
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media(max-width:960px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .coastal-strip{grid-template-columns:1fr 1fr;height:auto}
+  .coastal-strip div:first-child{grid-column:span 2}
+}
+@media(max-width:720px){
+  nav ul{display:none}
+  .header .wrap{justify-content:center}
+  .hero{min-height:80vh}
+  .coastal-strip{display:none}
+  .footer-inner{grid-template-columns:1fr}
+  .admin-form-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .db-meta-grid{grid-template-columns:1fr 1fr}
+  .lang-float{left:8px}
+  .lang-float button{padding:5px 8px;font-size:.7rem}
+}
+@media print{
+  body > *:not(#certPrintArea){display:none!important}
+  #certPrintArea{display:block!important;position:static!important}
+}
+ 
+/* ── HELPERS ─────────────────────────────────────────────── */
+.text-center{text-align:center}
+.mt-1{margin-top:1rem}.mt-2{margin-top:2rem}.mb-1{margin-bottom:1rem}
+.flex{display:flex}.items-center{align-items:center}.gap-1{gap:1rem}
+.gold{color:var(--gold)}.navy{color:var(--navy)}
+hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
+.note{font-size:.78rem;color:var(--text-lt);text-align:center;margin-top:.8rem}
+</style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link" data-lang-key="skipLink">Skip to main content</a>
-
-    <header class="header">
-        <div class="container">
-            <div class="header__left">
-                <div class="header__logo">
-                    <a href="#hero">
-                        <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png" alt="Santa Casa da Misericórdia das Caldas da Rainha Logo">
-                        <span class="header__logo-text sr-only" data-lang-key="siteName">Santa Casa da Misericórdia das Caldas da Rainha</span>
-                    </a>
-                </div>
-                <div class="lang-switcher">
-                    <button id="lang-pt" class="active">PT</button>
-                    <button id="lang-en">EN</button>
-                    <button id="lang-fr">FR</button>
-                </div>
-            </div>
-            <nav class="header__nav" aria-label="Main navigation">
-                <ul>
-                    <li><a href="#dream-categories" data-lang-key="navMission">A Nossa Missão</a></li>
-                    <li><a href="#dream-list-section" data-lang-key="navDreamList">Lista de Sonhos</a></li>
-                    <li><a href="#impact-section" data-lang-key="navOurImpact">O Nosso Impacto</a></li>
-                    <li><a href="#cta-final" data-lang-key="navBecomeMaker">Torne-se um Realizador de Sonhos</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main id="main-content">
-        <section class="hero" id="hero">
-            <div class="container hero__content">
-                <p class="hero__overline" data-lang-key="heroOverline">Celebrando 95 Anos de Compaixão</p>
-                <h1 data-lang-key="heroTitle">Construindo Sonhos, Moldando Futuros</h1>
-                <p class="hero__subtitle" data-lang-key="heroSubtitle">Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.</p>
-                <a href="#dream-list-section" class="btn btn--primary" data-lang-key="heroCta">Explore os Sonhos</a>
-            </div>
-        </section>
-
-        <section class="dream-categories" id="dream-categories">
-            <div class="container text-center dream-categories__header">
-                <h2 data-lang-key="dreamCategoriesTitle">Torne-se um Realizador de Sonhos</h2>
-                <p data-lang-key="dreamCategoriesSubtitle">Na Santa Casa da Misericórdia, acreditamos que cada vida guarda um sonho. Explore as áreas vitais onde o seu apoio pode fazer uma diferença tangível, transformando aspirações em realidade para a nossa comunidade.</p>
-            </div>
-            <div class="container dream-categories__grid">
-                <div class="dream-card" data-category="child">
-                    <div class="dream-card__image">
-                        <img src="https://images.unsplash.com/photo-1574766526154-188b89815c4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Two young children playing with building blocks with an adult supervising.">
-                        <span class="sr-only" data-lang-key="altChildWish">Imagem de uma criança a brincar, simbolizando o desejo de uma criança.</span>
-                    </div>
-                    <div class="dream-card__content">
-                        <h3 data-lang-key="cardChildTitle">O Desejo de uma Criança</h3>
-                        <p data-lang-key="cardChildText">Nutrir a inocência, fomentar a aprendizagem e garantir um futuro mais brilhante para os nossos membros mais jovens da comunidade. O seu presente oferece educação, cuidado e experiências alegres.</p>
-                        <a href="#dream-list-section" class="btn btn--outline-gold" data-lang-key="cardCtaSeeDreams">Ver Sonhos</a>
-                    </div>
-                </div>
-
-                <div class="dream-card" data-category="senior">
-                    <div class="dream-card__image">
-                        <img src="https://images.unsplash.com/photo-1590032049021-997f74813583?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="An elderly couple smiling warmly at each other, holding hands.">
-                        <span class="sr-only" data-lang-key="altSeniorHeart">Imagem de um casal idoso, simbolizando o coração de um sénior.</span>
-                    </div>
-                    <div class="dream-card__content">
-                        <h3 data-lang-key="cardSeniorTitle">O Coração de um Sénior</h3>
-                        <p data-lang-key="cardSeniorText">Proporcionar conforto, companhia e cuidados dignos aos nossos idosos. A sua contribuição apoia serviços de saúde, atividades envolventes e um ambiente respeitoso.</p>
-                        <a href="#dream-list-section" class="btn btn--outline-gold" data-lang-key="cardCtaSeeDreams">Ver Sonhos</a>
-                    </div>
-                </div>
-
-                <div class="dream-card" data-category="community">
-                    <div class="dream-card__image">
-                        <img src="https://images.unsplash.com/photo-1520607162513-77705d09cb8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="A diverse group of young adults and women collaborating in a community garden.">
-                        <span class="sr-only" data-lang-key="altCommunityPeace">Imagem de pessoas a trabalhar em conjunto, simbolizando sonhos de propósito e paz.</span>
-                    </div>
-                    <div class="dream-card__content">
-                        <h3 data-lang-key="cardCommunityTitle">Sonhos de Propósito & Paz</h3>
-                        <p data-lang-key="cardCommunityText">Capacitar jovens, apoiar famílias e construir uma comunidade mais forte e resiliente para todos. Os fundos são direcionados para programas de integração social e bem-estar.</p>
-                        <a href="#dream-list-section" class="btn btn--outline-gold" data-lang-key="cardCtaSeeDreams">Ver Sonhos</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="dream-list-section" id="dream-list-section">
-            <div class="container text-center dream-list-section__header">
-                <h2 data-lang-key="dreamListTitle">A Nossa Lista de Sonhos: A Sua Oportunidade de Impacto</h2>
-                <p data-lang-key="dreamListSubtitle">Cada item nesta lista representa uma necessidade direta e uma profunda oportunidade para trazer alegria, segurança ou progresso. Selecione um sonho para saber mais e torne-se uma parte vital da sua realização.</p>
-            </div>
-            <div class="container">
-                <div class="dream-filters" role="group" aria-label="Filtrar sonhos por categoria">
-                    <button class="btn dream-filter-btn active" data-filter="all" data-lang-key="filterAll">Todos os Sonhos</button>
-                    <button class="btn dream-filter-btn" data-filter="child" data-lang-key="filterChild">Desejo de Criança</button>
-                    <button class="btn dream-filter-btn" data-filter="senior" data-lang-key="filterSenior">Coração de Sénior</button>
-                    <button class="btn dream-filter-btn" data-filter="community" data-lang-key="filterCommunity">Propósito & Paz</button>
-                    <button class="btn dream-filter-btn" data-filter="fulfilled" data-lang-key="filterFulfilled">Sonhos Realizados</button>
-                    <button class="btn dream-filter-btn" data-filter="progress" data-lang-key="filterProgress">Sonhos em Progresso</button>
-                </div>
-
-                <div class="dream-list">
-                    <!-- Example Dream Items - Replace with actual data -->
-                    <div class="dream-item" data-category="child" data-status="progress">
-                        <h4 data-lang-key="dream1Title">Novos Livros para a Nossa Biblioteca</h4>
-                        <p data-lang-key="dream1Text">A biblioteca dos nossos filhos precisa de uma atualização! Ajude-nos a adquirir uma coleção diversificada de novos livros para estimular a imaginação e fomentar o amor pela leitura.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €500</span>
-                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream1Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
-                        </div>
-                    </div>
-                    <div class="dream-item" data-category="senior" data-status="fulfilled">
-                        <h4 data-lang-key="dream2Title">Cadeiras de Rodas Confortáveis para Seniores</h4>
-                        <p data-lang-key="dream2Text">Garanta mobilidade e conforto aos nossos residentes idosos com cadeiras de rodas novas e ergonomicamente projetadas, melhorando o seu dia a dia e independência.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €1,200</span>
-                            <span class="status fulfilled" data-lang-key="statusFulfilled">Realizado!</span>
-                            <button class="btn btn--secondary btn--small" disabled data-lang-key="dreamCtaMade">Sonho Realizado</button>
-                        </div>
-                    </div>
-                    <div class="dream-item" data-category="community" data-status="progress">
-                        <h4 data-lang-key="dream3Title">Projeto de Horta Comunitária</h4>
-                        <p data-lang-key="dream3Text">Apoie a criação de uma vibrante horta comunitária, oferecendo produtos frescos, oportunidades educacionais e um espaço para conexão intergeracional.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €2,500</span>
-                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream3Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
-                        </div>
-                    </div>
-                    <div class="dream-item" data-category="child" data-status="progress">
-                        <h4 data-lang-key="dream4Title">Material de Arte para Ateliers Criativos</h4>
-                        <p data-lang-key="dream4Text">Ajude-nos a abastecer com tintas, pincéis, barro e outros materiais de arte para os nossos ateliers criativos semanais, permitindo que as crianças se expressem livremente.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €350</span>
-                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream4Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
-                        </div>
-                    </div>
-                    <div class="dream-item" data-category="senior" data-status="progress">
-                        <h4 data-lang-key="dream5Title">Programa de Música Terapêutica</h4>
-                        <p data-lang-key="dream5Text">Financie um programa de música terapêutica para os nossos idosos, trazendo alegria, estimulando a memória e proporcionando uma experiência calma e envolvente.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €800</span>
-                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream5Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
-                        </div>
-                    </div>
-                    <div class="dream-item" data-category="community" data-status="fulfilled">
-                        <h4 data-lang-key="dream6Title">Iniciativa de Inclusão Digital</h4>
-                        <p data-lang-key="dream6Text">Proporcione acesso a computadores e internet para famílias carenciadas, preenchendo a lacuna digital e possibilitando a aprendizagem remota e a procura de emprego.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €1,800</span>
-                            <span class="status fulfilled" data-lang-key="statusFulfilled">Realizado!</span>
-                            <button class="btn btn--secondary btn--small" disabled data-lang-key="dreamCtaMade">Sonho Realizado</button>
-                        </div>
-                    </div>
-                    <div class="dream-item" data-category="child" data-status="progress">
-                        <h4 data-lang-key="dream7Title">Novo Equipamento de Recreio</h4>
-                        <p data-lang-key="dream7Text">O nosso parque infantil é muito utilizado, mas precisa de um equipamento novo, seguro e envolvente para incentivar o brincar ativo e o desenvolvimento dos mais novos.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €3,000</span>
-                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream7Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
-                        </div>
-                    </div>
-                    <div class="dream-item" data-category="senior" data-status="progress">
-                        <h4 data-lang-key="dream8Title">Excursão Anual para Seniores</h4>
-                        <p data-lang-key="dream8Text">Apoie a nossa viagem anual, oferecendo aos nossos idosos um dia memorável, fomentando as ligações sociais e criando novas e preciosas memórias.</p>
-                        <div class="dream-item__meta">
-                            <span data-lang-key="dreamGoal">Meta: €700</span>
-                            <span class="status" data-lang-key="statusProgress">Em Progresso</span>
-                            <button class="btn btn--secondary btn--small open-modal-btn" data-dream-title-key="dream8Title" data-lang-key="dreamCtaMake">Realize Este Sonho</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="impact-section" id="impact-section">
-            <div class="container">
-                <h2 data-lang-key="impactTitle">O Nosso Legado de Impacto</h2>
-                <p data-lang-key="impactSubtitle">Há 95 anos, a Santa Casa da Misericórdia das Caldas da Rainha tem sido um pilar de esperança e apoio. A sua confiança permite-nos transformar vidas diariamente, construindo uma comunidade mais forte e compassiva.</p>
-
-                <div class="impact-stats">
-                    <div class="impact-stat-card">
-                        <div class="impact-stat-card__number">95+</div>
-                        <div class="impact-stat-card__label" data-lang-key="statYears">Anos de Serviço</div>
-                    </div>
-                    <div class="impact-stat-card">
-                        <div class="impact-stat-card__number">500+</div>
-                        <div class="impact-stat-card__label" data-lang-key="statLives">Vidas Tocadas Anualmente</div>
-                    </div>
-                    <div class="impact-stat-card">
-                        <div class="impact-stat-card__number">30+</div>
-                        <div class="impact-stat-card__label" data-lang-key="statPrograms">Programas & Iniciativas</div>
-                    </div>
-                </div>
-                <div class="text-center" style="margin-top: 3em;">
-                    <p style="font-size: 1.1em; color: rgba(255,255,255,0.7);" data-lang-key="impactTransparencyText">
-                        Todas as contribuições são geridas de forma transparente e contribuem diretamente para a realização destes sonhos.
-                    </p>
-                    <a href="#" class="btn btn--outline-gold" style="margin-top: 1.5em;" data-lang-key="impactTransparencyCta">Saiba Mais Sobre a Nossa Transparência</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-final" id="cta-final">
-            <div class="container">
-                <h2 data-lang-key="finalCtaTitle">A Sua Jornada como Realizador de Sonhos Começa Aqui</h2>
-                <p data-lang-key="finalCtaSubtitle">Pronto para fazer uma diferença profunda? Escolha um sonho, contribua com o que puder e faça parte da nossa história contínua de compaixão e esperança.</p>
-                <button class="btn btn--primary open-modal-btn" data-lang-key="finalCtaButton">Realize um Sonho</button>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__logo">
-                <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png" alt="SCMC Logo">
-            </div>
-            <nav class="footer__nav" aria-label="Footer navigation">
-                <ul>
-                    <li><a href="#hero" data-lang-key="footerHome">Início</a></li>
-                    <li><a href="#dream-categories" data-lang-key="footerMission">A Nossa Missão</a></li>
-                    <li><a href="#dream-list-section" data-lang-key="footerDreamList">Lista de Sonhos</a></li>
-                    <li><a href="#impact-section" data-lang-key="footerImpact">O Nosso Impacto</a></li>
-                    <li><a href="#" data-lang-key="footerPrivacy">Política de Privacidade</a></li>
-                    <li><a href="#" data-lang-key="footerContact">Contacte-nos</a></li>
-                </ul>
-            </nav>
-            <div class="footer__social-links">
-                <!-- Placeholder for social media icons - use actual icons in production -->
-                <a href="#" aria-label="Follow us on Facebook"><span class="sr-only">Facebook</span>&#x1F4F1;</a>
-                <a href="#" aria-label="Follow us on Instagram"><span class="sr-only">Instagram</span>&#x1F4F7;</a>
-                <a href="#" aria-label="Follow us on LinkedIn"><span class="sr-only">LinkedIn</span>&#x1F4BB;</a>
-            </div>
-            <p class="footer__copyright" data-lang-key="footerCopyright">&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- Donation Modal -->
-    <div class="modal" id="donationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-content">
-            <button class="modal-close-btn" aria-label="Close donation form">&times;</button>
-            <h3 id="modalTitle" data-lang-key="modalTitle">Torne-se um Realizador de Sonhos</h3>
-            <form class="donation-form">
-                <p data-lang-key="modalDreamSupportText">A sua contribuição apoia diretamente o sonho: <strong id="selectedDreamTitle" data-lang-key="defaultDreamTitle">Um Sonho Geral</strong></p>
-
-                <label for="donationAmount" data-lang-key="modalChooseImpact">Escolha o seu impacto:</label>
-                <div class="donation-options">
-                    <input type="radio" id="amount10" name="donationAmount" value="10">
-                    <label for="amount10">€10</label>
-                    <input type="radio" id="amount25" name="donationAmount" value="25" checked>
-                    <label for="amount25">€25</label>
-                    <input type="radio" id="amount50" name="donationAmount" value="50">
-                    <label for="amount50">€50</label>
-                    <input type="radio" id="amount100" name="donationAmount" value="100">
-                    <label for="amount100">€100</label>
-                    <input type="radio" id="amountOther" name="donationAmount" value="other">
-                    <label for="amountOther" data-lang-key="modalAmountOther">Outro</label>
-                </div>
-                <input type="number" id="customAmount" placeholder="Introduza um valor personalizado" style="display: none; margin-top: -1em;" min="5" data-lang-key="modalCustomAmountPlaceholder">
-
-                <label for="donorName" data-lang-key="modalDonorName">O Seu Nome (Opcional)</label>
-                <input type="text" id="donorName" placeholder="João Silva" data-lang-key="modalDonorNamePlaceholder">
-
-                <label for="donorEmail" data-lang-key="modalDonorEmail">O Seu Email</label>
-                <input type="email" id="donorEmail" placeholder="voce@exemplo.com" required data-lang-key="modalDonorEmailPlaceholder">
-
-                <label for="paymentMethod" data-lang-key="modalPaymentMethod">Método de Pagamento (Exemplo)</label>
-                <select id="paymentMethod" required>
-                    <option value="" data-lang-key="modalPaymentSelect">Selecione um método...</option>
-                    <option value="card" data-lang-key="modalPaymentCard">Cartão de Crédito</option>
-                    <option value="mbway" data-lang-key="modalPaymentMbway">MB Way</option>
-                    <option value="banktransfer" data-lang-key="modalPaymentBank">Transferência Bancária</option>
-                </select>
-
-                <button type="submit" class="btn btn--primary" data-lang-key="modalSubmitBtn">Realize o Sonho</button>
-                <p style="font-size: 0.85em; color: var(--text-light); text-align: center; margin-top: 1em;" data-lang-key="modalDisclaimer">Todas as doações são processadas de forma segura e são dedutíveis nos impostos.</p>
-            </form>
-        </div>
+ 
+<!-- ── LANGUAGE SWITCHER ──────────────────────────────────── -->
+<div class="lang-float" id="langFloat">
+  <button onclick="setLang('pt')" id="btn-pt" class="active">PT</button>
+  <button onclick="setLang('en')" id="btn-en">EN</button>
+  <button onclick="setLang('fr')" id="btn-fr">FR</button>
+</div>
+ 
+<!-- ── HEADER ────────────────────────────────────────────── -->
+<header class="header">
+  <div class="wrap">
+    <div class="logo">
+      <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png"
+           alt="SCMCR Logo"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;><rect width=&quot;60&quot; height=&quot;60&quot; rx=&quot;8&quot; fill=&quot;%230A2540&quot;/><text y=&quot;40&quot; x=&quot;30&quot; text-anchor=&quot;middle&quot; font-size=&quot;24&quot; fill=&quot;%23C9A44B&quot;>✦</text></svg>'">
+      <span>Santa Casa da Misericórdia<br>das Caldas da Rainha</span>
     </div>
-
-    <script>
-        const translations = {
-            'pt': {
-                // Page Meta & Nav
-                pageTitle: 'Santa Casa da Misericórdia das Caldas da Rainha - Realize um Sonho',
-                skipLink: 'Saltar para o conteúdo principal',
-                siteName: 'Santa Casa da Misericórdia das Caldas da Rainha',
-                navMission: 'A Nossa Missão',
-                navDreamList: 'Lista de Sonhos',
-                navOurImpact: 'O Nosso Impacto',
-                navBecomeMaker: 'Torne-se um Realizador de Sonhos',
-                // Hero Section
-                heroOverline: 'Celebrando 95 Anos de Compaixão',
-                heroTitle: 'Construindo Sonhos, Moldando Futuros',
-                heroSubtitle: 'Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.',
-                heroCta: 'Explore os Sonhos',
-                // Dream Categories
-                dreamCategoriesTitle: 'Torne-se um Realizador de Sonhos',
-                dreamCategoriesSubtitle: 'Na Santa Casa da Misericórdia, acreditamos que cada vida guarda um sonho. Explore as áreas vitais onde o seu apoio pode fazer uma diferença tangível, transformando aspirações em realidade para a nossa comunidade.',
-                altChildWish: 'Imagem de uma criança a brincar, simbolizando o desejo de uma criança.',
-                cardChildTitle: 'O Desejo de uma Criança',
-                cardChildText: 'Nutrir a inocência, fomentar a aprendizagem e garantir um futuro mais brilhante para os nossos membros mais jovens da comunidade. O seu presente oferece educação, cuidado e experiências alegres.',
-                altSeniorHeart: 'Imagem de um casal idoso, simbolizando o coração de um sénior.',
-                cardSeniorTitle: 'O Coração de um Sénior',
-                cardSeniorText: 'Proporcionar conforto, companhia e cuidados dignos aos nossos idosos. A sua contribuição apoia serviços de saúde, atividades envolventes e um ambiente respeitoso.',
-                altCommunityPeace: 'Imagem de pessoas a trabalhar em conjunto, simbolizando sonhos de propósito e paz.',
-                cardCommunityTitle: 'Sonhos de Propósito & Paz',
-                cardCommunityText: 'Capacitar jovens, apoiar famílias e construir uma comunidade mais forte e resiliente para todos. Os fundos são direcionados para programas de integração social e bem-estar.',
-                cardCtaSeeDreams: 'Ver Sonhos',
-                // Dream List Section
-                dreamListTitle: 'A Nossa Lista de Sonhos: A Sua Oportunidade de Impacto',
-                dreamListSubtitle: 'Cada item nesta lista representa uma necessidade direta e uma profunda oportunidade para trazer alegria, segurança ou progresso. Selecione um sonho para saber mais e torne-se uma parte vital da sua realização.',
-                filterAll: 'Todos os Sonhos',
-                filterChild: 'Desejo de Criança',
-                filterSenior: 'Coração de Sénior',
-                filterCommunity: 'Propósito & Paz',
-                filterFulfilled: 'Sonhos Realizados',
-                filterProgress: 'Sonhos em Progresso',
-                dreamGoal: 'Meta:',
-                statusProgress: 'Em Progresso',
-                statusFulfilled: 'Realizado!',
-                dreamCtaMake: 'Realize Este Sonho',
-                dreamCtaMade: 'Sonho Realizado',
-                dream1Title: 'Novos Livros para a Nossa Biblioteca',
-                dream1Text: 'A biblioteca dos nossos filhos precisa de uma atualização! Ajude-nos a adquirir uma coleção diversificada de novos livros para estimular a imaginação e fomentar o amor pela leitura.',
-                dream2Title: 'Cadeiras de Rodas Confortáveis para Seniores',
-                dream2Text: 'Garanta mobilidade e conforto aos nossos residentes idosos com cadeiras de rodas novas e ergonomicamente projetadas, melhorando o seu dia a dia e independência.',
-                dream3Title: 'Projeto de Horta Comunitária',
-                dream3Text: 'Apoie a criação de uma vibrante horta comunitária, oferecendo produtos frescos, oportunidades educacionais e um espaço para conexão intergeracional.',
-                dream4Title: 'Material de Arte para Ateliers Criativos',
-                dream4Text: 'Ajude-nos a abastecer com tintas, pincéis, barro e outros materiais de arte para os nossos ateliers criativos semanais, permitindo que as crianças se expressem livremente.',
-                dream5Title: 'Programa de Música Terapêutica',
-                dream5Text: 'Financie um programa de música terapêutica para os nossos idosos, trazendo alegria, estimulando a memória e proporcionando uma experiência calma e envolvente.',
-                dream6Title: 'Iniciativa de Inclusão Digital',
-                dream6Text: 'Proporcione acesso a computadores e internet para famílias carenciadas, preenchendo a lacuna digital e possibilitando a aprendizagem remota e a procura de emprego.',
-                dream7Title: 'Novo Equipamento de Recreio',
-                dream7Text: 'O nosso parque infantil é muito utilizado, mas precisa de um equipamento novo, seguro e envolvente para incentivar o brincar ativo e o desenvolvimento dos mais novos.',
-                dream8Title: 'Excursão Anual para Seniores',
-                dream8Text: 'Apoie a nossa viagem anual, oferecendo aos nossos idosos um dia memorável, fomentando as ligações sociais e criando novas e preciosas memórias.',
-                // Impact Section
-                impactTitle: 'O Nosso Legado de Impacto',
-                impactSubtitle: 'Há 95 anos, a Santa Casa da Misericórdia das Caldas da Rainha tem sido um pilar de esperança e apoio. A sua confiança permite-nos transformar vidas diariamente, construindo uma comunidade mais forte e compassiva.',
-                statYears: 'Anos de Serviço',
-                statLives: 'Vidas Tocadas Anualmente',
-                statPrograms: 'Programas & Iniciativas',
-                impactTransparencyText: 'Todas as contribuições são geridas de forma transparente e contribuem diretamente para a realização destes sonhos.',
-                impactTransparencyCta: 'Saiba Mais Sobre a Nossa Transparência',
-                // Final CTA
-                finalCtaTitle: 'A Sua Jornada como Realizador de Sonhos Começa Aqui',
-                finalCtaSubtitle: 'Pronto para fazer uma diferença profunda? Escolha um sonho, contribua com o que puder e faça parte da nossa história contínua de compaixão e esperança.',
-                finalCtaButton: 'Realize um Sonho',
-                // Footer
-                footerHome: 'Início',
-                footerMission: 'A Nossa Missão',
-                footerDreamList: 'Lista de Sonhos',
-                footerImpact: 'O Nosso Impacto',
-                footerPrivacy: 'Política de Privacidade',
-                footerContact: 'Contacte-nos',
-                footerCopyright: '&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.',
-                // Modal
-                modalTitle: 'Torne-se um Realizador de Sonhos',
-                modalDreamSupportText: 'A sua contribuição apoia diretamente o sonho: ',
-                defaultDreamTitle: 'Um Sonho Geral',
-                modalChooseImpact: 'Escolha o seu impacto:',
-                modalAmountOther: 'Outro',
-                modalCustomAmountPlaceholder: 'Introduza um valor personalizado',
-                modalDonorName: 'O Seu Nome (Opcional)',
-                modalDonorNamePlaceholder: 'João Silva',
-                modalDonorEmail: 'O Seu Email',
-                modalDonorEmailPlaceholder: 'voce@exemplo.com',
-                modalPaymentMethod: 'Método de Pagamento (Exemplo)',
-                modalPaymentSelect: 'Selecione um método...',
-                modalPaymentCard: 'Cartão de Crédito',
-                modalPaymentMbway: 'MB Way',
-                modalPaymentBank: 'Transferência Bancária',
-                modalSubmitBtn: 'Realize o Sonho',
-                modalDisclaimer: 'Todas as doações são processadas de forma segura e são dedutíveis nos impostos.'
-            },
-            'en': {
-                // Page Meta & Nav
-                pageTitle: 'Santa Casa da Misericórdia das Caldas da Rainha - Make a Dream Come True',
-                skipLink: 'Skip to main content',
-                siteName: 'Santa Casa da Misericórdia das Caldas da Rainha',
-                navMission: 'Our Mission',
-                navDreamList: 'Dream List',
-                navOurImpact: 'Our Impact',
-                navBecomeMaker: 'Become a Dream Maker',
-                // Hero Section
-                heroOverline: 'Celebrating 95 Years of Compassion',
-                heroTitle: 'Building Dreams, Shaping Futures',
-                heroSubtitle: 'Join Santa Casa da Misericórdia das Caldas da Rainha in continuing a legacy of care, hope, and community transformation.',
-                heroCta: 'Explore Dreams',
-                // Dream Categories
-                dreamCategoriesTitle: 'Become a Dream Maker',
-                dreamCategoriesSubtitle: 'At Santa Casa da Misericórdia, we believe every life holds a dream. Explore the vital areas where your support can make a tangible difference, transforming aspirations into reality for our community.',
-                altChildWish: 'Image of a child playing, symbolizing a child\'s wish.',
-                cardChildTitle: 'A Child\'s Wish',
-                cardChildText: 'Nurturing innocence, fostering learning, and ensuring a brighter tomorrow for our youngest community members. Your gift provides education, care, and joyful experiences.',
-                altSeniorHeart: 'Image of an elderly couple, symbolizing a senior\'s heart.',
-                cardSeniorTitle: 'A Senior\'s Heart',
-                cardSeniorText: 'Providing comfort, companionship, and dignified care for our elders. Your contribution supports health services, engaging activities, and a respectful environment.',
-                altCommunityPeace: 'Image of people working together, symbolizing dreams of purpose and peace.',
-                cardCommunityTitle: 'Dreams of Purpose & Peace',
-                cardCommunityText: 'Empowering youth, supporting families, and building a stronger, more resilient community for everyone. Funds go towards social integration and well-being programs.',
-                cardCtaSeeDreams: 'See Dreams',
-                // Dream List Section
-                dreamListTitle: 'Our Dream List: Your Opportunity to Impact',
-                dreamListSubtitle: 'Every item on this list represents a direct need and a profound opportunity to bring joy, security, or progress. Select a dream to learn more and become a vital part of its fulfillment.',
-                filterAll: 'All Dreams',
-                filterChild: 'A Child\'s Wish',
-                filterSenior: 'A Senior\'s Heart',
-                filterCommunity: 'Purpose & Peace',
-                filterFulfilled: 'Fulfilled Dreams',
-                filterProgress: 'Dreams in Progress',
-                dreamGoal: 'Goal:',
-                statusProgress: 'In Progress',
-                statusFulfilled: 'Fulfilled!',
-                dreamCtaMake: 'Make This Dream',
-                dreamCtaMade: 'Dream Made',
-                dream1Title: 'New Books for Our Library',
-                dream1Text: 'Our children\'s library needs an update! Help us acquire a diverse collection of new books to spark imagination and foster a love for reading.',
-                dream2Title: 'Comfortable Wheelchairs for Seniors',
-                dream2Text: 'Ensure mobility and comfort for our elderly residents with new, ergonomically designed wheelchairs, enhancing their daily lives and independence.',
-                dream3Title: 'Community Garden Project',
-                dream3Text: 'Support the creation of a vibrant community garden, providing fresh produce, educational opportunities, and a space for intergenerational connection.',
-                dream4Title: 'Art Supplies for Creative Workshops',
-                dream4Text: 'Help us stock up on paints, brushes, clay, and other art materials for our weekly creative workshops, allowing children to express themselves freely.',
-                dream5Title: 'Therapeutic Music Program',
-                dream5Text: 'Fund a therapeutic music program for our seniors, bringing joy, stimulating memory, and providing a calming, engaging experience.',
-                dream6Title: 'Digital Inclusion Initiative',
-                dream6Text: 'Provide access to computers and internet for families in need, bridging the digital divide and enabling remote learning and job searching.',
-                dream7Title: 'New Playground Equipment',
-                dream7Text: 'Our playground is well-loved but needs new, safe, and engaging equipment to encourage active play and development for our youngest.',
-                dream8Title: 'Annual Excursion for Seniors',
-                dream8Text: 'Support our annual trip, offering our seniors a memorable day out, fostering social connections, and creating cherished new memories.',
-                // Impact Section
-                impactTitle: 'Our Legacy of Impact',
-                impactSubtitle: 'For 95 years, Santa Casa da Misericórdia das Caldas da Rainha has been a pillar of hope and support. Your trust allows us to transform lives daily, building a stronger, more compassionate community.',
-                statYears: 'Years of Service',
-                statLives: 'Lives Touched Annually',
-                statPrograms: 'Programs & Initiatives',
-                impactTransparencyText: 'Every contribution is transparently managed and directly contributes to fulfilling these dreams.',
-                impactTransparencyCta: 'Learn More About Our Transparency',
-                // Final CTA
-                finalCtaTitle: 'Your Journey as a Dream Maker Starts Here',
-                finalCtaSubtitle: 'Ready to make a profound difference? Choose a dream, contribute what you can, and become a part of our continuing story of compassion and hope.',
-                finalCtaButton: 'Make a Dream Come True',
-                // Footer
-                footerHome: 'Home',
-                footerMission: 'Our Mission',
-                footerDreamList: 'Dream List',
-                footerImpact: 'Our Impact',
-                footerPrivacy: 'Privacy Policy',
-                footerContact: 'Contact Us',
-                footerCopyright: '&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. All rights reserved.',
-                // Modal
-                modalTitle: 'Become a Dream Maker',
-                modalDreamSupportText: 'Your contribution directly supports the dream: ',
-                defaultDreamTitle: 'A General Dream',
-                modalChooseImpact: 'Choose your impact:',
-                modalAmountOther: 'Other',
-                modalCustomAmountPlaceholder: 'Enter custom amount',
-                modalDonorName: 'Your Name (Optional)',
-                modalDonorNamePlaceholder: 'John Doe',
-                modalDonorEmail: 'Your Email',
-                modalDonorEmailPlaceholder: 'you@example.com',
-                modalPaymentMethod: 'Payment Method (Placeholder)',
-                modalPaymentSelect: 'Select a method...',
-                modalPaymentCard: 'Credit Card',
-                modalPaymentMbway: 'MB Way',
-                modalPaymentBank: 'Bank Transfer',
-                modalSubmitBtn: 'Make Dream Come True',
-                modalDisclaimer: 'All donations are securely processed and tax-deductible.'
-            },
-            'fr': {
-                // Page Meta & Nav
-                pageTitle: 'Santa Casa da Misericórdia das Caldas da Rainha - Réalisez un Rêve',
-                skipLink: 'Aller au contenu principal',
-                siteName: 'Santa Casa da Misericórdia das Caldas da Rainha',
-                navMission: 'Notre Mission',
-                navDreamList: 'Liste de Rêves',
-                navOurImpact: 'Notre Impact',
-                navBecomeMaker: 'Devenez un Réalisateur de Rêves',
-                // Hero Section
-                heroOverline: 'Célébrant 95 Ans de Compassion',
-                heroTitle: 'Construire des Rêves, Façonner l\'Avenir',
-                heroSubtitle: 'Rejoignez la Santa Casa da Misericórdia das Caldas da Rainha pour perpétuer un héritage de soins, d\'espoir et de transformation communautaire.',
-                heroCta: 'Explorer les Rêves',
-                // Dream Categories
-                dreamCategoriesTitle: 'Devenez un Réalisateur de Rêves',
-                dreamCategoriesSubtitle: 'À la Santa Casa da Misericórdia, nous croyons que chaque vie porte un rêve. Explorez les domaines vitaux où votre soutien peut faire une différence tangible, transformant les aspirations en réalité pour notre communauté.',
-                altChildWish: 'Image d\'un enfant jouant, symbolisant le souhait d\'un enfant.',
-                cardChildTitle: 'Le Souhait d\'un Enfant',
-                cardChildText: 'Nourrir l\'innocence, favoriser l\'apprentissage et assurer un avenir meilleur à nos plus jeunes membres de la communauté. Votre don offre éducation, soins et expériences joyeuses.',
-                altSeniorHeart: 'Image d\'un couple âgé, symbolisant le cœur d\'un senior.',
-                cardSeniorTitle: 'Le Cœur d\'un Senior',
-                cardSeniorText: 'Offrir confort, compagnie et soins dignes à nos aînés. Votre contribution soutient les services de santé, les activités engageantes et un environnement respectueux.',
-                altCommunityPeace: 'Image de personnes travaillant ensemble, symbolisant des rêves de but et de paix.',
-                cardCommunityTitle: 'Rêves de But & de Paix',
-                cardCommunityText: 'Autonomiser les jeunes, soutenir les familles et construire une communauté plus forte et plus résiliente pour tous. Les fonds sont alloués aux programmes d\'intégration sociale et de bien-être.',
-                cardCtaSeeDreams: 'Voir les Rêves',
-                // Dream List Section
-                dreamListTitle: 'Notre Liste de Rêves: Votre Opportunité d\'Impact',
-                dreamListSubtitle: 'Chaque élément de cette liste représente un besoin direct et une profonde opportunité d\'apporter joie, sécurité ou progrès. Sélectionnez un rêve pour en savoir plus et devenir un acteur essentiel de sa réalisation.',
-                filterAll: 'Tous les Rêves',
-                filterChild: 'Le Souhait d\'un Enfant',
-                filterSenior: 'Le Cœur d\'un Senior',
-                filterCommunity: 'But & Paix',
-                filterFulfilled: 'Rêves Réalisés',
-                filterProgress: 'Rêves en Cours',
-                dreamGoal: 'Objectif :',
-                statusProgress: 'En Cours',
-                statusFulfilled: 'Réalisé !',
-                dreamCtaMake: 'Réaliser Ce Rêve',
-                dreamCtaMade: 'Rêve Réalisé',
-                dream1Title: 'Nouveaux Livres pour Notre Bibliothèque',
-                dream1Text: 'La bibliothèque de nos enfants a besoin d\'une mise à jour ! Aidez-nous à acquérir une collection diversifiée de nouveaux livres pour stimuler l\'imagination et favoriser l\'amour de la lecture.',
-                dream2Title: 'Fauteuils Roulants Confortables pour Seniors',
-                dream2Text: 'Assurez mobilité et confort à nos résidents âgés avec de nouveaux fauteuils roulants ergonomiques, améliorant leur vie quotidienne et leur indépendance.',
-                dream3Title: 'Projet de Jardin Communautaire',
-                dream3Text: 'Soutenez la création d\'un jardin communautaire vibrant, offrant des produits frais, des opportunités éducatives et un espace de connexion intergénérationnelle.',
-                dream4Title: 'Matériel d\'Art pour Ateliers Créatifs',
-                dream4Text: 'Aidez-nous à nous approvisionner en peintures, pinceaux, argile et autres matériaux d\'art pour nos ateliers créatifs hebdomadaires, permettant aux enfants de s\'exprimer librement.',
-                dream5Title: 'Programme de Musique Thérapeutique',
-                dream5Text: 'Financez un programme de musique thérapeutique pour nos seniors, apportant joie, stimulant la mémoire et offrant une expérience calme et engageante.',
-                dream6Title: 'Initiative d\'Inclusion Numérique',
-                dream6Text: 'Offrez un accès aux ordinateurs et à internet aux familles dans le besoin, comblant la fracture numérique et permettant l\'apprentissage à distance et la recherche d\'emploi.',
-                dream7Title: 'Nouveaux Équipements de Jeu',
-                dream7Text: 'Notre aire de jeux est très appréciée mais a besoin de nouveaux équipements sûrs et stimulants pour encourager le jeu actif et le développement de nos plus jeunes.',
-                dream8Title: 'Excursion Annuelle pour Seniors',
-                dream8Text: 'Soutenez notre voyage annuel, offrant à nos seniors une journée mémorable, favorisant les liens sociaux et créant de nouveaux souvenirs précieux.',
-                // Impact Section
-                impactTitle: 'Notre Héritage d\'Impact',
-                impactSubtitle: 'Depuis 95 ans, la Santa Casa da Misericórdia das Caldas da Rainha est un pilier d\'espoir et de soutien. Votre confiance nous permet de transformer des vies au quotidien, construisant une communauté plus forte et plus compatissante.',
-                statYears: 'Ans de Service',
-                statLives: 'Vies Touchées Annuellement',
-                statPrograms: 'Programmes & Initiatives',
-                impactTransparencyText: 'Toutes les contributions sont gérées de manière transparente et contribuent directement à la réalisation de ces rêves.',
-                impactTransparencyCta: 'En Savoir Plus sur Notre Transparence',
-                // Final CTA
-                finalCtaTitle: 'Votre Parcours de Réalisateur de Rêves Commence Ici',
-                finalCtaSubtitle: 'Prêt à faire une différence profonde ? Choisissez un rêve, contribuez ce que vous pouvez et faites partie de notre histoire continue de compassion et d\'espoir.',
-                finalCtaButton: 'Réaliser un Rêve',
-                // Footer
-                footerHome: 'Accueil',
-                footerMission: 'Notre Mission',
-                footerDreamList: 'Liste de Rêves',
-                footerImpact: 'Notre Impact',
-                footerPrivacy: 'Politique de Confidentialité',
-                footerContact: 'Contactez-nous',
-                footerCopyright: '&copy; 2024 Santa Casa da Misericórdia das Caldas da Rainha. Tous droits réservés.',
-                // Modal
-                modalTitle: 'Devenez un Réalisateur de Rêves',
-                modalDreamSupportText: 'Votre contribution soutient directement le rêve : ',
-                defaultDreamTitle: 'Un Rêve Général',
-                modalChooseImpact: 'Choisissez votre impact :',
-                modalAmountOther: 'Autre',
-                modalCustomAmountPlaceholder: 'Entrez un montant personnalisé',
-                modalDonorName: 'Votre Nom (Facultatif)',
-                modalDonorNamePlaceholder: 'Jean Dupont',
-                modalDonorEmail: 'Votre Email',
-                modalDonorEmailPlaceholder: 'vous@exemple.com',
-                modalPaymentMethod: 'Méthode de Paiement (Exemple)',
-                modalPaymentSelect: 'Sélectionnez une méthode...',
-                modalPaymentCard: 'Carte de Crédit',
-                modalPaymentMbway: 'MB Way',
-                modalPaymentBank: 'Virement Bancaire',
-                modalSubmitBtn: 'Réaliser le Rêve',
-                modalDisclaimer: 'Tous les dons sont traités en toute sécurité et sont déductibles des impôts.'
-            }
-        };
-
-        let currentLang = 'pt'; // Default language
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const langButtons = document.querySelectorAll('.lang-switcher button');
-            const elementsToTranslate = document.querySelectorAll('[data-lang-key]');
-            const dreamItemTitles = document.querySelectorAll('.dream-item h4');
-            const openModalButtons = document.querySelectorAll('.open-modal-btn');
-
-            function applyTranslation(lang) {
-                currentLang = lang;
-                document.documentElement.lang = lang; // Set HTML lang attribute
-                document.title = translations[lang].pageTitle; // Update page title
-
-                elementsToTranslate.forEach(element => {
-                    const key = element.dataset.langKey;
-                    if (translations[lang][key]) {
-                        // Handle specific attributes for placeholder, alt, etc.
-                        if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
-                            element.placeholder = translations[lang][key];
-                        } else if (element.tagName === 'IMG' && element.hasAttribute('alt')) {
-                            element.alt = translations[lang][key];
-                        } else if (element.tagName === 'SELECT') {
-                             // Handle select options
-                            const options = element.querySelectorAll('option');
-                            options.forEach(option => {
-                                const optionKey = option.dataset.langKey;
-                                if (optionKey && translations[lang][optionKey]) {
-                                    option.textContent = translations[lang][optionKey];
-                                }
-                            });
-                        }
-                         else {
-                            element.textContent = translations[lang][key];
-                        }
-                    }
-                });
-
-                // Update modal dream title keys when modal opens
-                updateModalDreamTitle();
-
-                // Update active language button
-                langButtons.forEach(btn => {
-                    if (btn.id === `lang-${lang}`) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                });
-            }
-
-            // Function to update the modal's selected dream title dynamically
-            function updateModalDreamTitle() {
-                const selectedDreamTitleElement = document.getElementById('selectedDreamTitle');
-                if (selectedDreamTitleElement) {
-                     const currentKey = selectedDreamTitleElement.dataset.langKey || 'defaultDreamTitle';
-                     selectedDreamTitleElement.textContent = translations[currentLang][currentKey];
-                }
-            }
-
-
-            langButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const lang = button.id.split('-')[1];
-                    applyTranslation(lang);
-                });
-            });
-
-            // Initial translation load (default to 'pt')
-            applyTranslation(currentLang);
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const offsetTop = targetElement.offsetTop;
-                        window.scrollTo({
-                            top: offsetTop - 80, // Adjust for fixed header height
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Dream List Filtering
-            const filterButtons = document.querySelectorAll('.dream-filter-btn');
-            const dreamItems = document.querySelectorAll('.dream-item');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    const filter = button.dataset.filter;
-
-                    dreamItems.forEach(item => {
-                        const category = item.dataset.category;
-                        const status = item.dataset.status;
-
-                        if (filter === 'all' || category === filter || status === filter) {
-                            item.style.display = 'flex'; // Show item
-                        } else {
-                            item.style.display = 'none'; // Hide item
-                        }
-                    });
-                });
-            });
-
-            // Donation Modal Logic
-            const modal = document.getElementById('donationModal');
-            const closeModalBtn = modal.querySelector('.modal-close-btn');
-            const selectedDreamTitle = document.getElementById('selectedDreamTitle');
-            const donationForm = modal.querySelector('.donation-form');
-            const customAmountInput = document.getElementById('customAmount');
-            const amountRadios = document.querySelectorAll('input[name="donationAmount"]');
-
-            function openModal(dreamTitleKey = "defaultDreamTitle") {
-                selectedDreamTitle.dataset.langKey = dreamTitleKey; // Store the key
-                selectedDreamTitle.textContent = translations[currentLang][dreamTitleKey];
-                modal.classList.add('is-open');
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling background
-            }
-
-            function closeModal() {
-                modal.classList.remove('is-open');
-                modal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = ''; // Restore scrolling
-            }
-
-            openModalButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const dreamTitleKey = btn.dataset.dreamTitleKey || "defaultDreamTitle";
-                    openModal(dreamTitleKey);
-                });
-            });
-
-            closeModalBtn.addEventListener('click', closeModal);
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-                    closeModal();
-                }
-            });
-
-            // Custom amount input visibility
-            amountRadios.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    if (document.getElementById('amountOther').checked) {
-                        customAmountInput.style.display = 'block';
-                        customAmountInput.setAttribute('required', 'true');
-                        customAmountInput.focus();
-                    } else {
-                        customAmountInput.style.display = 'none';
-                        customAmountInput.removeAttribute('required');
-                        customAmountInput.value = '';
-                    }
-                });
-            });
-
-            // Handle form submission (client-side only for this example)
-            donationForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert(translations[currentLang].modalDisclaimer); // Use translated disclaimer
-                closeModal();
-                donationForm.reset();
-                customAmountInput.style.display = 'none'; // Hide custom amount after submission
-            });
-        });
-    </script>
+    <nav>
+      <ul>
+        <li><a href="#categories" class="t" data-key="navMission">A Nossa Missão</a></li>
+        <li><a href="#dreams" class="t" data-key="navDreams">Sonhos</a></li>
+        <li><a href="#team" class="t" data-key="navTeam">Equipa</a></li>
+        <li><a href="#impact" class="t" data-key="navImpact">Impacto</a></li>
+        <li><a href="#gifts" class="t" data-key="navGift">Presente</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+ 
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="hero-tag">✦ <span class="t" data-key="heroTag">Celebrando 95 Anos de Compaixão</span></span>
+      <h1 class="t" data-key="heroTitle">Construindo <em>Sonhos,</em><br>Moldando Futuros</h1>
+      <p class="hero-sub t" data-key="heroSub">Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.</p>
+      <div class="hero-btns">
+        <a href="#dreams" class="btn btn-primary t" data-key="heroCta1">Explore os Sonhos</a>
+        <button class="btn btn-outline open-donation" data-dream-id="0" data-lang-key="">
+          <i class="fa fa-heart"></i>
+          <span class="t" data-key="heroCta2">Doe Agora</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><i class="fa fa-chevron-down"></i><span class="t" data-key="scroll">Scroll</span></div>
+</section>
+ 
+<!-- ── SILVER COAST GALLERY ───────────────────────────────── -->
+<div class="coastal-strip" aria-hidden="true">
+  <div>
+    <img src="https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800"
+         alt="Silver Coast Portugal" loading="lazy"
+         onerror="this.parentElement.style.background='#1F6B9A'">
+  </div>
+  <div>
+    <img src="https://images.pexels.com/photos/1320686/pexels-photo-1320686.jpeg?auto=compress&cs=tinysrgb&w=600"
+         alt="Costa de Prata" loading="lazy"
+         onerror="this.parentElement.style.background='#0A2540'">
+  </div>
+  <div>
+    <img src="https://images.pexels.com/photos/2260784/pexels-photo-2260784.jpeg?auto=compress&cs=tinysrgb&w=600"
+         alt="Óbidos Portugal" loading="lazy"
+         onerror="this.parentElement.style.background='#C9A44B'">
+  </div>
+  <div>
+    <img src="https://images.pexels.com/photos/2836491/pexels-photo-2836491.jpeg?auto=compress&cs=tinysrgb&w=600"
+         alt="Peniche Atlantic Coast" loading="lazy"
+         onerror="this.parentElement.style.background='#B8622E'">
+  </div>
+</div>
+ 
+<!-- ── DREAM CATEGORIES ───────────────────────────────────── -->
+<section class="bg-white" id="categories">
+  <div class="wrap">
+    <div class="section-head-center">
+      <p class="section-label t" data-key="catLabel">As Nossas Áreas de Atuação</p>
+      <h2 class="section-title t" data-key="catTitle">Torne-se um Realizador de Sonhos</h2>
+      <p class="section-sub t" data-key="catSub">Cada categoria representa um pilar da nossa missão. O seu apoio transforma aspirações em realidade para quem mais precisa.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-card__img">
+          <img src="https://images.pexels.com/photos/3662624/pexels-photo-3662624.jpeg?auto=compress&cs=tinysrgb&w=700"
+               alt="Crianças a brincar" loading="lazy"
+               onerror="this.src='https://placehold.co/700x400/C9A44B/FFFFFF?text=Crianças'">
+          <span class="cat-card__badge t" data-key="catBadge1">Infância</span>
+        </div>
+        <div class="cat-card__body">
+          <h3 class="t" data-key="cat1Title">O Desejo de uma Criança</h3>
+          <p class="t" data-key="cat1Text">Educação, alegria e cuidado para os nossos membros mais jovens. O seu apoio constrói fundações para um futuro brilhante.</p>
+          <a href="#dreams" class="btn btn-ghost btn-sm t" data-key="catCta">Ver Sonhos <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card__img">
+          <img src="https://images.pexels.com/photos/8946957/pexels-photo-8946957.jpeg?auto=compress&cs=tinysrgb&w=700"
+               alt="Casal de idosos" loading="lazy"
+               onerror="this.src='https://placehold.co/700x400/1F6B9A/FFFFFF?text=Seniores'">
+          <span class="cat-card__badge t" data-key="catBadge2">Seniores</span>
+        </div>
+        <div class="cat-card__body">
+          <h3 class="t" data-key="cat2Title">O Coração de um Sénior</h3>
+          <p class="t" data-key="cat2Text">Dignidade, conforto e companhia para os nossos idosos. A sua contribuição faz a diferença no dia a dia de quem mais nos precisa.</p>
+          <a href="#dreams" class="btn btn-ghost btn-sm t" data-key="catCta">Ver Sonhos <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card__img">
+          <img src="https://images.pexels.com/photos/4099462/pexels-photo-4099462.jpeg?auto=compress&cs=tinysrgb&w=700"
+               alt="Horta comunitária" loading="lazy"
+               onerror="this.src='https://placehold.co/700x400/2E7D52/FFFFFF?text=Comunidade'">
+          <span class="cat-card__badge t" data-key="catBadge3">Comunidade</span>
+        </div>
+        <div class="cat-card__body">
+          <h3 class="t" data-key="cat3Title">Sonhos de Propósito & Paz</h3>
+          <p class="t" data-key="cat3Text">Integração social, bem-estar familiar e uma comunidade mais resiliente. Juntos construímos uma Caldas da Rainha melhor para todos.</p>
+          <a href="#dreams" class="btn btn-ghost btn-sm t" data-key="catCta">Ver Sonhos <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── DREAM LIST ─────────────────────────────────────────── -->
+<section class="bg-sand" id="dreams">
+  <div class="wrap">
+    <div class="section-head-center">
+      <p class="section-label t" data-key="dreamLabel">Sonhos que Podemos Realizar Juntos</p>
+      <h2 class="section-title t" data-key="dreamTitle">A Nossa Lista de Sonhos</h2>
+      <p class="section-sub t" data-key="dreamSub">Cada projeto representa uma necessidade real. Selecione um sonho para ver o impacto da sua doação.</p>
+    </div>
+    <div class="dream-filters">
+      <button class="filter-btn active t" data-filter="all" data-key="filterAll">Todos</button>
+      <button class="filter-btn t" data-filter="child" data-key="filterChild">Crianças</button>
+      <button class="filter-btn t" data-filter="senior" data-key="filterSenior">Seniores</button>
+      <button class="filter-btn t" data-filter="community" data-key="filterCommunity">Comunidade</button>
+      <button class="filter-btn t" data-filter="fulfilled" data-key="filterFulfilled">Realizados</button>
+      <button class="filter-btn t" data-filter="progress" data-key="filterProgress">Em Progresso</button>
+    </div>
+    <div class="dream-grid" id="dreamGrid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+ 
+<!-- ── TEAM ───────────────────────────────────────────────── -->
+<section class="bg-white" id="team">
+  <div class="wrap">
+    <div class="section-head-center">
+      <p class="section-label t" data-key="teamLabel">As Nossas Pessoas</p>
+      <h2 class="section-title t" data-key="teamTitle">Uma Equipa com Coração</h2>
+      <p class="section-sub t" data-key="teamSub">Mulheres dedicadas que todos os dias transformam vidas com profissionalismo, amor e compaixão.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-card__img">
+          <img src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=400"
+               alt="Maria Silva - Diretora de Cuidados" loading="lazy"
+               onerror="this.src='https://placehold.co/400x300/0A2540/FFFFFF?text=Maria'">
+        </div>
+        <div class="team-card__body">
+          <h3>Maria Silva</h3>
+          <span class="t" data-key="role1">Diretora de Cuidados</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__img">
+          <img src="https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=400"
+               alt="Ana Rodrigues - Coordenadora Social" loading="lazy"
+               onerror="this.src='https://placehold.co/400x300/1F6B9A/FFFFFF?text=Ana'">
+        </div>
+        <div class="team-card__body">
+          <h3>Ana Rodrigues</h3>
+          <span class="t" data-key="role2">Coordenadora Social</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__img">
+          <img src="https://images.pexels.com/photos/5863389/pexels-photo-5863389.jpeg?auto=compress&cs=tinysrgb&w=400"
+               alt="Sofia Santos - Enfermeira Chefe" loading="lazy"
+               onerror="this.src='https://placehold.co/400x300/C9A44B/0A2540?text=Sofia'">
+        </div>
+        <div class="team-card__body">
+          <h3>Sofia Santos</h3>
+          <span class="t" data-key="role3">Enfermeira Chefe</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__img">
+          <img src="https://images.pexels.com/photos/5490276/pexels-photo-5490276.jpeg?auto=compress&cs=tinysrgb&w=400"
+               alt="Joana Pereira - Técnica de Apoio" loading="lazy"
+               onerror="this.src='https://placehold.co/400x300/2E7D52/FFFFFF?text=Joana'">
+        </div>
+        <div class="team-card__body">
+          <h3>Joana Pereira</h3>
+          <span class="t" data-key="role4">Técnica de Apoio à Infância</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── IMPACT ─────────────────────────────────────────────── -->
+<section class="bg-navy" id="impact">
+  <div class="wrap text-center">
+    <p class="section-label t" data-key="impLabel">O Nosso Legado</p>
+    <h2 class="section-title t" data-key="impTitle">95 Anos de Impacto Real</h2>
+    <p class="section-sub t" data-key="impSub">Desde 1929, a Santa Casa das Caldas da Rainha tem sido um pilar de esperança, dignidade e apoio à nossa comunidade.</p>
+    <div class="impact-grid">
+      <div class="stat-card">
+        <div class="stat-num">95+</div>
+        <div class="stat-label t" data-key="stat1">Anos de Serviço</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">500+</div>
+        <div class="stat-label t" data-key="stat2">Vidas Apoiadas/Ano</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">30+</div>
+        <div class="stat-label t" data-key="stat3">Programas Ativos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label t" data-key="stat4">Transparência Total</div>
+      </div>
+    </div>
+    <p class="t" style="margin-top:2.5rem;font-size:.95rem" data-key="impTransp">Todas as doações são geridas de forma transparente. A Santa Casa é uma IPSS com estatuto de utilidade pública — as doações são dedutíveis nos impostos em Portugal.</p>
+    <div style="margin-top:1.5rem;display:flex;justify-content:center">
+      <div class="tax-badge"><i class="fa fa-shield-halved"></i> <span class="t" data-key="taxBadge">IPSS Certificada · Benefícios Fiscais Disponíveis</span></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── GIFT DONATIONS ─────────────────────────────────────── -->
+<section class="gift-section" id="gifts">
+  <div class="wrap">
+    <div>
+      <p class="section-label" style="color:var(--gold)">✦ <span class="t" data-key="giftLabel">Uma Ideia Especial</span></p>
+      <h2 class="section-title" style="color:#fff" data-key="giftTitle">Doe em Nome de Alguém</h2>
+      <p class="section-sub t" data-key="giftSub">Celebre um aniversário, um casamento ou qualquer ocasião especial com uma doação em nome de alguém querido. Receba um certificado de oferta elegante, pronto para imprimir.</p>
+      <div class="gift-cards" style="margin-top:2rem">
+        <div class="gift-card" onclick="openGiftDonation('birthday')">
+          <i class="fa fa-cake-candles"></i>
+          <span class="t" data-key="occ1">Aniversário</span>
+        </div>
+        <div class="gift-card" onclick="openGiftDonation('anniversary')">
+          <i class="fa fa-heart"></i>
+          <span class="t" data-key="occ2">Aniversário de Casamento</span>
+        </div>
+        <div class="gift-card" onclick="openGiftDonation('graduation')">
+          <i class="fa fa-graduation-cap"></i>
+          <span class="t" data-key="occ3">Formatura</span>
+        </div>
+        <div class="gift-card" onclick="openGiftDonation('memory')">
+          <i class="fa fa-star"></i>
+          <span class="t" data-key="occ4">Em Memória</span>
+        </div>
+        <div class="gift-card" onclick="openGiftDonation('other')">
+          <i class="fa fa-gift"></i>
+          <span class="t" data-key="occ5">Outra Ocasião</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png"
+             alt="SCMCR Logo" class="cert-logo"
+             onerror="this.style.display='none'">
+        <p class="t" data-key="footerAbout">Santa Casa da Misericórdia das Caldas da Rainha — uma instituição de solidariedade social ao serviço da comunidade desde 1929.</p>
+        <span class="tax-badge mt-1"><i class="fa fa-check-circle"></i> <span class="t" data-key="footerTax">IPSS · Doações Dedutíveis</span></span>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="t" data-key="footerNav">Navegação</h4>
+        <ul>
+          <li><a href="#categories" class="t" data-key="navMission">Missão</a></li>
+          <li><a href="#dreams" class="t" data-key="navDreams">Sonhos</a></li>
+          <li><a href="#team" class="t" data-key="navTeam">Equipa</a></li>
+          <li><a href="#impact" class="t" data-key="navImpact">Impacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="t" data-key="footerLegal">Legal</h4>
+        <ul>
+          <li><a href="#" class="t" data-key="fPrivacy">Privacidade</a></li>
+          <li><a href="#" class="t" data-key="fTerms">Termos</a></li>
+          <li><a href="#" class="t" data-key="fTransp">Transparência</a></li>
+          <li><a href="#" id="adminLink" class="t" data-key="fAdmin">Acesso Admin</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="t" data-key="footerContact">Contacto</h4>
+        <ul>
+          <li><a href="mailto:geral@scmcr.pt">geral@scmcr.pt</a></li>
+          <li><a href="tel:+351262830000">+351 262 830 000</a></li>
+          <li>Caldas da Rainha, Portugal</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="t" data-key="copyright">© 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.</span>
+    </div>
+  </div>
+</footer>
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     MODALS
+     ═══════════════════════════════════════════════════════════ -->
+ 
+<!-- DONATION MODAL -->
+<div class="modal-overlay" id="modalDonation">
+  <div class="modal-box modal-lg">
+    <div class="modal-header">
+      <h3 class="t" data-key="modalDonTitle">Realize Este Sonho</h3>
+      <button class="modal-close" onclick="closeModal('modalDonation')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="margin-bottom:1rem;font-size:.9rem">
+        <span class="t" data-key="donFor">A apoiar:</span>
+        <strong id="donDreamName" style="color:var(--navy)"> — </strong>
+      </p>
+      <div class="form-group">
+        <label class="t" data-key="donAmount">Valor da sua doação</label>
+        <div class="amount-pills">
+          <span class="amount-pill" onclick="selectAmount(this,'10')">€10</span>
+          <span class="amount-pill selected" onclick="selectAmount(this,'25')">€25</span>
+          <span class="amount-pill" onclick="selectAmount(this,'50')">€50</span>
+          <span class="amount-pill" onclick="selectAmount(this,'100')">€100</span>
+          <span class="amount-pill" onclick="selectAmount(this,'other')" class="t" data-key="other">Outro</span>
+        </div>
+        <input type="number" id="customAmount" placeholder="Valor personalizado (€)" style="display:none;margin-top:.5rem" min="5">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="t" data-key="donName">Nome (Opcional)</label>
+          <input type="text" id="donorName" placeholder="João Silva">
+        </div>
+        <div class="form-group">
+          <label class="t" data-key="donEmail">Email *</label>
+          <input type="email" id="donorEmail" placeholder="voce@email.com" required>
+        </div>
+      </div>
+      <div class="toggle-row" onclick="toggleGift()">
+        <input type="checkbox" id="isGift">
+        <label for="isGift"><i class="fa fa-gift gold"></i> <span class="t" data-key="donIsGift">É uma oferta? Receba um certificado elegante para imprimir</span></label>
+      </div>
+      <div id="giftFields" style="display:none;background:rgba(201,164,75,.06);border:1px solid rgba(201,164,75,.3);border-radius:var(--r-md);padding:1.2rem;margin-bottom:1rem">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="t" data-key="recName">Nome do Destinatário</label>
+            <input type="text" id="recipientName" placeholder="Maria Santos">
+          </div>
+          <div class="form-group">
+            <label class="t" data-key="occasion">Ocasião</label>
+            <input type="text" id="giftOccasion" placeholder="Aniversário, Casamento...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="t" data-key="giftMsg">Mensagem Pessoal (Opcional)</label>
+          <textarea id="giftMessage" placeholder="Parabéns e muitas felicidades!"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="t" data-key="donPayment">Método de Pagamento</label>
+        <select id="paymentMethod">
+          <option value="" class="t" data-key="donPaySel">Selecione...</option>
+          <option value="card" class="t" data-key="payCard">Cartão de Crédito/Débito</option>
+          <option value="mbway" class="t" data-key="payMB">MB Way</option>
+          <option value="bank" class="t" data-key="payBank">Transferência Bancária</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="submitDonation()">
+        <i class="fa fa-heart"></i>
+        <span class="t" data-key="donSubmit">Realizar o Sonho</span>
+      </button>
+      <p class="note t" data-key="donNote">🔒 Processamento seguro · IPSS certificada · Doações dedutíveis</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- DREAM DASHBOARD MODAL -->
+<div class="modal-overlay" id="modalDashboard">
+  <div class="modal-box modal-lg" id="dashboardBox">
+    <button class="modal-close" style="position:absolute;top:1rem;right:1rem;z-index:5" onclick="closeModal('modalDashboard')">&times;</button>
+    <div class="db-hero">
+      <h3 id="dbTitle">—</h3>
+      <p id="dbDesc">—</p>
+    </div>
+    <div class="db-meta-grid" id="dbMeta">
+      <div class="db-stat"><div class="val" id="dbCollected">—</div><div class="lbl t" data-key="dbColl">Angariado</div></div>
+      <div class="db-stat" id="dbGapStat"><div class="val" id="dbGap">—</div><div class="lbl t" data-key="dbGap2">Em Falta</div></div>
+      <div class="db-stat"><div class="val" id="dbDonors">—</div><div class="lbl t" data-key="dbDon">Doadores</div></div>
+      <div class="db-stat"><div class="val" id="dbTime">—</div><div class="lbl t" data-key="dbTime2">Tempo</div></div>
+    </div>
+    <div class="db-body">
+      <div class="db-prog-wrap">
+        <div class="db-prog-labels">
+          <span id="dbProgAmt">—</span>
+          <span id="dbProgPct">0%</span>
+        </div>
+        <div class="db-prog-bar">
+          <div class="db-prog-fill" id="dbProgFill" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="db-nationalities">
+        <h4 class="t" data-key="dbNat">🌍 Top 3 Nacionalidades dos Doadores</h4>
+        <div id="dbNatList"></div>
+      </div>
+    </div>
+    <div class="db-footer">
+      <button class="btn btn-primary open-donation" id="dbDonateBtn" data-dream-id="0">
+        <i class="fa fa-heart"></i>
+        <span class="t" data-key="dbCta">Realize Este Sonho</span>
+      </button>
+    </div>
+  </div>
+</div>
+ 
+<!-- GIFT CERTIFICATE MODAL -->
+<div class="modal-overlay" id="modalCert">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 class="t" data-key="certTitle">Obrigado pela sua Generosidade!</h3>
+      <button class="modal-close" onclick="closeModal('modalCert')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="cert-box" id="certPrintArea">
+        <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png"
+             class="cert-logo" alt="SCMCR" onerror="this.style.display='none'">
+        <p class="cert-title t" data-key="certHead">Certificado de Oferta</p>
+        <p class="cert-for t" data-key="certFor">Este certificado honra</p>
+        <p class="cert-name" id="certRecipient">—</p>
+        <p class="cert-occasion" id="certOccasion">—</p>
+        <div class="cert-message" id="certMsg" style="display:none"></div>
+        <hr style="border-color:rgba(201,164,75,.3);margin:.8rem 0">
+        <p class="cert-dream-label t" data-key="certDream">Sonho apoiado</p>
+        <p class="cert-dream-name" id="certDreamName">—</p>
+        <div class="cert-seal"><i class="fa fa-heart"></i></div>
+        <p style="font-size:.72rem;color:var(--text-lt);margin-top:.8rem">Santa Casa da Misericórdia das Caldas da Rainha · IPSS</p>
+      </div>
+      <button class="btn btn-navy" style="width:100%;margin-top:1.2rem" onclick="window.print()">
+        <i class="fa fa-print"></i>
+        <span class="t" data-key="certPrint">Imprimir Certificado</span>
+      </button>
+    </div>
+  </div>
+</div>
+ 
+<!-- ADMIN LOGIN MODAL -->
+<div class="modal-overlay" id="modalAdmin">
+  <div class="modal-box" style="max-width:380px">
+    <div class="modal-header">
+      <h3 class="t" data-key="adminTitle">Acesso Administrador</h3>
+      <button class="modal-close" onclick="closeModal('modalAdmin')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="t" data-key="adminPwLabel">Palavra-passe de acesso</label>
+        <input type="password" id="adminPwInput" placeholder="••••••••">
+      </div>
+      <p id="adminError" style="color:#c0392b;font-size:.82rem;margin-bottom:.8rem;display:none" class="t" data-key="adminErr">Palavra-passe incorreta. Tente novamente.</p>
+      <button class="btn btn-navy" style="width:100%" onclick="adminLogin()">
+        <i class="fa fa-unlock"></i>
+        <span class="t" data-key="adminBtn">Entrar</span>
+      </button>
+    </div>
+  </div>
+</div>
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     ADMIN DASHBOARD PAGE
+     ═══════════════════════════════════════════════════════════ -->
+<div class="admin-page" id="adminPage">
+  <h2 class="t" data-key="adminDashTitle">Painel de Gestão de Sonhos</h2>
+  <div class="admin-tabs">
+    <button class="admin-tab active t" data-panel="panelAdd" onclick="switchTab(this,'panelAdd')" data-key="tabAdd">Adicionar / Editar Sonho</button>
+    <button class="admin-tab t" data-panel="panelList" onclick="switchTab(this,'panelList')" data-key="tabList">Ver Todos os Projetos</button>
+  </div>
+ 
+  <!-- ADD/EDIT PANEL -->
+  <div class="admin-panel active" id="panelAdd">
+    <input type="hidden" id="editId">
+    <div class="admin-form-grid">
+      <div class="form-group full">
+        <label class="t" data-key="aTitle">Título do Sonho</label>
+        <input type="text" id="aTitle" placeholder="Ex: Novos livros para a biblioteca">
+      </div>
+      <div class="form-group full">
+        <label class="t" data-key="aDesc">Descrição</label>
+        <textarea id="aDesc" placeholder="Descreva o projeto..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="t" data-key="aCat">Categoria</label>
+        <select id="aCat">
+          <option value="child">Crianças</option>
+          <option value="senior">Seniores</option>
+          <option value="community">Comunidade</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="t" data-key="aStatus">Estado</label>
+        <select id="aStatus">
+          <option value="progress">Em Progresso</option>
+          <option value="fulfilled">Realizado ✓</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="t" data-key="aGoal">Meta (€)</label>
+        <input type="number" id="aGoal" min="10" placeholder="500">
+      </div>
+      <div class="form-group">
+        <label class="t" data-key="aCollected">Angariado (€)</label>
+        <input type="number" id="aCollected" min="0" value="0">
+      </div>
+      <div class="form-group">
+        <label class="t" data-key="aDonors">Nº de Doadores</label>
+        <input type="number" id="aDonors" min="0" value="0">
+      </div>
+      <div class="form-group">
+        <label class="t" data-key="aTime">Tempo para Concluir</label>
+        <input type="text" id="aTime" placeholder="Ex: 3 meses">
+      </div>
+      <div class="form-group full">
+        <label class="t" data-key="aNat">Nacionalidades (formato: PT:60, EN:25, FR:15)</label>
+        <input type="text" id="aNat" placeholder="PT:60, EN:25, FR:15">
+      </div>
+    </div>
+    <div style="display:flex;gap:.8rem;margin-top:1rem">
+      <button class="btn btn-ghost btn-sm" onclick="clearAdminForm()">
+        <i class="fa fa-rotate"></i> <span class="t" data-key="aClear">Limpar</span>
+      </button>
+      <button class="btn btn-primary" onclick="saveDream()">
+        <i class="fa fa-floppy-disk"></i>
+        <span class="t" data-key="aSave">Guardar Sonho</span>
+      </button>
+    </div>
+  </div>
+ 
+  <!-- LIST PANEL -->
+  <div class="admin-panel" id="panelList">
+    <div class="admin-project-list" id="adminProjectList">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+ 
+  <div style="text-align:center;margin-top:2rem">
+    <button class="btn btn-ghost btn-sm" onclick="adminLogout()">
+      <i class="fa fa-arrow-right-from-bracket"></i>
+      <span class="t" data-key="aLogout">Sair do Painel</span>
+    </button>
+  </div>
+</div>
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+/* ── TRANSLATIONS ─────────────────────────────────────────── */
+const T = {
+  pt: {
+    heroTag:'Celebrando 95 Anos de Compaixão', heroTitle:'Construindo <em>Sonhos,</em><br>Moldando Futuros',
+    heroSub:'Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.',
+    heroCta1:'Explore os Sonhos', heroCta2:'Doe Agora', scroll:'Scroll',
+    navMission:'A Nossa Missão', navDreams:'Sonhos', navTeam:'Equipa', navImpact:'Impacto', navGift:'Oferta',
+    catLabel:'As Nossas Áreas de Atuação', catTitle:'Torne-se um Realizador de Sonhos',
+    catSub:'Cada categoria representa um pilar da nossa missão. O seu apoio transforma aspirações em realidade.',
+    catBadge1:'Infância', catBadge2:'Seniores', catBadge3:'Comunidade',
+    cat1Title:'O Desejo de uma Criança', cat1Text:'Educação, alegria e cuidado para os nossos membros mais jovens.',
+    cat2Title:'O Coração de um Sénior', cat2Text:'Dignidade, conforto e companhia para os nossos idosos.',
+    cat3Title:'Sonhos de Propósito & Paz', cat3Text:'Integração social e bem-estar para uma comunidade mais forte.',
+    catCta:'Ver Sonhos',
+    dreamLabel:'Sonhos que Podemos Realizar Juntos', dreamTitle:'A Nossa Lista de Sonhos',
+    dreamSub:'Cada projeto representa uma necessidade real. Selecione um sonho para ver o impacto da sua doação.',
+    filterAll:'Todos', filterChild:'Crianças', filterSenior:'Seniores', filterCommunity:'Comunidade',
+    filterFulfilled:'Realizados', filterProgress:'Em Progresso',
+    teamLabel:'As Nossas Pessoas', teamTitle:'Uma Equipa com Coração',
+    teamSub:'Mulheres dedicadas que todos os dias transformam vidas com profissionalismo, amor e compaixão.',
+    role1:'Diretora de Cuidados', role2:'Coordenadora Social', role3:'Enfermeira Chefe', role4:'Técnica de Apoio à Infância',
+    impLabel:'O Nosso Legado', impTitle:'95 Anos de Impacto Real',
+    impSub:'Desde 1929, a Santa Casa das Caldas da Rainha tem sido um pilar de esperança e dignidade.',
+    stat1:'Anos de Serviço', stat2:'Vidas Apoiadas/Ano', stat3:'Programas Ativos', stat4:'Transparência Total',
+    impTransp:'Todas as doações são geridas de forma transparente. A Santa Casa é uma IPSS com estatuto de utilidade pública — doações dedutíveis nos impostos.',
+    taxBadge:'IPSS Certificada · Benefícios Fiscais Disponíveis',
+    giftLabel:'Uma Ideia Especial', giftTitle:'Doe em Nome de Alguém',
+    giftSub:'Celebre um aniversário, casamento ou ocasião especial com uma doação em nome de alguém querido. Receba um certificado elegante para imprimir.',
+    occ1:'Aniversário', occ2:'Casamento', occ3:'Formatura', occ4:'Em Memória', occ5:'Outra Ocasião',
+    footerAbout:'SCMCR — instituição de solidariedade social ao serviço da comunidade desde 1929.',
+    footerTax:'IPSS · Doações Dedutíveis', footerNav:'Navegação', footerLegal:'Legal', footerContact:'Contacto',
+    fPrivacy:'Privacidade', fTerms:'Termos de Uso', fTransp:'Transparência', fAdmin:'Acesso Admin',
+    copyright:'© 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.',
+    modalDonTitle:'Realize Este Sonho', donFor:'A apoiar:', donAmount:'Valor da sua doação', other:'Outro',
+    donName:'Nome (Opcional)', donEmail:'Email *', donIsGift:'É uma oferta? Receba um certificado elegante para imprimir',
+    recName:'Nome do Destinatário', occasion:'Ocasião', giftMsg:'Mensagem Pessoal (Opcional)',
+    donPayment:'Método de Pagamento', donPaySel:'Selecione...', payCard:'Cartão de Crédito/Débito',
+    payMB:'MB Way', payBank:'Transferência Bancária', donSubmit:'Realizar o Sonho',
+    donNote:'🔒 Processamento seguro · IPSS certificada · Doações dedutíveis',
+    dbColl:'Angariado', dbGap2:'Em Falta', dbDon:'Doadores', dbTime2:'Tempo',
+    dbNat:'🌍 Top 3 Nacionalidades dos Doadores', dbCta:'Realize Este Sonho',
+    certTitle:'Obrigado pela sua Generosidade!', certHead:'Certificado de Oferta',
+    certFor:'Este certificado honra', certDream:'Sonho apoiado', certPrint:'Imprimir Certificado',
+    adminTitle:'Acesso Administrador', adminPwLabel:'Palavra-passe de acesso',
+    adminErr:'Palavra-passe incorreta. Tente novamente.', adminBtn:'Entrar',
+    adminDashTitle:'Painel de Gestão de Sonhos', tabAdd:'Adicionar / Editar Sonho', tabList:'Ver Todos os Projetos',
+    aTitle:'Título do Sonho', aDesc:'Descrição', aCat:'Categoria', aStatus:'Estado',
+    aGoal:'Meta (€)', aCollected:'Angariado (€)', aDonors:'Nº de Doadores', aTime:'Tempo para Concluir',
+    aNat:'Nacionalidades (formato: PT:60, EN:25, FR:15)', aClear:'Limpar', aSave:'Guardar Sonho', aLogout:'Sair do Painel',
+    btnViewDetails:'Ver Detalhes', btnMakeDream:'Realizar Este Sonho', btnDreamDone:'Sonho Realizado ✓',
+    progressLabel:'progresso',
+  },
+  en: {
+    heroTag:'Celebrating 95 Years of Compassion', heroTitle:'Building <em>Dreams,</em><br>Shaping Futures',
+    heroSub:'Join the Santa Casa da Misericórdia das Caldas da Rainha to continue a legacy of care, hope and community transformation.',
+    heroCta1:'Explore Dreams', heroCta2:'Donate Now', scroll:'Scroll',
+    navMission:'Our Mission', navDreams:'Dreams', navTeam:'Team', navImpact:'Impact', navGift:'Gift',
+    catLabel:'Our Areas of Action', catTitle:'Become a Dream Maker',
+    catSub:'Each category represents a pillar of our mission. Your support transforms aspirations into reality.',
+    catBadge1:'Childhood', catBadge2:'Seniors', catBadge3:'Community',
+    cat1Title:"A Child's Wish", cat1Text:'Education, joy and care for our youngest community members.',
+    cat2Title:"A Senior's Heart", cat2Text:'Dignity, comfort and companionship for our elderly residents.',
+    cat3Title:'Dreams of Purpose & Peace', cat3Text:'Social integration and wellbeing for a stronger community.',
+    catCta:'See Dreams',
+    dreamLabel:'Dreams We Can Make Come True Together', dreamTitle:'Our Dream List',
+    dreamSub:"Each project represents a real need. Select a dream to see the impact of your donation.",
+    filterAll:'All', filterChild:'Children', filterSenior:'Seniors', filterCommunity:'Community',
+    filterFulfilled:'Fulfilled', filterProgress:'In Progress',
+    teamLabel:'Our People', teamTitle:'A Team with Heart',
+    teamSub:'Dedicated women who every day transform lives with professionalism, love and compassion.',
+    role1:'Director of Care', role2:'Social Coordinator', role3:'Head Nurse', role4:'Childhood Support Specialist',
+    impLabel:'Our Legacy', impTitle:'95 Years of Real Impact',
+    impSub:'Since 1929, the Santa Casa das Caldas da Rainha has been a pillar of hope and dignity.',
+    stat1:'Years of Service', stat2:'Lives Supported/Year', stat3:'Active Programs', stat4:'Full Transparency',
+    impTransp:'All donations are managed transparently. Santa Casa is a certified non-profit (IPSS) — donations are tax-deductible in Portugal.',
+    taxBadge:'Certified IPSS · Tax Benefits Available',
+    giftLabel:'A Special Idea', giftTitle:'Donate in Someone\'s Name',
+    giftSub:'Celebrate a birthday, anniversary or special occasion with a donation in the name of a loved one. Receive an elegant printable certificate.',
+    occ1:'Birthday', occ2:'Wedding Anniversary', occ3:'Graduation', occ4:'In Memory', occ5:'Other Occasion',
+    footerAbout:'SCMCR — a social solidarity institution serving the community since 1929.',
+    footerTax:'Certified IPSS · Tax-Deductible Donations', footerNav:'Navigation', footerLegal:'Legal', footerContact:'Contact',
+    fPrivacy:'Privacy Policy', fTerms:'Terms of Use', fTransp:'Transparency', fAdmin:'Admin Access',
+    copyright:'© 2024 Santa Casa da Misericórdia das Caldas da Rainha. All rights reserved.',
+    modalDonTitle:'Make This Dream Come True', donFor:'Supporting:', donAmount:'Choose your donation amount', other:'Other',
+    donName:'Name (Optional)', donEmail:'Email *', donIsGift:'Is this a gift? Receive an elegant printable certificate',
+    recName:"Recipient's Name", occasion:'Occasion', giftMsg:'Personal Message (Optional)',
+    donPayment:'Payment Method', donPaySel:'Select...', payCard:'Credit/Debit Card',
+    payMB:'MB Way', payBank:'Bank Transfer', donSubmit:'Make the Dream Come True',
+    donNote:'🔒 Secure processing · Certified IPSS · Tax-deductible',
+    dbColl:'Raised', dbGap2:'Gap', dbDon:'Donors', dbTime2:'Time',
+    dbNat:'🌍 Top 3 Donor Nationalities', dbCta:'Make This Dream Real',
+    certTitle:'Thank You for Your Generosity!', certHead:'Gift Certificate',
+    certFor:'This certificate honours', certDream:'Dream supported', certPrint:'Print Certificate',
+    adminTitle:'Administrator Access', adminPwLabel:'Access password',
+    adminErr:'Incorrect password. Please try again.', adminBtn:'Login',
+    adminDashTitle:'Dream Management Panel', tabAdd:'Add / Edit Dream', tabList:'View All Projects',
+    aTitle:'Dream Title', aDesc:'Description', aCat:'Category', aStatus:'Status',
+    aGoal:'Goal (€)', aCollected:'Raised (€)', aDonors:'No. of Donors', aTime:'Time to Complete',
+    aNat:'Nationalities (format: PT:60, EN:25, FR:15)', aClear:'Clear', aSave:'Save Dream', aLogout:'Log out',
+    btnViewDetails:'View Details', btnMakeDream:'Make This Dream Real', btnDreamDone:'Dream Fulfilled ✓',
+    progressLabel:'progress',
+  },
+  fr: {
+    heroTag:'Célébrant 95 Ans de Compassion', heroTitle:'Construire des <em>Rêves,</em><br>Façonner des Avenirs',
+    heroSub:"Rejoignez la Santa Casa da Misericórdia das Caldas da Rainha pour perpétuer un héritage de soin, d'espoir et de transformation communautaire.",
+    heroCta1:'Explorer les Rêves', heroCta2:'Faire un Don', scroll:'Défiler',
+    navMission:'Notre Mission', navDreams:'Rêves', navTeam:'Équipe', navImpact:'Impact', navGift:'Cadeau',
+    catLabel:"Nos Domaines d'Action", catTitle:'Devenez Réalisateur de Rêves',
+    catSub:'Chaque catégorie représente un pilier de notre mission. Votre soutien transforme les aspirations en réalité.',
+    catBadge1:'Enfance', catBadge2:'Aînés', catBadge3:'Communauté',
+    cat1Title:"Le Souhait d'un Enfant", cat1Text:'Éducation, joie et soin pour nos plus jeunes membres.',
+    cat2Title:"Le Cœur d'un Aîné", cat2Text:'Dignité, confort et compagnie pour nos résidents âgés.',
+    cat3Title:'Rêves de But et de Paix', cat3Text:'Intégration sociale et bien-être pour une communauté plus forte.',
+    catCta:'Voir les Rêves',
+    dreamLabel:'Rêves Que Nous Pouvons Réaliser Ensemble', dreamTitle:'Notre Liste de Rêves',
+    dreamSub:'Chaque projet représente un besoin réel. Sélectionnez un rêve pour voir l\'impact de votre don.',
+    filterAll:'Tous', filterChild:'Enfants', filterSenior:'Aînés', filterCommunity:'Communauté',
+    filterFulfilled:'Réalisés', filterProgress:'En Cours',
+    teamLabel:'Nos Personnes', teamTitle:'Une Équipe avec Cœur',
+    teamSub:'Des femmes dévouées qui transforment des vies chaque jour avec professionnalisme et amour.',
+    role1:'Directrice des Soins', role2:'Coordinatrice Sociale', role3:'Infirmière en Chef', role4:'Technicienne Enfance',
+    impLabel:'Notre Héritage', impTitle:'95 Ans d\'Impact Réel',
+    impSub:'Depuis 1929, la Santa Casa das Caldas da Rainha est un pilier d\'espoir et de dignité.',
+    stat1:'Années de Service', stat2:'Vies Soutenues/An', stat3:'Programmes Actifs', stat4:'Transparence Totale',
+    impTransp:"Tous les dons sont gérés de manière transparente. La Santa Casa est une IPSS certifiée — dons déductibles fiscalement au Portugal.",
+    taxBadge:'IPSS Certifiée · Avantages Fiscaux Disponibles',
+    giftLabel:'Une Idée Spéciale', giftTitle:"Donnez au Nom de Quelqu'un",
+    giftSub:"Célébrez un anniversaire, un mariage ou une occasion spéciale avec un don au nom d'un proche. Recevez un élégant certificat imprimable.",
+    occ1:'Anniversaire', occ2:'Anniversaire de Mariage', occ3:'Remise de Diplôme', occ4:'En Mémoire', occ5:'Autre Occasion',
+    footerAbout:"SCMCR — institution de solidarité sociale au service de la communauté depuis 1929.",
+    footerTax:'IPSS Certifiée · Dons Déductibles', footerNav:'Navigation', footerLegal:'Légal', footerContact:'Contact',
+    fPrivacy:'Politique de Confidentialité', fTerms:"Conditions d'Utilisation", fTransp:'Transparence', fAdmin:'Accès Admin',
+    copyright:'© 2024 Santa Casa da Misericórdia das Caldas da Rainha. Tous droits réservés.',
+    modalDonTitle:'Réalisez Ce Rêve', donFor:'En soutien à :', donAmount:'Choisissez votre montant', other:'Autre',
+    donName:'Nom (Optionnel)', donEmail:'Email *', donIsGift:'Est-ce un cadeau ? Recevez un certificat élégant à imprimer',
+    recName:'Nom du Destinataire', occasion:'Occasion', giftMsg:'Message Personnel (Optionnel)',
+    donPayment:'Mode de Paiement', donPaySel:'Sélectionnez...', payCard:'Carte Bancaire',
+    payMB:'MB Way', payBank:'Virement Bancaire', donSubmit:'Réaliser le Rêve',
+    donNote:'🔒 Traitement sécurisé · IPSS certifiée · Déductible fiscalement',
+    dbColl:'Collecté', dbGap2:'Manquant', dbDon:'Donateurs', dbTime2:'Temps',
+    dbNat:'🌍 Top 3 Nationalités des Donateurs', dbCta:'Réalisez Ce Rêve',
+    certTitle:'Merci pour Votre Générosité !', certHead:'Certificat de Don',
+    certFor:'Ce certificat honore', certDream:'Rêve soutenu', certPrint:'Imprimer le Certificat',
+    adminTitle:'Accès Administrateur', adminPwLabel:"Mot de passe d'accès",
+    adminErr:'Mot de passe incorrect. Veuillez réessayer.', adminBtn:'Connexion',
+    adminDashTitle:'Tableau de Bord de Gestion des Rêves', tabAdd:'Ajouter / Modifier un Rêve', tabList:'Voir Tous les Projets',
+    aTitle:'Titre du Rêve', aDesc:'Description', aCat:'Catégorie', aStatus:'Statut',
+    aGoal:'Objectif (€)', aCollected:'Collecté (€)', aDonors:'Nb. Donateurs', aTime:'Temps pour Compléter',
+    aNat:'Nationalités (format : PT:60, EN:25, FR:15)', aClear:'Effacer', aSave:'Enregistrer le Rêve', aLogout:'Déconnexion',
+    btnViewDetails:'Voir Détails', btnMakeDream:'Réalisez Ce Rêve', btnDreamDone:'Rêve Réalisé ✓',
+    progressLabel:'progression',
+  }
+};
+ 
+let currentLang = 'pt';
+ 
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-float button').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if (T[lang][key] !== undefined) {
+      if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+        el.placeholder = T[lang][key];
+      } else {
+        el.innerHTML = T[lang][key];
+      }
+    }
+  });
+  renderDreams();
+}
+ 
+/* ── DREAM DATA ──────────────────────────────────────────── */
+const defaultDreams = [
+  {
+    id:1, category:'child', status:'progress',
+    title:{pt:'Novos Livros para a Nossa Biblioteca', en:'New Books for Our Library', fr:'Nouveaux Livres pour Notre Bibliothèque'},
+    desc:{pt:'A biblioteca dos nossos filhos precisa de uma atualização! Ajude-nos a adquirir livros que estimulam a imaginação e fomentam o amor pela leitura.',
+          en:"Our children's library needs an update! Help us acquire books that spark imagination and foster a love of reading.",
+          fr:"La bibliothèque de nos enfants a besoin d'une mise à jour ! Aidez-nous à acquérir des livres qui stimulent l'imagination."},
+    goal:500, collected:200, donors:15, time:'2 meses',
+    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:70},{flag:'🇬🇧',name:'Reino Unido',pct:20},{flag:'🇫🇷',name:'França',pct:10}]
+  },
+  {
+    id:2, category:'senior', status:'fulfilled',
+    title:{pt:'Cadeiras de Rodas para Seniores', en:'Wheelchairs for Seniors', fr:'Fauteuils Roulants pour Aînés'},
+    desc:{pt:'Garantimos mobilidade e conforto aos nossos residentes idosos com cadeiras de rodas novas e ergonomicamente projetadas.',
+          en:'We ensured mobility and comfort for our elderly residents with new, ergonomically designed wheelchairs.',
+          fr:'Nous avons assuré mobilité et confort à nos résidents âgés avec de nouveaux fauteuils roulants ergonomiques.'},
+    goal:1200, collected:1200, donors:30, time:'4 meses',
+    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:60},{flag:'🇺🇸',name:'Estados Unidos',pct:25},{flag:'🇩🇪',name:'Alemanha',pct:15}]
+  },
+  {
+    id:3, category:'community', status:'progress',
+    title:{pt:'Projeto de Horta Comunitária', en:'Community Garden Project', fr:'Projet de Jardin Communautaire'},
+    desc:{pt:'Apoie a criação de uma vibrante horta comunitária, oferecendo produtos frescos, oportunidades educacionais e espaço de convívio.',
+          en:'Support the creation of a vibrant community garden, offering fresh produce, educational opportunities and intergenerational connection.',
+          fr:"Soutenez la création d'un jardin communautaire vibrant, offrant des produits frais et des opportunités éducatives."},
+    goal:2500, collected:1800, donors:22, time:'3 meses',
+    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:50},{flag:'🇫🇷',name:'França',pct:30},{flag:'🇪🇸',name:'Espanha',pct:20}]
+  },
+  {
+    id:4, category:'child', status:'progress',
+    title:{pt:'Material de Arte para Ateliers Criativos', en:'Art Supplies for Creative Workshops', fr:"Matériel d'Art pour Ateliers Créatifs"},
+    desc:{pt:'Tintas, pincéis, barro e materiais criativos para os nossos ateliers semanais, onde as crianças se expressam livremente.',
+          en:'Paints, brushes, clay and creative materials for our weekly workshops, where children express themselves freely.',
+          fr:"Peintures, pinceaux, argile et matériaux créatifs pour nos ateliers hebdomadaires."},
+    goal:350, collected:150, donors:10, time:'1 mês',
+    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:80},{flag:'🇬🇧',name:'Reino Unido',pct:15},{flag:'🇳🇱',name:'Holanda',pct:5}]
+  },
+  {
+    id:5, category:'senior', status:'progress',
+    title:{pt:'Programa de Música Terapêutica', en:'Music Therapy Program', fr:'Programme de Musicothérapie'},
+    desc:{pt:'Financie um programa de música terapêutica para os nossos idosos, trazendo alegria, estimulando a memória e promovendo o bem-estar.',
+          en:'Fund a music therapy program for our elderly, bringing joy, stimulating memory and promoting wellbeing.',
+          fr:"Financez un programme de musicothérapie pour nos aînés, apportant joie et bien-être."},
+    goal:800, collected:320, donors:18, time:'2 meses',
+    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:65},{flag:'🇩🇪',name:'Alemanha',pct:20},{flag:'🇸🇪',name:'Suécia',pct:15}]
+  },
+  {
+    id:6, category:'community', status:'fulfilled',
+    title:{pt:'Inclusão Digital para Famílias', en:'Digital Inclusion for Families', fr:'Inclusion Numérique pour les Familles'},
+    desc:{pt:'Computadores e formação em internet para famílias carenciadas, preenchendo o fosso digital e possibilitando novas oportunidades.',
+          en:'Computers and internet training for disadvantaged families, bridging the digital divide and enabling new opportunities.',
+          fr:"Ordinateurs et formation internet pour les familles défavorisées, comblant le fossé numérique."},
+    goal:1800, collected:1800, donors:28, time:'5 meses',
+    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:55},{flag:'🇬🇧',name:'Reino Unido',pct:30},{flag:'🇧🇪',name:'Bélgica',pct:15}]
+  }
+];
+ 
+function getDreams() {
+  try {
+    const stored = localStorage.getItem('scmcr_dreams');
+    return stored ? JSON.parse(stored) : defaultDreams;
+  } catch(e) { return defaultDreams; }
+}
+function saveDreams(dreams) {
+  try { localStorage.setItem('scmcr_dreams', JSON.stringify(dreams)); } catch(e){}
+}
+ 
+/* ── RENDER DREAMS ───────────────────────────────────────── */
+let currentFilter = 'all';
+ 
+function renderDreams() {
+  const dreams = getDreams();
+  const lang = currentLang;
+  const t = T[lang];
+  const grid = document.getElementById('dreamGrid');
+  grid.innerHTML = '';
+ 
+  dreams.forEach(d => {
+    const pct = Math.min(100, Math.round((d.collected / d.goal) * 100));
+    const isFulfilled = d.status === 'fulfilled';
+    const title = d.title[lang] || d.title.pt;
+    const desc = d.desc[lang] || d.desc.pt;
+ 
+    const show = (currentFilter === 'all') ||
+                 (currentFilter === d.category) ||
+                 (currentFilter === d.status);
+ 
+    const el = document.createElement('div');
+    el.className = 'dream-item' + (show ? '' : ' hidden');
+    el.dataset.category = d.category;
+    el.dataset.status = d.status;
+    el.dataset.id = d.id;
+ 
+    el.innerHTML = `
+      <div class="dream-item__inner">
+        <h4>${title}</h4>
+        <p>${desc}</p>
+        <div class="dream-progress">
+          <div class="progress-label">
+            <span>€${d.collected.toLocaleString()} / €${d.goal.toLocaleString()}</span>
+            <span>${pct}% ${t.progressLabel}</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+      </div>
+      <div class="dream-item__footer">
+        <span class="status-badge ${isFulfilled ? 'fulfilled' : 'progress'}">
+          ${isFulfilled ? '✓ ' + (t.filterFulfilled||'Realizado') : '⏳ ' + (t.filterProgress||'Em Progresso')}
+        </span>
+        <button class="btn btn-ghost btn-sm" onclick="openDashboard(${d.id})">${t.btnViewDetails}</button>
+        ${isFulfilled
+          ? `<button class="btn btn-sm" disabled style="background:var(--sand);color:var(--text-lt);border:none">${t.btnDreamDone}</button>`
+          : `<button class="btn btn-primary btn-sm open-donation" data-dream-id="${d.id}">${t.btnMakeDream}</button>`
+        }
+      </div>
+    `;
+    grid.appendChild(el);
+  });
+ 
+  // Re-attach donation button listeners
+  document.querySelectorAll('.open-donation').forEach(btn => {
+    btn.addEventListener('click', function() {
+      openDonation(this.dataset.dreamId);
+    });
+  });
+}
+ 
+/* ── FILTER BUTTONS ──────────────────────────────────────── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    currentFilter = this.dataset.filter;
+    renderDreams();
+  });
+});
+ 
+/* ── MODALS ──────────────────────────────────────────────── */
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if(e.target === m) closeModal(m.id); });
+});
+ 
+/* ── DONATION MODAL ──────────────────────────────────────── */
+let activeDreamId = 0;
+ 
+function openDonation(dreamId) {
+  activeDreamId = dreamId;
+  const dreams = getDreams();
+  const d = dreams.find(x => x.id == dreamId);
+  const t = T[currentLang];
+  const nameEl = document.getElementById('donDreamName');
+  if (d) {
+    nameEl.textContent = ' ' + (d.title[currentLang] || d.title.pt);
+  } else {
+    nameEl.textContent = ' ' + (currentLang==='en'?'General Fund':currentLang==='fr'?'Fonds Général':'Fundo Geral');
+  }
+  openModal('modalDonation');
+}
+ 
+function selectAmount(el, val) {
+  document.querySelectorAll('.amount-pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  const custom = document.getElementById('customAmount');
+  custom.style.display = val === 'other' ? 'block' : 'none';
+}
+ 
+function toggleGift() {
+  const cb = document.getElementById('isGift');
+  cb.checked = !cb.checked;
+  document.getElementById('giftFields').style.display = cb.checked ? 'block' : 'none';
+}
+ 
+function submitDonation() {
+  const email = document.getElementById('donorEmail').value;
+  if (!email) { alert(currentLang==='en'?'Please enter your email.':currentLang==='fr'?'Veuillez entrer votre email.':'Por favor insira o seu email.'); return; }
+ 
+  const isGift = document.getElementById('isGift').checked;
+ 
+  if (isGift) {
+    const recipient = document.getElementById('recipientName').value || '—';
+    const occasion = document.getElementById('giftOccasion').value || '—';
+    const msg = document.getElementById('giftMessage').value;
+    const dreams = getDreams();
+    const d = dreams.find(x => x.id == activeDreamId);
+    const dreamName = d ? (d.title[currentLang]||d.title.pt) : (currentLang==='en'?'General Fund':'Fundo Geral');
+ 
+    document.getElementById('certRecipient').textContent = recipient;
+    document.getElementById('certOccasion').textContent = occasion;
+    document.getElementById('certDreamName').textContent = dreamName;
+    const msgEl = document.getElementById('certMsg');
+    if (msg) { msgEl.textContent = '"' + msg + '"'; msgEl.style.display = 'block'; }
+    else { msgEl.style.display = 'none'; }
+ 
+    closeModal('modalDonation');
+    openModal('modalCert');
+  } else {
+    closeModal('modalDonation');
+    const thanks = {pt:'Obrigado pela sua donação! 💛', en:'Thank you for your donation! 💛', fr:'Merci pour votre don ! 💛'};
+    alert(thanks[currentLang]);
+  }
+}
+ 
+/* ── GIFT DONATION (from gift section) ───────────────────── */
+function openGiftDonation(occasion) {
+  openDonation(0);
+  setTimeout(() => {
+    const cb = document.getElementById('isGift');
+    if (!cb.checked) toggleGift();
+    const occMap = {
+      birthday: {pt:'Aniversário', en:'Birthday', fr:'Anniversaire'},
+      anniversary: {pt:'Aniversário de Casamento', en:'Wedding Anniversary', fr:'Anniversaire de Mariage'},
+      graduation: {pt:'Formatura', en:'Graduation', fr:'Remise de Diplôme'},
+      memory: {pt:'Em Memória', en:'In Memory', fr:'En Mémoire'},
+      other: {pt:'Ocasião Especial', en:'Special Occasion', fr:'Occasion Spéciale'},
+    };
+    document.getElementById('giftOccasion').value = occMap[occasion]?.[currentLang] || occasion;
+  }, 100);
+}
+ 
+/* ── DREAM DASHBOARD ─────────────────────────────────────── */
+function openDashboard(dreamId) {
+  const dreams = getDreams();
+  const d = dreams.find(x => x.id == dreamId);
+  if (!d) return;
+  const lang = currentLang;
+  const title = d.title[lang] || d.title.pt;
+  const desc = d.desc[lang] || d.desc.pt;
+  const pct = Math.min(100, Math.round((d.collected / d.goal) * 100));
+  const gap = Math.max(0, d.goal - d.collected);
+  const isFulfilled = d.status === 'fulfilled';
+ 
+  document.getElementById('dbTitle').textContent = title;
+  document.getElementById('dbDesc').textContent = desc;
+  document.getElementById('dbCollected').textContent = '€' + d.collected.toLocaleString();
+  document.getElementById('dbDonors').textContent = d.donors;
+  document.getElementById('dbTime').textContent = d.time || 'N/A';
+ 
+  const gapStat = document.getElementById('dbGapStat');
+  document.getElementById('dbGap').textContent = '€' + gap.toLocaleString();
+  gapStat.style.display = isFulfilled ? 'none' : 'block';
+ 
+  document.getElementById('dbProgAmt').textContent = '€' + d.collected.toLocaleString() + ' / €' + d.goal.toLocaleString();
+  document.getElementById('dbProgPct').textContent = pct + '%';
+ 
+  const fill = document.getElementById('dbProgFill');
+  fill.style.width = '0%';
+  setTimeout(() => { fill.style.width = pct + '%'; }, 60);
+ 
+  const dbBox = document.getElementById('dashboardBox');
+  dbBox.className = 'modal-box modal-lg' + (isFulfilled ? ' fulfilled' : '');
+ 
+  // Nationalities
+  const natList = document.getElementById('dbNatList');
+  natList.innerHTML = '';
+  (d.nationalities || []).forEach(n => {
+    const row = document.createElement('div');
+    row.className = 'nat-row';
+    row.innerHTML = `
+      <span class="nat-flag">${n.flag||'🌍'}</span>
+      <span class="nat-name">${n.name}</span>
+      <div class="nat-bar-wrap"><div class="nat-bar" style="width:${n.pct}%"></div></div>
+      <span class="nat-pct">${n.pct}%</span>
+    `;
+    natList.appendChild(row);
+  });
+ 
+  const donBtn = document.getElementById('dbDonateBtn');
+  donBtn.dataset.dreamId = dreamId;
+  donBtn.style.display = isFulfilled ? 'none' : 'inline-flex';
+ 
+  openModal('modalDashboard');
+}
+ 
+// Dashboard donate button
+document.getElementById('dbDonateBtn').addEventListener('click', function() {
+  closeModal('modalDashboard');
+  openDonation(this.dataset.dreamId);
+});
+ 
+/* ── ADMIN ───────────────────────────────────────────────── */
+const ADMIN_PW = 'scmcr2024';
+ 
+document.getElementById('adminLink').addEventListener('click', e => {
+  e.preventDefault();
+  openModal('modalAdmin');
+});
+ 
+document.getElementById('adminPwInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') adminLogin();
+});
+ 
+function adminLogin() {
+  const pw = document.getElementById('adminPwInput').value;
+  const err = document.getElementById('adminError');
+  if (pw === ADMIN_PW) {
+    closeModal('modalAdmin');
+    document.getElementById('adminPwInput').value = '';
+    err.style.display = 'none';
+    document.getElementById('adminPage').classList.add('open');
+    document.getElementById('adminPage').scrollIntoView({behavior:'smooth'});
+    renderAdminList();
+  } else {
+    err.style.display = 'block';
+  }
+}
+ 
+function adminLogout() {
+  document.getElementById('adminPage').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
+function switchTab(btn, panelId) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+  if (panelId === 'panelList') renderAdminList();
+}
+ 
+function clearAdminForm() {
+  document.getElementById('editId').value = '';
+  ['aTitle','aDesc','aGoal','aCollected','aDonors','aTime','aNat'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('aCollected').value = '0';
+  document.getElementById('aDonors').value = '0';
+  document.getElementById('aCat').value = 'child';
+  document.getElementById('aStatus').value = 'progress';
+}
+ 
+function saveDream() {
+  const title = document.getElementById('aTitle').value.trim();
+  const desc = document.getElementById('aDesc').value.trim();
+  const goal = parseFloat(document.getElementById('aGoal').value) || 0;
+  if (!title || !desc || !goal) {
+    alert(currentLang==='en'?'Please fill in all required fields.':currentLang==='fr'?'Veuillez remplir tous les champs requis.':'Por favor preencha todos os campos obrigatórios.');
+    return;
+  }
+ 
+  const collected = parseFloat(document.getElementById('aCollected').value) || 0;
+  const donors = parseInt(document.getElementById('aDonors').value) || 0;
+  const time = document.getElementById('aTime').value.trim() || '—';
+  const cat = document.getElementById('aCat').value;
+  const status = document.getElementById('aStatus').value;
+  const natRaw = document.getElementById('aNat').value.trim();
+ 
+  // Parse nationalities
+  const natMap = {PT:'🇵🇹',EN:'🇬🇧',FR:'🇫🇷',ES:'🇪🇸',DE:'🇩🇪',US:'🇺🇸',NL:'🇳🇱',BE:'🇧🇪',SE:'🇸🇪'};
+  const nats = natRaw ? natRaw.split(',').map(s => {
+    const [code, pct] = s.trim().split(':');
+    return {flag: natMap[code.trim().toUpperCase()]||'🌍', name: code.trim().toUpperCase(), pct: parseInt(pct)||0};
+  }) : [{flag:'🇵🇹',name:'Portugal',pct:100}];
+ 
+  const dreams = getDreams();
+  const editId = document.getElementById('editId').value;
+ 
+  if (editId) {
+    // Edit existing
+    const idx = dreams.findIndex(d => d.id == editId);
+    if (idx >= 0) {
+      dreams[idx] = {...dreams[idx], status, category:cat, goal, collected, donors, time, nationalities:nats,
+        title:{...dreams[idx].title, pt:title, en:title, fr:title},
+        desc:{...dreams[idx].desc, pt:desc, en:desc, fr:desc}
+      };
+    }
+  } else {
+    // New dream
+    const newId = Math.max(0, ...dreams.map(d => d.id)) + 1;
+    dreams.push({
+      id:newId, category:cat, status, goal, collected, donors, time, nationalities:nats,
+      title:{pt:title, en:title, fr:title},
+      desc:{pt:desc, en:desc, fr:desc}
+    });
+  }
+ 
+  saveDreams(dreams);
+  renderDreams();
+  clearAdminForm();
+  const saved = {pt:'Sonho guardado com sucesso! ✓', en:'Dream saved successfully! ✓', fr:'Rêve enregistré avec succès ! ✓'};
+  alert(saved[currentLang]);
+}
+ 
+function editDream(id) {
+  const dreams = getDreams();
+  const d = dreams.find(x => x.id == id);
+  if (!d) return;
+  document.getElementById('editId').value = id;
+  document.getElementById('aTitle').value = d.title.pt;
+  document.getElementById('aDesc').value = d.desc.pt;
+  document.getElementById('aGoal').value = d.goal;
+  document.getElementById('aCollected').value = d.collected;
+  document.getElementById('aDonors').value = d.donors;
+  document.getElementById('aTime').value = d.time;
+  document.getElementById('aCat').value = d.category;
+  document.getElementById('aStatus').value = d.status;
+  const natStr = (d.nationalities||[]).map(n => n.name + ':' + n.pct).join(', ');
+  document.getElementById('aNat').value = natStr;
+  switchTab(document.querySelector('.admin-tab'), 'panelAdd');
+  document.getElementById('panelAdd').classList.add('active');
+  document.getElementById('panelList').classList.remove('active');
+  document.querySelectorAll('.admin-tab').forEach((t,i) => t.classList.toggle('active', i===0));
+}
+ 
+function deleteDream(id) {
+  const confirm_msg = {pt:'Tem a certeza que quer apagar este sonho?', en:'Are you sure you want to delete this dream?', fr:'Êtes-vous sûr de vouloir supprimer ce rêve ?'};
+  if (!confirm(confirm_msg[currentLang])) return;
+  const dreams = getDreams().filter(d => d.id != id);
+  saveDreams(dreams);
+  renderAdminList();
+  renderDreams();
+}
+ 
+function renderAdminList() {
+  const dreams = getDreams();
+  const container = document.getElementById('adminProjectList');
+  container.innerHTML = '';
+  dreams.forEach(d => {
+    const pct = Math.min(100, Math.round((d.collected/d.goal)*100));
+    const row = document.createElement('div');
+    row.className = 'admin-proj-row';
+    row.dataset.status = d.status;
+    row.innerHTML = `
+      <div class="admin-proj-info">
+        <span>${d.title.pt}</span>
+        <small>€${d.collected}/${d.goal} · ${pct}% · ${d.donors} doadores · ${d.status==='fulfilled'?'✓ Realizado':'Em Progresso'}</small>
+      </div>
+      <div class="admin-proj-actions">
+        <button onclick="editDream(${d.id})"><i class="fa fa-pen"></i> Editar</button>
+        <button class="del-btn" onclick="deleteDream(${d.id})"><i class="fa fa-trash"></i> Apagar</button>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+}
+ 
+/* ── INIT ─────────────────────────────────────────────────── */
+setLang('pt');
+</script>
 </body>
 </html>
+ 
