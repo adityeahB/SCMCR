@@ -1,83 +1,9 @@
-
-SCMCR
-/
-
-<!DOCTYPE html> <html lang="pt"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title data-lang-key="pageTitle">Santa Casa da Misericórdia das Caldas da Rainha - Realize um Sonho</title> <link href="https://fonts.googleapis.com/c
-
-pasted
-
-COde attached is not delivering on the requirements below. check and give the code to paste to vercel/github. no tech skills beyond copy-paste-commit
-
-None of the images are loadingWhen a 'wish is fulfilled', on clicking it should show the amount collected, the number of donors and time taken to reach the goal, top 3 nationalities that made it happen. like a professional dashboradSame for all projects ongoing;   show the amount collected, the gap to be bridged in amount, the number of donors and time taken to reach the goal, top 3 nationalities that made it happen. like a professional dashboardThere should be 'admin' login via a password to be able to feed this data easily. Users are not tech savvy, so a dashboard should ask for details of projects in motion, setup new projects etcThe site should be very visual heavy. Add free images (that load) from silver coast Portugal.Allow small donations on people's birthdays anniversaries etc in exchange for a printable 'gift' as a note of thanksThe language choice should hover on the left or right sides and not take up space in the mastheadMention tax status to allow people to know they are legit and transparentShow photos of the team (dedicated smiling middleaged portuguese women in white uniforms)
-
-Here's a plan of action and the updated code:
-1. Image Loading: I will replace the Unsplash links with actual URLs for royalty-free images from Pexels, focusing on diverse representations of Portuguese life, the Silver Coast, elders, children, youth, and women, ensuring they load correctly. I'll add alt text to all of them.
-2. Dashboard for Dreams (Fulfilled & In Progress):
-   * Modal Integration: Clicking on a "Make This Dream" or "Dream Made" button will now open a new, dedicated "Dream Dashboard" modal. This modal will dynamically display project specifics.
-   * Data Display:
-      * Fulfilled Dreams: Will show "Amount Collected," "Number of Donors," "Time Taken," and "Top 3 Nationalities" (as placeholder data, of course).
-      * In Progress Dreams: Will show "Amount Collected," "Gap to be Bridged," "Number of Donors," and "Top 3 Nationalities."
-   * Visuals: I'll use simple, clear visual elements within the modal to represent this data.
-3. Admin Login & Dashboard:
-   * Login Interface: A simple, discreet "Admin Login" link will be added to the footer. Clicking it will bring up a modal with a password field.
-   * Backend Simulation: Upon successful (placeholder) login, the user will be presented with a simulated admin dashboard page. This page will have inputs for "Project Title," "Description," "Goal Amount," "Current Amount," "Status," "Category," "Donors," "Nationalities," and "Time Taken" to mimic data entry for both new and existing projects.
-   * User Experience: The design will be clean and intuitive, even though it's a front-end simulation.
-4. Visual Heavy & Silver Coast Imagery: I'll increase the use of relevant, high-quality images throughout the page, specifically integrating Silver Coast visuals where appropriate, to create a richer, more immersive experience.
-5. Birthday/Anniversary Donations with Printable Gift:
-   * Modal Extension: The main donation modal will include options for "Is this a gift?" and fields for "Recipient Name," "Occasion," and "Your Message."
-   * Printable Gift (Simulated): After a successful (simulated) gift donation, a new modal will appear with a mock-up of a printable thank-you note/gift certificate.
-6. Language Chooser Positioning: The language switcher will be moved to a floating position on the side of the viewport, not in the masthead, for a cleaner header.
-7. Tax Status: A clear, concise statement about the institution's tax-deductible status will be added to the footer and potentially within the donation modal.
-8. Team Photos: I'll add a new section showcasing the "Our Team" with placeholder images of "dedicated smiling middle-aged Portuguese women in white uniforms," conveying warmth and professionalism.
-
-Show more
-1:27 PM
-
-Architected comprehensive charity website with working images, admin dashboard, and donation features
-Architected comprehensive charity website with working images, admin dashboard, and donation features
-Let me build the complete, deployable file now.
-
-
-Created a file, read a file
-Created a file, read a file
-Download this single index.html file, then paste it into your GitHub repo and deploy to Vercel — no other files needed.
-
-Here's everything that was fixed and built:
-
-Images — all Pexels URLs are in the correct hotlink-friendly format with ?auto=compress&cs=tinysrgb&w=800, plus onerror fallbacks so nothing ever shows as broken.
-
-Silver Coast gallery — a full-width photo strip of Nazaré, Óbidos, Peniche and the Atlantic coast sits right below the hero.
-
-Team section — four cards with real Pexels photos of female healthcare workers in white, with names and roles.
-
-Dream dashboards — clicking "Ver Detalhes" on any dream opens a professional modal showing: amount raised, gap to bridge (for in-progress), donor count, time taken, and a visual nationality breakdown with flags and percentage bars. Fulfilled dreams show in green; in-progress in gold.
-
-Admin panel — click "Acesso Admin" in the footer, enter password scmcr2024 (you can change this in the code), and a full dashboard appears with forms to add new dreams, edit existing ones, update amounts/donors, and delete projects. All data persists in the browser.
-
-Birthday/gift donations — the gift section lets users pick an occasion (birthday, wedding, graduation, memory…), opens the donation form pre-filled, and on submit generates a printable certificate with the recipient's name, occasion, personal message and dream name.
-
-Language switcher — floats vertically on the left side, never touches the masthead.
-
-Tax status — shown in the impact section and footer with a gold badge ("IPSS Certificada · Benefícios Fiscais").
-
-Index
-Code · HTML 
-
-You are out of free messages until 6:00 PM
-Upgrade
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-Index · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Santa Casa da Misericórdia das Caldas da Rainha — Realize um Sonho. Apoio à comunidade desde 1929.">
 <title>Santa Casa da Misericórdia das Caldas da Rainha — Realize um Sonho</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -96,13 +22,13 @@ Copy
   --text-mid:  #4A4A6A;
   --text-lt:   #7A7A9A;
   --success:   #2E7D52;
-  --r-sm: 8px; --r-md: 14px; --r-lg: 24px; --r-xl: 40px;
-  --sh-sm: 0 2px 12px rgba(10,37,64,.07);
-  --sh-md: 0 8px 28px rgba(10,37,64,.12);
-  --sh-lg: 0 20px 60px rgba(10,37,64,.18);
-  --font-h: 'Cormorant Garamond', Georgia, serif;
-  --font-b: 'Jost', system-ui, sans-serif;
-  --trans: .28s cubic-bezier(.4,0,.2,1);
+  --r-sm:8px; --r-md:14px; --r-lg:24px; --r-xl:40px;
+  --sh-sm:0 2px 12px rgba(10,37,64,.07);
+  --sh-md:0 8px 28px rgba(10,37,64,.12);
+  --sh-lg:0 20px 60px rgba(10,37,64,.18);
+  --font-h:'Cormorant Garamond',Georgia,serif;
+  --font-b:'Jost',system-ui,sans-serif;
+  --trans:.28s cubic-bezier(.4,0,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -111,125 +37,140 @@ img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{font-family:var(--font-h);line-height:1.15}
 p{line-height:1.7;color:var(--text-mid)}
- 
-/* ── LANGUAGE SWITCHER (floating side) ─────────────────── */
+
+/* ── GDPR COOKIE BANNER ────────────────────────────────── */
+#gdprBanner {
+  position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  background:rgba(6,15,26,.97);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(201,164,75,.25);
+  padding:1.2rem 2rem;
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+  transform:translateY(0);transition:transform .4s ease;
+}
+#gdprBanner.hidden{transform:translateY(100%)}
+.gdpr-text{flex:1;min-width:260px}
+.gdpr-text p{color:rgba(255,255,255,.8);font-size:.82rem;line-height:1.6;margin:0}
+.gdpr-text strong{color:var(--gold-lt)}
+.gdpr-text a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(201,164,75,.4)}
+.gdpr-actions{display:flex;gap:.6rem;flex-wrap:wrap;flex-shrink:0}
+.gdpr-btn{
+  padding:.55em 1.2em;border-radius:var(--r-xl);font-family:var(--font-b);
+  font-weight:600;font-size:.78rem;letter-spacing:.03em;cursor:pointer;
+  border:1.5px solid transparent;transition:var(--trans);
+}
+.gdpr-accept{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.gdpr-accept:hover{background:var(--gold-lt)}
+.gdpr-reject{background:transparent;color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.25)}
+.gdpr-reject:hover{border-color:rgba(255,255,255,.6);color:#fff}
+.gdpr-settings{background:transparent;color:rgba(255,255,255,.5);border-color:transparent;font-size:.72rem;text-decoration:underline;cursor:pointer}
+
+/* ── LANG SWITCHER ─────────────────────────────────────── */
 .lang-float{
-  position:fixed;left:16px;top:50%;transform:translateY(-50%);
-  z-index:900;display:flex;flex-direction:column;gap:4px;
+  position:fixed;left:14px;top:50%;transform:translateY(-50%);
+  z-index:800;display:flex;flex-direction:column;gap:3px;
   background:var(--white);border-radius:var(--r-md);
-  box-shadow:var(--sh-md);padding:6px;
+  box-shadow:var(--sh-md);padding:5px;
 }
 .lang-float button{
   background:none;border:none;font-family:var(--font-b);font-weight:600;
-  font-size:.75rem;letter-spacing:.04em;padding:7px 10px;border-radius:8px;
+  font-size:.72rem;letter-spacing:.04em;padding:6px 9px;border-radius:7px;
   cursor:pointer;color:var(--text-mid);transition:var(--trans);
 }
-.lang-float button.active,
-.lang-float button:hover{background:var(--navy);color:var(--white)}
- 
+.lang-float button.active,.lang-float button:hover{background:var(--navy);color:var(--white)}
+
 /* ── HEADER ─────────────────────────────────────────────── */
 .header{
-  position:sticky;top:0;z-index:800;
-  background:rgba(250,246,239,.95);backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(201,164,75,.2);
-  padding:.8rem 0;
+  position:sticky;top:0;z-index:700;
+  background:rgba(250,246,239,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(201,164,75,.2);padding:.85rem 0;
 }
 .header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.logo{display:flex;align-items:center;gap:.8rem}
-.logo img{height:52px;width:auto}
-.logo span{font-family:var(--font-h);font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.25;max-width:220px}
+.logo{display:flex;align-items:center;gap:.85rem}
+.logo img{height:50px;width:auto;object-fit:contain}
+.logo-text{font-family:var(--font-h);font-size:1rem;font-weight:600;color:var(--navy);line-height:1.3;max-width:220px}
 nav ul{list-style:none;display:flex;gap:1.8rem;flex-wrap:wrap}
-nav a{font-size:.85rem;font-weight:500;letter-spacing:.02em;color:var(--text-mid);transition:var(--trans);position:relative}
-nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--gold);transition:var(--trans)}
+nav a{font-size:.83rem;font-weight:500;letter-spacing:.02em;color:var(--text-mid);transition:var(--trans);position:relative}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:var(--trans)}
 nav a:hover{color:var(--navy)}
 nav a:hover::after{width:100%}
- 
-/* ── WRAP (max-width container) ─────────────────────────── */
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
 .wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
- 
+section{padding:5.5rem 0}
+.bg-sand{background:var(--sand)}
+.bg-navy{background:var(--navy)}
+.bg-white{background:var(--white)}
+.text-center{text-align:center}
+
+/* ── SECTION HEADERS ────────────────────────────────────── */
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.section-title{font-size:clamp(1.9rem,3.5vw,2.9rem);color:var(--navy);margin-bottom:.8rem}
+.section-sub{font-size:1rem;color:var(--text-mid);max-width:620px}
+.section-head-center{text-align:center}
+.section-head-center .section-sub{margin:0 auto}
+
 /* ── HERO ────────────────────────────────────────────────── */
-.hero{
-  position:relative;min-height:92vh;display:flex;align-items:center;
-  overflow:hidden;
-}
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
 .hero-bg{
   position:absolute;inset:0;
-  background-image:url('https://images.pexels.com/photos/1320686/pexels-photo-1320686.jpeg?auto=compress&cs=tinysrgb&w=1600');
-  background-size:cover;background-position:center;
+  background-image:url('https://images.pexels.com/photos/7551442/pexels-photo-7551442.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size:cover;background-position:center 30%;
 }
 .hero-bg::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(110deg,rgba(10,37,64,.82) 0%,rgba(10,37,64,.45) 55%,rgba(10,37,64,.15) 100%);
+  background:linear-gradient(115deg,rgba(10,37,64,.88) 0%,rgba(10,37,64,.55) 55%,rgba(10,37,64,.2) 100%);
 }
-.hero-content{
-  position:relative;z-index:2;max-width:680px;color:var(--white);
-  padding:4rem 0;
-}
+.hero-content{position:relative;z-index:2;max-width:660px;color:var(--white);padding:4rem 0}
 .hero-tag{
-  display:inline-block;background:rgba(201,164,75,.25);border:1px solid var(--gold);
-  color:var(--gold-lt);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  display:inline-block;background:rgba(201,164,75,.2);border:1px solid var(--gold);
+  color:var(--gold-lt);font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   padding:.4em 1em;border-radius:var(--r-xl);margin-bottom:1.4rem;
 }
-.hero h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1.2rem;color:var(--white)}
+.hero h1{font-size:clamp(2.4rem,4.8vw,4rem);font-weight:700;line-height:1.1;margin-bottom:1.2rem;color:var(--white)}
 .hero h1 em{font-style:italic;color:var(--gold-lt)}
-.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.82);margin-bottom:2.4rem;max-width:520px}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:2.4rem;max-width:500px}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.scroll-cue{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;
+  color:rgba(255,255,255,.55);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  animation:bounce 2.2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
 .btn{
   display:inline-flex;align-items:center;gap:.5em;
   padding:.75em 1.6em;border-radius:var(--r-xl);font-family:var(--font-b);
-  font-weight:600;font-size:.9rem;letter-spacing:.02em;cursor:pointer;
+  font-weight:600;font-size:.88rem;letter-spacing:.02em;cursor:pointer;
   transition:var(--trans);border:2px solid transparent;
 }
 .btn-primary{background:var(--gold);color:var(--navy);border-color:var(--gold)}
 .btn-primary:hover{background:var(--gold-lt);border-color:var(--gold-lt);transform:translateY(-2px);box-shadow:var(--sh-md)}
-.btn-outline{background:transparent;color:var(--white);border-color:rgba(255,255,255,.6)}
+.btn-outline{background:transparent;color:var(--white);border-color:rgba(255,255,255,.55)}
 .btn-outline:hover{background:var(--white);color:var(--navy);transform:translateY(-2px)}
 .btn-navy{background:var(--navy);color:var(--white);border-color:var(--navy)}
 .btn-navy:hover{background:#0d3060;transform:translateY(-2px);box-shadow:var(--sh-md)}
 .btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
 .btn-ghost:hover{background:var(--navy);color:var(--white)}
-.btn-sm{padding:.5em 1.1em;font-size:.8rem}
-.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
- 
-/* scroll cue */
-.scroll-cue{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  z-index:2;color:rgba(255,255,255,.6);font-size:.78rem;letter-spacing:.08em;
-  text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  animation:bounce 2s infinite;
-}
-.scroll-cue i{font-size:1.1rem}
-@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
- 
-/* ── SECTION HEADERS ─────────────────────────────────────── */
-.section-label{
-  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:.6rem;
-}
-.section-title{font-size:clamp(1.9rem,3.5vw,2.9rem);color:var(--navy);margin-bottom:.8rem}
-.section-sub{font-size:1rem;color:var(--text-mid);max-width:620px}
-.section-head-center{text-align:center}
-.section-head-center .section-sub{margin:0 auto}
- 
-/* ── SECTION SPACING ─────────────────────────────────────── */
-section{padding:5.5rem 0}
-.bg-sand{background:var(--sand)}
-.bg-navy{background:var(--navy)}
-.bg-white{background:var(--white)}
- 
-/* ── SILVER COAST GALLERY STRIP ─────────────────────────── */
+.btn-sm{padding:.5em 1.1em;font-size:.78rem}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
+
+/* ── COASTAL STRIP (Caldas da Rainha region) ─────────────── */
 .coastal-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);height:280px;gap:4px;
-  overflow:hidden;
+  display:grid;grid-template-columns:2fr 1fr 1fr;height:260px;gap:3px;overflow:hidden;
 }
-.coastal-strip img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform .5s ease;
-}
+.coastal-strip .cs-item{overflow:hidden;position:relative}
+.coastal-strip img{width:100%;height:100%;object-fit:cover;transition:.6s ease;display:block}
 .coastal-strip img:hover{transform:scale(1.04)}
-.coastal-strip div:first-child{grid-column:span 2}
- 
-/* ── DREAM CATEGORY CARDS ────────────────────────────────── */
+.cs-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(10,37,64,.7));
+  color:rgba(255,255,255,.85);font-size:.72rem;font-weight:500;letter-spacing:.05em;
+  padding:.6rem .8rem;text-align:center;text-transform:uppercase;
+}
+
+/* ── CATEGORY CARDS ──────────────────────────────────────── */
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
 .cat-card{
   background:var(--white);border-radius:var(--r-lg);overflow:hidden;
@@ -238,34 +179,28 @@ section{padding:5.5rem 0}
 .cat-card:hover{transform:translateY(-7px);box-shadow:var(--sh-md)}
 .cat-card__img{height:230px;overflow:hidden;position:relative}
 .cat-card__img img{width:100%;height:100%;object-fit:cover;transition:.5s ease}
-.cat-card:hover .cat-card__img img{transform:scale(1.06)}
+.cat-card:hover .cat-card__img img{transform:scale(1.05)}
 .cat-card__badge{
   position:absolute;top:14px;left:14px;
   background:var(--gold);color:var(--navy);
-  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:.3em .8em;border-radius:var(--r-xl);
+  font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.3em .85em;border-radius:var(--r-xl);
 }
 .cat-card__body{padding:1.6rem;flex:1;display:flex;flex-direction:column}
 .cat-card__body h3{font-size:1.45rem;color:var(--navy);margin-bottom:.5rem}
-.cat-card__body p{font-size:.9rem;flex:1;margin-bottom:1.2rem}
+.cat-card__body p{font-size:.88rem;flex:1;margin-bottom:1.2rem}
 .cat-card__body .btn{align-self:flex-start}
- 
+
 /* ── DREAM LIST ──────────────────────────────────────────── */
-.dream-filters{
-  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.5rem;
-}
+.dream-filters{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.5rem}
 .filter-btn{
   padding:.5em 1.2em;border-radius:var(--r-xl);font-family:var(--font-b);
-  font-weight:500;font-size:.82rem;letter-spacing:.03em;cursor:pointer;
-  background:var(--white);color:var(--text-mid);border:1.5px solid rgba(10,37,64,.15);
+  font-weight:500;font-size:.8rem;letter-spacing:.03em;cursor:pointer;
+  background:var(--white);color:var(--text-mid);border:1.5px solid rgba(10,37,64,.14);
   transition:var(--trans);box-shadow:var(--sh-sm);
 }
-.filter-btn.active,.filter-btn:hover{
-  background:var(--navy);color:var(--white);border-color:var(--navy);
-}
-.dream-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.8rem;
-}
+.filter-btn.active,.filter-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.dream-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.8rem}
 .dream-item{
   background:var(--white);border-radius:var(--r-md);overflow:hidden;
   box-shadow:var(--sh-sm);transition:var(--trans);
@@ -275,118 +210,115 @@ section{padding:5.5rem 0}
 .dream-item[data-status="fulfilled"]{border-top-color:var(--success)}
 .dream-item__inner{padding:1.5rem;flex:1;display:flex;flex-direction:column}
 .dream-item h4{font-family:var(--font-h);font-size:1.25rem;color:var(--navy);margin-bottom:.5rem}
-.dream-item p{font-size:.88rem;flex:1;margin-bottom:1.2rem}
-.dream-progress{margin-bottom:1rem}
-.progress-bar{height:6px;background:rgba(10,37,64,.1);border-radius:99px;overflow:hidden;margin:.4rem 0}
+.dream-item p{font-size:.87rem;flex:1;margin-bottom:1.2rem}
+.progress-label{display:flex;justify-content:space-between;font-size:.74rem;font-weight:600;color:var(--text-lt)}
+.progress-bar{height:5px;background:rgba(10,37,64,.1);border-radius:99px;overflow:hidden;margin:.4rem 0 .2rem}
 .progress-fill{height:100%;background:var(--gold);border-radius:99px;transition:width .8s ease}
 .dream-item[data-status="fulfilled"] .progress-fill{background:var(--success)}
-.progress-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-lt);font-weight:500}
 .dream-item__footer{
-  padding:1rem 1.5rem;background:rgba(10,37,64,.03);
+  padding:.9rem 1.5rem;background:rgba(10,37,64,.025);
   border-top:1px solid rgba(10,37,64,.06);
-  display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;
+  display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;
 }
 .status-badge{
   display:inline-flex;align-items:center;gap:.3em;
-  font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
   padding:.3em .8em;border-radius:var(--r-xl);
 }
-.status-badge.progress{background:rgba(201,164,75,.15);color:#8B6914}
-.status-badge.fulfilled{background:rgba(46,125,82,.12);color:var(--success)}
+.status-badge.progress{background:rgba(201,164,75,.14);color:#8B6914}
+.status-badge.fulfilled{background:rgba(46,125,82,.11);color:var(--success)}
 .dream-item.hidden{display:none}
- 
-/* ── TEAM SECTION ────────────────────────────────────────── */
-.team-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;
-  margin-top:3rem;
-}
-.team-card{
-  background:var(--white);border-radius:var(--r-lg);overflow:hidden;
-  box-shadow:var(--sh-sm);transition:var(--trans);text-align:center;
-}
-.team-card:hover{transform:translateY(-6px);box-shadow:var(--sh-md)}
-.team-card__img{height:220px;overflow:hidden;position:relative}
-.team-card__img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:.5s ease}
-.team-card:hover .team-card__img img{transform:scale(1.05)}
-.team-card__body{padding:1.2rem}
-.team-card__body h3{font-family:var(--font-h);font-size:1.2rem;color:var(--navy);margin-bottom:.2rem}
-.team-card__body span{font-size:.82rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
- 
-/* ── IMPACT STATS ────────────────────────────────────────── */
-.impact-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:2rem;margin-top:3.5rem;
-}
-.stat-card{
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
-  border-radius:var(--r-lg);padding:2.2rem;text-align:center;
-  transition:var(--trans);
-}
-.stat-card:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
-.stat-num{
-  font-family:var(--font-h);font-size:3.2rem;font-weight:700;
-  color:var(--gold);line-height:1;margin-bottom:.4rem;
-}
-.stat-label{color:rgba(255,255,255,.75);font-size:.9rem;font-weight:500}
-.bg-navy .section-title{color:var(--white)}
-.bg-navy .section-sub{color:rgba(255,255,255,.7)}
-.bg-navy p{color:rgba(255,255,255,.7)}
- 
+
 /* ── GIFT SECTION ────────────────────────────────────────── */
 .gift-section{
   background:linear-gradient(135deg,var(--navy) 0%,var(--ocean) 100%);
   padding:5rem 0;position:relative;overflow:hidden;
 }
 .gift-section::before{
-  content:'🎁';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);
-  font-size:14rem;opacity:.06;
+  content:'';position:absolute;right:-4rem;top:50%;transform:translateY(-50%);
+  width:320px;height:320px;
+  background:radial-gradient(circle,rgba(201,164,75,.15) 0%,transparent 70%);
 }
 .gift-section .section-title{color:var(--white)}
 .gift-section .section-sub{color:rgba(255,255,255,.75);max-width:550px}
-.gift-cards{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:1.2rem;margin-top:2.5rem;
-}
+.gift-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:2.5rem}
 .gift-card{
-  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);
-  border-radius:var(--r-md);padding:1.4rem;text-align:center;cursor:pointer;
+  background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);
+  border-radius:var(--r-md);padding:1.5rem 1rem;text-align:center;cursor:pointer;
   transition:var(--trans);
 }
 .gift-card:hover,.gift-card.selected{
-  background:rgba(201,164,75,.25);border-color:var(--gold);
-  transform:translateY(-3px);
+  background:rgba(201,164,75,.22);border-color:var(--gold);transform:translateY(-3px);
 }
-.gift-card i{font-size:1.8rem;color:var(--gold);margin-bottom:.7rem}
-.gift-card span{display:block;color:var(--white);font-size:.88rem;font-weight:500}
- 
-/* ── FOOTER ──────────────────────────────────────────────── */
-footer{background:#060F1A;padding:3.5rem 0 2rem;color:rgba(255,255,255,.7)}
-.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
-.footer-brand img{height:50px;filter:brightness(0) invert(1);margin-bottom:1rem}
-.footer-brand p{font-size:.85rem;line-height:1.6;margin-bottom:1rem}
+.gift-card i{font-size:1.7rem;color:var(--gold);margin-bottom:.6rem;display:block}
+.gift-card span{color:rgba(255,255,255,.85);font-size:.84rem;font-weight:500}
+
+/* ── TEAM ────────────────────────────────────────────────── */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:3rem}
+.team-card{
+  background:var(--white);border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--sh-sm);transition:var(--trans);text-align:center;
+}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--sh-md)}
+.team-card__img{height:230px;overflow:hidden}
+.team-card__img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:.5s ease}
+.team-card:hover .team-card__img img{transform:scale(1.04)}
+.team-card__body{padding:1.2rem}
+.team-card__body h3{font-family:var(--font-h);font-size:1.2rem;color:var(--navy);margin-bottom:.2rem}
+.team-card__body span{font-size:.8rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+
+/* ── IMPACT ──────────────────────────────────────────────── */
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.8rem;margin-top:3.5rem}
+.stat-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
+  border-radius:var(--r-lg);padding:2rem;text-align:center;transition:var(--trans);
+}
+.stat-card:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.stat-num{font-family:var(--font-h);font-size:3rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:.4rem}
+.stat-label{color:rgba(255,255,255,.72);font-size:.88rem;font-weight:500}
+.bg-navy .section-title{color:var(--white)}
+.bg-navy .section-sub{color:rgba(255,255,255,.7)}
+.bg-navy p{color:rgba(255,255,255,.7)}
 .tax-badge{
   display:inline-flex;align-items:center;gap:.5em;
   background:rgba(201,164,75,.15);border:1px solid rgba(201,164,75,.35);
-  color:var(--gold-lt);font-size:.75rem;font-weight:600;letter-spacing:.04em;
+  color:var(--gold-lt);font-size:.74rem;font-weight:600;letter-spacing:.04em;
   padding:.4em 1em;border-radius:var(--r-xl);
 }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer{background:#060F1A;padding:4rem 0 0;color:rgba(255,255,255,.65)}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
+.footer-brand img{height:46px;filter:brightness(0) invert(1);margin-bottom:1rem;opacity:.85}
+.footer-brand p{font-size:.83rem;line-height:1.65;margin-bottom:1rem}
 .footer-col h4{color:var(--white);font-family:var(--font-h);font-size:1rem;margin-bottom:1rem}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:.5rem}
-.footer-col a{font-size:.85rem;color:rgba(255,255,255,.6);transition:var(--trans)}
+.footer-col a{font-size:.83rem;color:rgba(255,255,255,.55);transition:var(--trans)}
 .footer-col a:hover{color:var(--gold)}
-.footer-social{display:flex;gap:.8rem;margin-top:1rem}
+.footer-social{display:flex;gap:.7rem;margin-top:1rem}
 .footer-social a{
-  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:.9rem;
-  transition:var(--trans);
+  width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-size:.85rem;transition:var(--trans);
 }
 .footer-social a:hover{background:var(--gold);color:var(--navy)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;text-align:center;font-size:.8rem;color:rgba(255,255,255,.4)}
- 
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:1.4rem 0 1.2rem;
+  display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem;
+}
+.footer-copy{font-size:.75rem;color:rgba(255,255,255,.35)}
+.footer-designer{font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.02em;text-align:right}
+.footer-prototype{
+  width:100%;text-align:right;
+  font-size:.62rem;color:rgba(255,255,255,.2);
+  letter-spacing:.04em;font-weight:300;font-style:italic;
+  padding-bottom:.5rem;
+}
+
 /* ── MODALS ──────────────────────────────────────────────── */
 .modal-overlay{
-  position:fixed;inset:0;background:rgba(6,15,26,.7);backdrop-filter:blur(4px);
+  position:fixed;inset:0;background:rgba(6,15,26,.72);backdrop-filter:blur(5px);
   z-index:2000;display:flex;align-items:center;justify-content:center;padding:1rem;
   opacity:0;visibility:hidden;transition:var(--trans);
 }
@@ -394,164 +326,145 @@ footer{background:#060F1A;padding:3.5rem 0 2rem;color:rgba(255,255,255,.7)}
 .modal-box{
   background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-lg);
   width:100%;max-width:540px;max-height:90vh;overflow-y:auto;
-  transform:translateY(20px) scale(.97);transition:var(--trans);
-  position:relative;
+  transform:translateY(20px) scale(.97);transition:var(--trans);position:relative;
 }
 .modal-overlay.open .modal-box{transform:none}
-.modal-box.modal-lg{max-width:640px}
-.modal-box.modal-xl{max-width:860px}
-.modal-header{
-  padding:1.8rem 1.8rem 0;display:flex;justify-content:space-between;align-items:flex-start;
-}
-.modal-header h3{font-family:var(--font-h);font-size:1.7rem;color:var(--navy)}
+.modal-box.modal-lg{max-width:620px}
+.modal-header{padding:1.8rem 1.8rem 0;display:flex;justify-content:space-between;align-items:flex-start}
+.modal-header h3{font-family:var(--font-h);font-size:1.65rem;color:var(--navy)}
 .modal-close{
   background:none;border:none;cursor:pointer;color:var(--text-lt);font-size:1.4rem;
   transition:var(--trans);padding:.2rem;border-radius:50%;flex-shrink:0;
 }
 .modal-close:hover{color:var(--navy);background:rgba(10,37,64,.06)}
-.modal-body{padding:1.5rem 1.8rem 2rem}
- 
-/* Form elements */
-.form-group{margin-bottom:1.3rem}
-.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
+.modal-body{padding:1.4rem 1.8rem 2rem}
+
+/* Form */
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
 .form-group input,.form-group textarea,.form-group select{
-  width:100%;padding:.75em 1em;border:1.5px solid rgba(10,37,64,.15);
-  border-radius:var(--r-sm);font-family:var(--font-b);font-size:.92rem;
+  width:100%;padding:.72em 1em;border:1.5px solid rgba(10,37,64,.14);
+  border-radius:var(--r-sm);font-family:var(--font-b);font-size:.9rem;
   color:var(--text-dark);background:var(--cream);transition:var(--trans);
 }
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{
   outline:none;border-color:var(--navy);background:var(--white);
-  box-shadow:0 0 0 3px rgba(10,37,64,.1);
+  box-shadow:0 0 0 3px rgba(10,37,64,.09);
 }
-.form-group textarea{min-height:80px;resize:vertical}
-.form-group select{cursor:pointer}
+.form-group textarea{min-height:75px;resize:vertical}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
- 
-/* Amount pills */
-.amount-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:.8rem}
+.amount-pills{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:.7rem}
 .amount-pill{
-  padding:.5em 1.1em;border-radius:var(--r-xl);border:1.5px solid rgba(10,37,64,.2);
-  background:var(--cream);font-size:.88rem;font-weight:600;cursor:pointer;
-  transition:var(--trans);
+  padding:.48em 1.05em;border-radius:var(--r-xl);border:1.5px solid rgba(10,37,64,.18);
+  background:var(--cream);font-size:.86rem;font-weight:600;cursor:pointer;transition:var(--trans);
 }
 .amount-pill.selected{background:var(--navy);color:var(--white);border-color:var(--navy)}
 .amount-pill:hover:not(.selected){border-color:var(--navy);color:var(--navy)}
- 
-/* Checkbox toggle */
 .toggle-row{
-  display:flex;align-items:center;gap:.7rem;padding:.8rem;
-  background:rgba(201,164,75,.08);border:1px solid rgba(201,164,75,.25);
+  display:flex;align-items:center;gap:.7rem;padding:.75rem;
+  background:rgba(201,164,75,.07);border:1px solid rgba(201,164,75,.25);
   border-radius:var(--r-sm);cursor:pointer;margin-bottom:1rem;
 }
-.toggle-row input[type="checkbox"]{width:16px;height:16px;accent-color:var(--navy);cursor:pointer}
-.toggle-row label{font-size:.88rem;font-weight:500;color:var(--navy);cursor:pointer;flex:1}
- 
+.toggle-row input[type="checkbox"]{width:15px;height:15px;accent-color:var(--navy);cursor:pointer}
+.toggle-row label{font-size:.86rem;font-weight:500;color:var(--navy);cursor:pointer;flex:1}
+.note{font-size:.76rem;color:var(--text-lt);text-align:center;margin-top:.8rem}
+
 /* ── DASHBOARD MODAL ─────────────────────────────────────── */
 .db-hero{
   background:linear-gradient(135deg,var(--navy) 0%,var(--ocean) 100%);
-  padding:2rem 1.8rem;
-  margin:-0px;
-  border-radius:var(--r-lg) var(--r-lg) 0 0;
+  padding:1.8rem;border-radius:var(--r-lg) var(--r-lg) 0 0;
 }
-.db-hero h3{color:var(--white);font-size:1.6rem;margin-bottom:.3rem}
-.db-hero p{color:rgba(255,255,255,.75);font-size:.88rem}
+.db-hero h3{color:var(--white);font-size:1.55rem;margin-bottom:.3rem}
+.db-hero p{color:rgba(255,255,255,.72);font-size:.86rem}
 .db-meta-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-  gap:1rem;padding:1.5rem 1.8rem;background:var(--sand);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:.8rem;padding:1.3rem 1.8rem;background:var(--sand);
 }
-.db-stat{text-align:center;background:var(--white);border-radius:var(--r-md);padding:1.2rem .8rem;box-shadow:var(--sh-sm)}
-.db-stat .val{font-family:var(--font-h);font-size:1.9rem;font-weight:700;color:var(--navy);line-height:1}
-.db-stat .lbl{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-lt);margin-top:.3rem}
-.db-body{padding:1.5rem 1.8rem}
-.db-prog-wrap{margin-bottom:1.5rem}
-.db-prog-bar{height:10px;background:rgba(10,37,64,.1);border-radius:99px;overflow:hidden;margin:.5rem 0}
-.db-prog-fill{height:100%;background:var(--gold);border-radius:99px;transition:width 1.2s ease}
+.db-stat{text-align:center;background:var(--white);border-radius:var(--r-md);padding:1.1rem .8rem;box-shadow:var(--sh-sm)}
+.db-stat .val{font-family:var(--font-h);font-size:1.8rem;font-weight:700;color:var(--navy);line-height:1}
+.db-stat .lbl{font-size:.68rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-lt);margin-top:.3rem}
+.db-body{padding:1.4rem 1.8rem}
+.db-prog-bar{height:9px;background:rgba(10,37,64,.1);border-radius:99px;overflow:hidden;margin:.4rem 0}
+.db-prog-fill{height:100%;background:var(--gold);border-radius:99px;transition:width 1.3s ease}
 .fulfilled .db-prog-fill{background:var(--success)}
-.db-prog-labels{display:flex;justify-content:space-between;font-size:.8rem;font-weight:600;color:var(--text-mid)}
-.db-nationalities{margin-top:1.4rem}
-.db-nationalities h4{font-family:var(--font-h);font-size:1.1rem;color:var(--navy);margin-bottom:.8rem}
+.db-prog-labels{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;color:var(--text-mid)}
+.db-nationalities{margin-top:1.3rem}
+.db-nationalities h4{font-family:var(--font-h);font-size:1.05rem;color:var(--navy);margin-bottom:.75rem}
 .nat-row{
-  display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;
-  padding:.5rem .7rem;background:var(--cream);border-radius:var(--r-sm);
+  display:flex;align-items:center;gap:.75rem;margin-bottom:.55rem;
+  padding:.45rem .65rem;background:var(--cream);border-radius:var(--r-sm);
 }
-.nat-flag{font-size:1.2rem;flex-shrink:0}
-.nat-name{font-size:.85rem;font-weight:500;flex:1}
-.nat-pct{font-size:.85rem;font-weight:700;color:var(--navy)}
-.nat-bar-wrap{flex:2;background:rgba(10,37,64,.08);border-radius:99px;height:5px;overflow:hidden}
+.nat-flag{font-size:1.15rem;flex-shrink:0}
+.nat-name{font-size:.83rem;font-weight:500;flex:1}
+.nat-pct{font-size:.83rem;font-weight:700;color:var(--navy)}
+.nat-bar-wrap{flex:2;background:rgba(10,37,64,.08);border-radius:99px;height:4px;overflow:hidden}
 .nat-bar{height:100%;background:var(--gold);border-radius:99px}
 .db-footer{padding:1.2rem 1.8rem;border-top:1px solid var(--sand);display:flex;gap:.8rem;flex-wrap:wrap}
- 
+
 /* ── GIFT CERTIFICATE ────────────────────────────────────── */
 .cert-box{
-  border:3px dashed var(--gold);border-radius:var(--r-lg);padding:2rem;
-  background:linear-gradient(135deg,#fffdf5 0%,#f5f0e8 100%);
-  text-align:center;position:relative;
+  border:2.5px dashed var(--gold);border-radius:var(--r-lg);padding:2rem;
+  background:linear-gradient(135deg,#fffdf7 0%,#f5f0e8 100%);
+  text-align:center;position:relative;overflow:hidden;
 }
 .cert-box::before{
-  content:'✦';position:absolute;top:1rem;left:1.2rem;font-size:1.2rem;color:var(--gold);opacity:.5;
+  content:'';position:absolute;inset:0;
+  background:url('https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png') no-repeat center;
+  background-size:160px;opacity:.04;pointer-events:none;
 }
-.cert-box::after{
-  content:'✦';position:absolute;top:1rem;right:1.2rem;font-size:1.2rem;color:var(--gold);opacity:.5;
-}
-.cert-logo{height:50px;margin:0 auto 1rem;opacity:.7}
-.cert-title{font-family:var(--font-h);font-size:1.8rem;color:var(--navy);margin-bottom:.3rem}
-.cert-for{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.4rem}
-.cert-name{font-family:var(--font-h);font-size:2rem;color:var(--terracotta);font-style:italic;margin-bottom:.2rem}
-.cert-occasion{font-size:.9rem;color:var(--text-mid);margin-bottom:.8rem}
+.cert-logo{height:42px;margin:0 auto .8rem;opacity:.65}
+.cert-title{font-family:var(--font-h);font-size:1.7rem;color:var(--navy);margin-bottom:.2rem}
+.cert-for{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.3rem}
+.cert-name{font-family:var(--font-h);font-size:1.9rem;color:var(--terracotta);font-style:italic;margin-bottom:.15rem}
+.cert-occasion{font-size:.88rem;color:var(--text-mid);margin-bottom:.7rem}
 .cert-message{
   font-style:italic;color:var(--text-mid);border-left:3px solid var(--gold);
-  padding:.6rem 1rem;text-align:left;background:rgba(255,255,255,.6);
-  border-radius:0 var(--r-sm) var(--r-sm) 0;margin:.8rem 0;font-size:.9rem;
+  padding:.5rem .9rem;text-align:left;background:rgba(255,255,255,.6);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;margin:.7rem 0;font-size:.88rem;
 }
-.cert-dream-label{font-size:.78rem;color:var(--text-lt);margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.06em}
-.cert-dream-name{font-family:var(--font-h);font-size:1.1rem;color:var(--navy);font-weight:600}
-.cert-seal{
-  margin:1rem auto 0;width:60px;height:60px;border:2px solid var(--gold);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;color:var(--gold);
-}
- 
-/* ── ADMIN DASHBOARD ─────────────────────────────────────── */
-.admin-page{
-  display:none;max-width:900px;margin:2rem auto;padding:2rem;
-  background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-lg);
-}
+.cert-dream-label{font-size:.72rem;color:var(--text-lt);text-transform:uppercase;letter-spacing:.06em}
+.cert-dream-name{font-family:var(--font-h);font-size:1.05rem;color:var(--navy);font-weight:600}
+.cert-seal{margin:1rem auto 0;width:52px;height:52px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--gold)}
+
+/* ── ADMIN ───────────────────────────────────────────────── */
+.admin-page{display:none;max-width:880px;margin:2rem auto;padding:2rem;background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-lg)}
 .admin-page.open{display:block}
-.admin-page h2{font-family:var(--font-h);font-size:2rem;color:var(--navy);text-align:center;margin-bottom:1.5rem}
-.admin-tabs{display:flex;gap:.5rem;border-bottom:2px solid var(--sand);margin-bottom:1.5rem}
+.admin-page h2{font-family:var(--font-h);font-size:1.9rem;color:var(--navy);text-align:center;margin-bottom:1.5rem}
+.admin-tabs{display:flex;gap:.4rem;border-bottom:2px solid var(--sand);margin-bottom:1.5rem}
 .admin-tab{
-  padding:.6rem 1.2rem;border:none;background:none;cursor:pointer;
-  font-family:var(--font-b);font-weight:600;font-size:.85rem;color:var(--text-lt);
+  padding:.55rem 1.1rem;border:none;background:none;cursor:pointer;
+  font-family:var(--font-b);font-weight:600;font-size:.83rem;color:var(--text-lt);
   border-bottom:2px solid transparent;margin-bottom:-2px;transition:var(--trans);
 }
 .admin-tab.active{color:var(--navy);border-bottom-color:var(--navy)}
-.admin-panel{display:none}
-.admin-panel.active{display:block}
+.admin-panel{display:none}.admin-panel.active{display:block}
 .admin-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .admin-form-grid .full{grid-column:1/-1}
-.admin-project-list{margin-top:1.5rem}
 .admin-proj-row{
   display:flex;justify-content:space-between;align-items:center;
-  padding:.8rem 1rem;background:var(--cream);border-radius:var(--r-sm);
+  padding:.75rem 1rem;background:var(--cream);border-radius:var(--r-sm);
   margin-bottom:.5rem;border-left:4px solid var(--gold);
 }
 .admin-proj-row[data-status="fulfilled"]{border-left-color:var(--success)}
-.admin-proj-info span{font-weight:600;color:var(--navy);font-size:.9rem;display:block}
-.admin-proj-info small{color:var(--text-lt);font-size:.78rem}
+.admin-proj-info span{font-weight:600;color:var(--navy);font-size:.88rem;display:block}
+.admin-proj-info small{color:var(--text-lt);font-size:.76rem}
 .admin-proj-actions{display:flex;gap:.4rem}
 .admin-proj-actions button{
-  background:none;border:1.5px solid rgba(10,37,64,.2);padding:.3em .7em;
-  border-radius:var(--r-sm);cursor:pointer;font-size:.78rem;font-weight:600;
+  background:none;border:1.5px solid rgba(10,37,64,.18);padding:.3em .7em;
+  border-radius:var(--r-sm);cursor:pointer;font-size:.76rem;font-weight:600;
   color:var(--text-mid);transition:var(--trans);
 }
 .admin-proj-actions button:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
 .admin-proj-actions .del-btn:hover{background:#c0392b;border-color:#c0392b}
- 
+
+/* ── PRINT ───────────────────────────────────────────────── */
+@media print{body > *:not(#certPrint){display:none!important}#certPrint{display:block!important}}
+
 /* ── RESPONSIVE ──────────────────────────────────────────── */
 @media(max-width:960px){
   .footer-inner{grid-template-columns:1fr 1fr}
   .coastal-strip{grid-template-columns:1fr 1fr;height:auto}
-  .coastal-strip div:first-child{grid-column:span 2}
+  .coastal-strip .cs-item:first-child{grid-column:span 2}
 }
 @media(max-width:720px){
   nav ul{display:none}
@@ -562,40 +475,46 @@ footer{background:#060F1A;padding:3.5rem 0 2rem;color:rgba(255,255,255,.7)}
   .admin-form-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .db-meta-grid{grid-template-columns:1fr 1fr}
-  .lang-float{left:8px}
-  .lang-float button{padding:5px 8px;font-size:.7rem}
+  .lang-float{left:6px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .footer-designer,.footer-prototype{text-align:left}
 }
-@media print{
-  body > *:not(#certPrintArea){display:none!important}
-  #certPrintArea{display:block!important;position:static!important}
-}
- 
-/* ── HELPERS ─────────────────────────────────────────────── */
-.text-center{text-align:center}
-.mt-1{margin-top:1rem}.mt-2{margin-top:2rem}.mb-1{margin-bottom:1rem}
-.flex{display:flex}.items-center{align-items:center}.gap-1{gap:1rem}
-.gold{color:var(--gold)}.navy{color:var(--navy)}
-hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
-.note{font-size:.78rem;color:var(--text-lt);text-align:center;margin-top:.8rem}
 </style>
 </head>
 <body>
- 
-<!-- ── LANGUAGE SWITCHER ──────────────────────────────────── -->
+
+<!-- ── GDPR COOKIE BANNER ──────────────────────────────────── -->
+<div id="gdprBanner">
+  <div class="gdpr-text">
+    <p>
+      <strong>Privacidade e Cookies.</strong>
+      Este sítio web <strong>não utiliza cookies de rastreamento ou marketing</strong>. Utilizamos apenas cookies técnicos essenciais para o funcionamento do site (sem dados pessoais transmitidos a terceiros). As doações são processadas por fornecedores de pagamento certificados.
+      Em conformidade com o <strong>RGPD / EU GDPR</strong> e a Lei n.º 41/2004.
+      <a href="#" onclick="showPrivacy()">Saiba mais</a>
+    </p>
+  </div>
+  <div class="gdpr-actions">
+    <button class="gdpr-btn gdpr-accept" onclick="acceptGdpr()">Aceitar &amp; Continuar</button>
+    <button class="gdpr-btn gdpr-reject" onclick="rejectGdpr()">Apenas Essenciais</button>
+    <button class="gdpr-btn gdpr-settings" onclick="showPrivacy()">Política de Privacidade</button>
+  </div>
+</div>
+
+<!-- ── LANGUAGE SWITCHER ────────────────────────────────────── -->
 <div class="lang-float" id="langFloat">
   <button onclick="setLang('pt')" id="btn-pt" class="active">PT</button>
   <button onclick="setLang('en')" id="btn-en">EN</button>
   <button onclick="setLang('fr')" id="btn-fr">FR</button>
 </div>
- 
-<!-- ── HEADER ────────────────────────────────────────────── -->
+
+<!-- ── HEADER ────────────────────────────────────────────────── -->
 <header class="header">
   <div class="wrap">
     <div class="logo">
       <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png"
-           alt="SCMCR Logo"
-           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;><rect width=&quot;60&quot; height=&quot;60&quot; rx=&quot;8&quot; fill=&quot;%230A2540&quot;/><text y=&quot;40&quot; x=&quot;30&quot; text-anchor=&quot;middle&quot; font-size=&quot;24&quot; fill=&quot;%23C9A44B&quot;>✦</text></svg>'">
-      <span>Santa Casa da Misericórdia<br>das Caldas da Rainha</span>
+           alt="SCMCR"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 50 50&quot;><rect width=&quot;50&quot; height=&quot;50&quot; rx=&quot;6&quot; fill=&quot;%230A2540&quot;/><text y=&quot;33&quot; x=&quot;25&quot; text-anchor=&quot;middle&quot; font-size=&quot;20&quot; fill=&quot;%23C9A44B&quot;>✦</text></svg>'">
+      <span class="logo-text">Santa Casa da Misericórdia<br>das Caldas da Rainha</span>
     </div>
     <nav>
       <ul>
@@ -608,8 +527,8 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
     </nav>
   </div>
 </header>
- 
-<!-- ── HERO ──────────────────────────────────────────────── -->
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="wrap">
@@ -619,41 +538,43 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
       <p class="hero-sub t" data-key="heroSub">Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.</p>
       <div class="hero-btns">
         <a href="#dreams" class="btn btn-primary t" data-key="heroCta1">Explore os Sonhos</a>
-        <button class="btn btn-outline open-donation" data-dream-id="0" data-lang-key="">
+        <button class="btn btn-outline open-donation" data-dream-id="0">
           <i class="fa fa-heart"></i>
           <span class="t" data-key="heroCta2">Doe Agora</span>
         </button>
       </div>
     </div>
   </div>
-  <div class="scroll-cue"><i class="fa fa-chevron-down"></i><span class="t" data-key="scroll">Scroll</span></div>
+  <div class="scroll-cue"><i class="fa fa-chevron-down"></i></div>
 </section>
- 
-<!-- ── SILVER COAST GALLERY ───────────────────────────────── -->
-<div class="coastal-strip" aria-hidden="true">
-  <div>
-    <img src="https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800"
-         alt="Silver Coast Portugal" loading="lazy"
+
+<!-- ── CALDAS DA RAINHA COASTAL STRIP ────────────────────────── -->
+<!-- Foz do Arelho, São Martinho do Porto, Óbidos, Nazaré — Silver Coast region -->
+<div class="coastal-strip" aria-label="Caldas da Rainha e a Costa de Prata">
+  <div class="cs-item">
+    <img src="https://images.pexels.com/photos/2670898/pexels-photo-2670898.jpeg?auto=compress&cs=tinysrgb&w=900"
+         alt="Vista sobre uma vila portuguesa histórica"
+         loading="lazy"
          onerror="this.parentElement.style.background='#1F6B9A'">
+    <div class="cs-caption">Caldas da Rainha</div>
   </div>
-  <div>
-    <img src="https://images.pexels.com/photos/1320686/pexels-photo-1320686.jpeg?auto=compress&cs=tinysrgb&w=600"
-         alt="Costa de Prata" loading="lazy"
+  <div class="cs-item">
+    <img src="https://images.pexels.com/photos/3757939/pexels-photo-3757939.jpeg?auto=compress&cs=tinysrgb&w=600"
+         alt="Lagoa e praias da Costa de Prata"
+         loading="lazy"
          onerror="this.parentElement.style.background='#0A2540'">
+    <div class="cs-caption">Costa de Prata</div>
   </div>
-  <div>
-    <img src="https://images.pexels.com/photos/2260784/pexels-photo-2260784.jpeg?auto=compress&cs=tinysrgb&w=600"
-         alt="Óbidos Portugal" loading="lazy"
-         onerror="this.parentElement.style.background='#C9A44B'">
-  </div>
-  <div>
-    <img src="https://images.pexels.com/photos/2836491/pexels-photo-2836491.jpeg?auto=compress&cs=tinysrgb&w=600"
-         alt="Peniche Atlantic Coast" loading="lazy"
+  <div class="cs-item">
+    <img src="https://images.pexels.com/photos/3525808/pexels-photo-3525808.jpeg?auto=compress&cs=tinysrgb&w=600"
+         alt="Arquitetura histórica portuguesa"
+         loading="lazy"
          onerror="this.parentElement.style.background='#B8622E'">
+    <div class="cs-caption">Portugal</div>
   </div>
 </div>
- 
-<!-- ── DREAM CATEGORIES ───────────────────────────────────── -->
+
+<!-- ── DREAM CATEGORIES ──────────────────────────────────────── -->
 <section class="bg-white" id="categories">
   <div class="wrap">
     <div class="section-head-center">
@@ -662,56 +583,69 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
       <p class="section-sub t" data-key="catSub">Cada categoria representa um pilar da nossa missão. O seu apoio transforma aspirações em realidade para quem mais precisa.</p>
     </div>
     <div class="cat-grid">
+
+      <!-- Children -->
       <div class="cat-card">
         <div class="cat-card__img">
-          <img src="https://images.pexels.com/photos/3662624/pexels-photo-3662624.jpeg?auto=compress&cs=tinysrgb&w=700"
-               alt="Crianças a brincar" loading="lazy"
-               onerror="this.src='https://placehold.co/700x400/C9A44B/FFFFFF?text=Crianças'">
+          <!-- Child reading / learning in a supportive setting -->
+          <img src="https://images.pexels.com/photos/8363073/pexels-photo-8363073.jpeg?auto=compress&cs=tinysrgb&w=700"
+               alt="Criança a ler um livro com atenção e serenidade"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/700x400/C9A44B/FFFFFF?text=Infância'">
           <span class="cat-card__badge t" data-key="catBadge1">Infância</span>
         </div>
         <div class="cat-card__body">
           <h3 class="t" data-key="cat1Title">O Desejo de uma Criança</h3>
-          <p class="t" data-key="cat1Text">Educação, alegria e cuidado para os nossos membros mais jovens. O seu apoio constrói fundações para um futuro brilhante.</p>
+          <p class="t" data-key="cat1Text">Educação, segurança e cuidado para os nossos membros mais jovens. O seu apoio constrói fundações sólidas para um futuro promissor.</p>
           <a href="#dreams" class="btn btn-ghost btn-sm t" data-key="catCta">Ver Sonhos <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
+
+      <!-- Seniors -->
       <div class="cat-card">
         <div class="cat-card__img">
-          <img src="https://images.pexels.com/photos/8946957/pexels-photo-8946957.jpeg?auto=compress&cs=tinysrgb&w=700"
-               alt="Casal de idosos" loading="lazy"
+          <!-- Elderly person / carer — dignified, warm -->
+          <img src="https://images.pexels.com/photos/7551627/pexels-photo-7551627.jpeg?auto=compress&cs=tinysrgb&w=700"
+               alt="Pessoa idosa com sorriso sereno e digno"
+               loading="lazy"
                onerror="this.src='https://placehold.co/700x400/1F6B9A/FFFFFF?text=Seniores'">
           <span class="cat-card__badge t" data-key="catBadge2">Seniores</span>
         </div>
         <div class="cat-card__body">
           <h3 class="t" data-key="cat2Title">O Coração de um Sénior</h3>
-          <p class="t" data-key="cat2Text">Dignidade, conforto e companhia para os nossos idosos. A sua contribuição faz a diferença no dia a dia de quem mais nos precisa.</p>
+          <p class="t" data-key="cat2Text">Dignidade, conforto e companhia para os nossos idosos. A sua contribuição apoia cuidados diários e uma vida com qualidade e respeito.</p>
           <a href="#dreams" class="btn btn-ghost btn-sm t" data-key="catCta">Ver Sonhos <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
+
+      <!-- Community -->
       <div class="cat-card">
         <div class="cat-card__img">
-          <img src="https://images.pexels.com/photos/4099462/pexels-photo-4099462.jpeg?auto=compress&cs=tinysrgb&w=700"
-               alt="Horta comunitária" loading="lazy"
+          <!-- Community activity, garden, group work -->
+          <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=700"
+               alt="Voluntários a trabalhar num jardim comunitário com propósito"
+               loading="lazy"
                onerror="this.src='https://placehold.co/700x400/2E7D52/FFFFFF?text=Comunidade'">
           <span class="cat-card__badge t" data-key="catBadge3">Comunidade</span>
         </div>
         <div class="cat-card__body">
-          <h3 class="t" data-key="cat3Title">Sonhos de Propósito & Paz</h3>
-          <p class="t" data-key="cat3Text">Integração social, bem-estar familiar e uma comunidade mais resiliente. Juntos construímos uma Caldas da Rainha melhor para todos.</p>
+          <h3 class="t" data-key="cat3Title">Sonhos de Propósito &amp; Paz</h3>
+          <p class="t" data-key="cat3Text">Integração social, bem-estar familiar e uma comunidade mais coesa. Juntos construímos uma Caldas da Rainha mais forte e compassiva.</p>
           <a href="#dreams" class="btn btn-ghost btn-sm t" data-key="catCta">Ver Sonhos <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
- 
-<!-- ── DREAM LIST ─────────────────────────────────────────── -->
+
+<!-- ── DREAM LIST ─────────────────────────────────────────────── -->
 <section class="bg-sand" id="dreams">
   <div class="wrap">
     <div class="section-head-center">
       <p class="section-label t" data-key="dreamLabel">Sonhos que Podemos Realizar Juntos</p>
       <h2 class="section-title t" data-key="dreamTitle">A Nossa Lista de Sonhos</h2>
-      <p class="section-sub t" data-key="dreamSub">Cada projeto representa uma necessidade real. Selecione um sonho para ver o impacto da sua doação.</p>
+      <p class="section-sub t" data-key="dreamSub">Cada projeto representa uma necessidade real. Selecione um sonho para ver o impacto direto da sua doação.</p>
     </div>
     <div class="dream-filters">
       <button class="filter-btn active t" data-filter="all" data-key="filterAll">Todos</button>
@@ -721,143 +655,133 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
       <button class="filter-btn t" data-filter="fulfilled" data-key="filterFulfilled">Realizados</button>
       <button class="filter-btn t" data-filter="progress" data-key="filterProgress">Em Progresso</button>
     </div>
-    <div class="dream-grid" id="dreamGrid">
-      <!-- Rendered by JS -->
+    <div class="dream-grid" id="dreamGrid"></div>
+  </div>
+</section>
+
+<!-- ── GIFT / DOE EM NOME DE ALGUÉM ──────────────────────────── -->
+<!-- MOVED: now immediately after dream list, before team -->
+<section class="gift-section" id="gifts">
+  <div class="wrap">
+    <p class="section-label" style="color:var(--gold)">✦ <span class="t" data-key="giftLabel">Uma Ideia Especial</span></p>
+    <h2 class="section-title t" data-key="giftTitle">Doe em Nome de Alguém</h2>
+    <p class="section-sub t" data-key="giftSub">Celebre um aniversário, casamento ou ocasião especial com uma doação em nome de alguém querido. Receba um certificado elegante pronto a imprimir.</p>
+    <div class="gift-cards">
+      <div class="gift-card" onclick="openGiftDonation('birthday')">
+        <i class="fa fa-cake-candles"></i><span class="t" data-key="occ1">Aniversário</span>
+      </div>
+      <div class="gift-card" onclick="openGiftDonation('anniversary')">
+        <i class="fa fa-heart"></i><span class="t" data-key="occ2">Aniversário de Casamento</span>
+      </div>
+      <div class="gift-card" onclick="openGiftDonation('graduation')">
+        <i class="fa fa-graduation-cap"></i><span class="t" data-key="occ3">Formatura</span>
+      </div>
+      <div class="gift-card" onclick="openGiftDonation('memory')">
+        <i class="fa fa-star"></i><span class="t" data-key="occ4">Em Memória</span>
+      </div>
+      <div class="gift-card" onclick="openGiftDonation('other')">
+        <i class="fa fa-gift"></i><span class="t" data-key="occ5">Outra Ocasião</span>
+      </div>
     </div>
   </div>
 </section>
- 
-<!-- ── TEAM ───────────────────────────────────────────────── -->
+
+<!-- ── TEAM ───────────────────────────────────────────────────── -->
 <section class="bg-white" id="team">
   <div class="wrap">
     <div class="section-head-center">
       <p class="section-label t" data-key="teamLabel">As Nossas Pessoas</p>
       <h2 class="section-title t" data-key="teamTitle">Uma Equipa com Coração</h2>
-      <p class="section-sub t" data-key="teamSub">Mulheres dedicadas que todos os dias transformam vidas com profissionalismo, amor e compaixão.</p>
+      <p class="section-sub t" data-key="teamSub">Profissionais dedicadas que todos os dias transformam vidas com competência, cuidado e compaixão — o verdadeiro coração da Santa Casa.</p>
     </div>
     <div class="team-grid">
+
       <div class="team-card">
         <div class="team-card__img">
-          <img src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=400"
-               alt="Maria Silva - Diretora de Cuidados" loading="lazy"
-               onerror="this.src='https://placehold.co/400x300/0A2540/FFFFFF?text=Maria'">
+          <!-- Female nurse / care worker, professional, warm -->
+          <img src="https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=450"
+               alt="Maria Silva — Diretora de Cuidados, enfermeira com expressão serena e profissional"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/450x300/0A2540/FFFFFF?text=Maria+Silva'">
         </div>
         <div class="team-card__body">
           <h3>Maria Silva</h3>
           <span class="t" data-key="role1">Diretora de Cuidados</span>
         </div>
       </div>
+
       <div class="team-card">
         <div class="team-card__img">
-          <img src="https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=400"
-               alt="Ana Rodrigues - Coordenadora Social" loading="lazy"
-               onerror="this.src='https://placehold.co/400x300/1F6B9A/FFFFFF?text=Ana'">
+          <img src="https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg?auto=compress&cs=tinysrgb&w=450"
+               alt="Ana Rodrigues — Coordenadora Social, mulher de meia-idade com postura confiante"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/450x300/1F6B9A/FFFFFF?text=Ana+Rodrigues'">
         </div>
         <div class="team-card__body">
           <h3>Ana Rodrigues</h3>
           <span class="t" data-key="role2">Coordenadora Social</span>
         </div>
       </div>
+
       <div class="team-card">
         <div class="team-card__img">
-          <img src="https://images.pexels.com/photos/5863389/pexels-photo-5863389.jpeg?auto=compress&cs=tinysrgb&w=400"
-               alt="Sofia Santos - Enfermeira Chefe" loading="lazy"
-               onerror="this.src='https://placehold.co/400x300/C9A44B/0A2540?text=Sofia'">
+          <img src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=450"
+               alt="Sofia Santos — Enfermeira Chefe, uniforme branco, expressão tranquila e segura"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/450x300/C9A44B/0A2540?text=Sofia+Santos'">
         </div>
         <div class="team-card__body">
           <h3>Sofia Santos</h3>
           <span class="t" data-key="role3">Enfermeira Chefe</span>
         </div>
       </div>
+
       <div class="team-card">
         <div class="team-card__img">
-          <img src="https://images.pexels.com/photos/5490276/pexels-photo-5490276.jpeg?auto=compress&cs=tinysrgb&w=400"
-               alt="Joana Pereira - Técnica de Apoio" loading="lazy"
-               onerror="this.src='https://placehold.co/400x300/2E7D52/FFFFFF?text=Joana'">
+          <img src="https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=450"
+               alt="Joana Pereira — Técnica de Apoio à Infância, sorriso discreto, postura acolhedora"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/450x300/2E7D52/FFFFFF?text=Joana+Pereira'">
         </div>
         <div class="team-card__body">
           <h3>Joana Pereira</h3>
           <span class="t" data-key="role4">Técnica de Apoio à Infância</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
- 
-<!-- ── IMPACT ─────────────────────────────────────────────── -->
+
+<!-- ── IMPACT ──────────────────────────────────────────────────── -->
 <section class="bg-navy" id="impact">
   <div class="wrap text-center">
     <p class="section-label t" data-key="impLabel">O Nosso Legado</p>
     <h2 class="section-title t" data-key="impTitle">95 Anos de Impacto Real</h2>
-    <p class="section-sub t" data-key="impSub">Desde 1929, a Santa Casa das Caldas da Rainha tem sido um pilar de esperança, dignidade e apoio à nossa comunidade.</p>
+    <p class="section-sub t" data-key="impSub">Desde 1929, a Santa Casa das Caldas da Rainha tem sido um pilar de esperança, dignidade e solidariedade na nossa comunidade.</p>
     <div class="impact-grid">
-      <div class="stat-card">
-        <div class="stat-num">95+</div>
-        <div class="stat-label t" data-key="stat1">Anos de Serviço</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">500+</div>
-        <div class="stat-label t" data-key="stat2">Vidas Apoiadas/Ano</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">30+</div>
-        <div class="stat-label t" data-key="stat3">Programas Ativos</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">100%</div>
-        <div class="stat-label t" data-key="stat4">Transparência Total</div>
-      </div>
+      <div class="stat-card"><div class="stat-num">95+</div><div class="stat-label t" data-key="stat1">Anos de Serviço</div></div>
+      <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label t" data-key="stat2">Vidas Apoiadas / Ano</div></div>
+      <div class="stat-card"><div class="stat-num">30+</div><div class="stat-label t" data-key="stat3">Programas Ativos</div></div>
+      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label t" data-key="stat4">Transparência Total</div></div>
     </div>
-    <p class="t" style="margin-top:2.5rem;font-size:.95rem" data-key="impTransp">Todas as doações são geridas de forma transparente. A Santa Casa é uma IPSS com estatuto de utilidade pública — as doações são dedutíveis nos impostos em Portugal.</p>
+    <p class="t" style="margin-top:2.5rem;font-size:.92rem;max-width:680px;margin-left:auto;margin-right:auto" data-key="impTransp">Todas as doações são geridas de forma transparente e aplicadas diretamente nos projetos listados. A Santa Casa é uma IPSS com estatuto de utilidade pública — doações elegíveis para benefícios fiscais em Portugal.</p>
     <div style="margin-top:1.5rem;display:flex;justify-content:center">
-      <div class="tax-badge"><i class="fa fa-shield-halved"></i> <span class="t" data-key="taxBadge">IPSS Certificada · Benefícios Fiscais Disponíveis</span></div>
+      <div class="tax-badge"><i class="fa fa-shield-halved"></i> <span class="t" data-key="taxBadge">IPSS Certificada · Benefícios Fiscais ao abrigo do CIRC e CIRS</span></div>
     </div>
   </div>
 </section>
- 
-<!-- ── GIFT DONATIONS ─────────────────────────────────────── -->
-<section class="gift-section" id="gifts">
-  <div class="wrap">
-    <div>
-      <p class="section-label" style="color:var(--gold)">✦ <span class="t" data-key="giftLabel">Uma Ideia Especial</span></p>
-      <h2 class="section-title" style="color:#fff" data-key="giftTitle">Doe em Nome de Alguém</h2>
-      <p class="section-sub t" data-key="giftSub">Celebre um aniversário, um casamento ou qualquer ocasião especial com uma doação em nome de alguém querido. Receba um certificado de oferta elegante, pronto para imprimir.</p>
-      <div class="gift-cards" style="margin-top:2rem">
-        <div class="gift-card" onclick="openGiftDonation('birthday')">
-          <i class="fa fa-cake-candles"></i>
-          <span class="t" data-key="occ1">Aniversário</span>
-        </div>
-        <div class="gift-card" onclick="openGiftDonation('anniversary')">
-          <i class="fa fa-heart"></i>
-          <span class="t" data-key="occ2">Aniversário de Casamento</span>
-        </div>
-        <div class="gift-card" onclick="openGiftDonation('graduation')">
-          <i class="fa fa-graduation-cap"></i>
-          <span class="t" data-key="occ3">Formatura</span>
-        </div>
-        <div class="gift-card" onclick="openGiftDonation('memory')">
-          <i class="fa fa-star"></i>
-          <span class="t" data-key="occ4">Em Memória</span>
-        </div>
-        <div class="gift-card" onclick="openGiftDonation('other')">
-          <i class="fa fa-gift"></i>
-          <span class="t" data-key="occ5">Outra Ocasião</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- 
-<!-- ── FOOTER ─────────────────────────────────────────────── -->
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
 <footer>
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png"
-             alt="SCMCR Logo" class="cert-logo"
+             alt="SCMCR Logo"
              onerror="this.style.display='none'">
-        <p class="t" data-key="footerAbout">Santa Casa da Misericórdia das Caldas da Rainha — uma instituição de solidariedade social ao serviço da comunidade desde 1929.</p>
-        <span class="tax-badge mt-1"><i class="fa fa-check-circle"></i> <span class="t" data-key="footerTax">IPSS · Doações Dedutíveis</span></span>
+        <p class="t" data-key="footerAbout">Santa Casa da Misericórdia das Caldas da Rainha — instituição de solidariedade social ao serviço da comunidade desde 1929.</p>
+        <span class="tax-badge"><i class="fa fa-check-circle"></i> <span class="t" data-key="footerTax">IPSS · Doações Dedutíveis · RGPD Compliant</span></span>
         <div class="footer-social">
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -869,15 +793,17 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
         <ul>
           <li><a href="#categories" class="t" data-key="navMission">Missão</a></li>
           <li><a href="#dreams" class="t" data-key="navDreams">Sonhos</a></li>
+          <li><a href="#gifts" class="t" data-key="navGift">Presente</a></li>
           <li><a href="#team" class="t" data-key="navTeam">Equipa</a></li>
           <li><a href="#impact" class="t" data-key="navImpact">Impacto</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4 class="t" data-key="footerLegal">Legal</h4>
+        <h4 class="t" data-key="footerLegal">Legal &amp; RGPD</h4>
         <ul>
-          <li><a href="#" class="t" data-key="fPrivacy">Privacidade</a></li>
-          <li><a href="#" class="t" data-key="fTerms">Termos</a></li>
+          <li><a href="#" class="t" data-key="fPrivacy">Política de Privacidade</a></li>
+          <li><a href="#" class="t" data-key="fCookies">Política de Cookies</a></li>
+          <li><a href="#" class="t" data-key="fTerms">Termos de Uso</a></li>
           <li><a href="#" class="t" data-key="fTransp">Transparência</a></li>
           <li><a href="#" id="adminLink" class="t" data-key="fAdmin">Acesso Admin</a></li>
         </ul>
@@ -887,20 +813,25 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
         <ul>
           <li><a href="mailto:geral@scmcr.pt">geral@scmcr.pt</a></li>
           <li><a href="tel:+351262830000">+351 262 830 000</a></li>
-          <li>Caldas da Rainha, Portugal</li>
+          <li style="color:rgba(255,255,255,.4);font-size:.8rem">Caldas da Rainha<br>Portugal 2500</li>
         </ul>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span class="t" data-key="copyright">© 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.</span>
+      <span class="footer-copy t" data-key="copyright">© 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.</span>
+      <span class="footer-designer">Designed in Portugal by Aditya Neil Banerjee</span>
+    </div>
+    <div class="footer-prototype">
+      Prototype &amp; Tech Demonstrator. Awaiting go-live approval.
     </div>
   </div>
 </footer>
- 
+
 <!-- ═══════════════════════════════════════════════════════════
      MODALS
-     ═══════════════════════════════════════════════════════════ -->
- 
+══════════════════════════════════════════════════════════════ -->
+
 <!-- DONATION MODAL -->
 <div class="modal-overlay" id="modalDonation">
   <div class="modal-box modal-lg">
@@ -909,9 +840,9 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
       <button class="modal-close" onclick="closeModal('modalDonation')">&times;</button>
     </div>
     <div class="modal-body">
-      <p style="margin-bottom:1rem;font-size:.9rem">
+      <p style="margin-bottom:1rem;font-size:.88rem">
         <span class="t" data-key="donFor">A apoiar:</span>
-        <strong id="donDreamName" style="color:var(--navy)"> — </strong>
+        <strong id="donDreamName" style="color:var(--navy)"></strong>
       </p>
       <div class="form-group">
         <label class="t" data-key="donAmount">Valor da sua doação</label>
@@ -920,7 +851,7 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
           <span class="amount-pill selected" onclick="selectAmount(this,'25')">€25</span>
           <span class="amount-pill" onclick="selectAmount(this,'50')">€50</span>
           <span class="amount-pill" onclick="selectAmount(this,'100')">€100</span>
-          <span class="amount-pill" onclick="selectAmount(this,'other')" class="t" data-key="other">Outro</span>
+          <span class="amount-pill t" onclick="selectAmount(this,'other')" data-key="other">Outro</span>
         </div>
         <input type="number" id="customAmount" placeholder="Valor personalizado (€)" style="display:none;margin-top:.5rem" min="5">
       </div>
@@ -936,9 +867,9 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
       </div>
       <div class="toggle-row" onclick="toggleGift()">
         <input type="checkbox" id="isGift">
-        <label for="isGift"><i class="fa fa-gift gold"></i> <span class="t" data-key="donIsGift">É uma oferta? Receba um certificado elegante para imprimir</span></label>
+        <label for="isGift"><i class="fa fa-gift" style="color:var(--gold)"></i> <span class="t" data-key="donIsGift">É uma oferta? Receba um certificado elegante para imprimir</span></label>
       </div>
-      <div id="giftFields" style="display:none;background:rgba(201,164,75,.06);border:1px solid rgba(201,164,75,.3);border-radius:var(--r-md);padding:1.2rem;margin-bottom:1rem">
+      <div id="giftFields" style="display:none;background:rgba(201,164,75,.06);border:1px solid rgba(201,164,75,.28);border-radius:var(--r-md);padding:1.1rem;margin-bottom:1rem">
         <div class="form-row">
           <div class="form-group">
             <label class="t" data-key="recName">Nome do Destinatário</label>
@@ -946,7 +877,7 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
           </div>
           <div class="form-group">
             <label class="t" data-key="occasion">Ocasião</label>
-            <input type="text" id="giftOccasion" placeholder="Aniversário, Casamento...">
+            <input type="text" id="giftOccasion" placeholder="Aniversário...">
           </div>
         </div>
         <div class="form-group">
@@ -958,11 +889,15 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
         <label class="t" data-key="donPayment">Método de Pagamento</label>
         <select id="paymentMethod">
           <option value="" class="t" data-key="donPaySel">Selecione...</option>
-          <option value="card" class="t" data-key="payCard">Cartão de Crédito/Débito</option>
+          <option value="card" class="t" data-key="payCard">Cartão de Crédito / Débito</option>
           <option value="mbway" class="t" data-key="payMB">MB Way</option>
           <option value="bank" class="t" data-key="payBank">Transferência Bancária</option>
         </select>
       </div>
+      <p style="font-size:.76rem;color:var(--text-lt);margin-bottom:.8rem">
+        <i class="fa fa-lock" style="color:var(--gold)"></i>
+        <span class="t" data-key="gdprNote">Os seus dados são tratados de acordo com o RGPD. Não partilhamos informações com terceiros. <a href="#" style="color:var(--gold)">Política de Privacidade</a>.</span>
+      </p>
       <button class="btn btn-primary" style="width:100%" onclick="submitDonation()">
         <i class="fa fa-heart"></i>
         <span class="t" data-key="donSubmit">Realizar o Sonho</span>
@@ -971,11 +906,11 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
     </div>
   </div>
 </div>
- 
+
 <!-- DREAM DASHBOARD MODAL -->
 <div class="modal-overlay" id="modalDashboard">
   <div class="modal-box modal-lg" id="dashboardBox">
-    <button class="modal-close" style="position:absolute;top:1rem;right:1rem;z-index:5" onclick="closeModal('modalDashboard')">&times;</button>
+    <button class="modal-close" style="position:absolute;top:1rem;right:1rem;z-index:5;color:rgba(255,255,255,.8)" onclick="closeModal('modalDashboard')">&times;</button>
     <div class="db-hero">
       <h3 id="dbTitle">—</h3>
       <p id="dbDesc">—</p>
@@ -987,14 +922,9 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
       <div class="db-stat"><div class="val" id="dbTime">—</div><div class="lbl t" data-key="dbTime2">Tempo</div></div>
     </div>
     <div class="db-body">
-      <div class="db-prog-wrap">
-        <div class="db-prog-labels">
-          <span id="dbProgAmt">—</span>
-          <span id="dbProgPct">0%</span>
-        </div>
-        <div class="db-prog-bar">
-          <div class="db-prog-fill" id="dbProgFill" style="width:0%"></div>
-        </div>
+      <div>
+        <div class="db-prog-labels"><span id="dbProgAmt">—</span><span id="dbProgPct">0%</span></div>
+        <div class="db-prog-bar"><div class="db-prog-fill" id="dbProgFill" style="width:0%"></div></div>
       </div>
       <div class="db-nationalities">
         <h4 class="t" data-key="dbNat">🌍 Top 3 Nacionalidades dos Doadores</h4>
@@ -1009,7 +939,7 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
     </div>
   </div>
 </div>
- 
+
 <!-- GIFT CERTIFICATE MODAL -->
 <div class="modal-overlay" id="modalCert">
   <div class="modal-box">
@@ -1018,7 +948,7 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
       <button class="modal-close" onclick="closeModal('modalCert')">&times;</button>
     </div>
     <div class="modal-body">
-      <div class="cert-box" id="certPrintArea">
+      <div class="cert-box" id="certPrint">
         <img src="https://novosite.scmcr.pt/wp-content/uploads/2021/06/SCMC_logo_02-300x242.png"
              class="cert-logo" alt="SCMCR" onerror="this.style.display='none'">
         <p class="cert-title t" data-key="certHead">Certificado de Oferta</p>
@@ -1026,23 +956,23 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
         <p class="cert-name" id="certRecipient">—</p>
         <p class="cert-occasion" id="certOccasion">—</p>
         <div class="cert-message" id="certMsg" style="display:none"></div>
-        <hr style="border-color:rgba(201,164,75,.3);margin:.8rem 0">
+        <hr style="border-color:rgba(201,164,75,.25);margin:.7rem 0">
         <p class="cert-dream-label t" data-key="certDream">Sonho apoiado</p>
         <p class="cert-dream-name" id="certDreamName">—</p>
         <div class="cert-seal"><i class="fa fa-heart"></i></div>
-        <p style="font-size:.72rem;color:var(--text-lt);margin-top:.8rem">Santa Casa da Misericórdia das Caldas da Rainha · IPSS</p>
+        <p style="font-size:.7rem;color:var(--text-lt);margin-top:.7rem">Santa Casa da Misericórdia das Caldas da Rainha · IPSS · desde 1929</p>
       </div>
       <button class="btn btn-navy" style="width:100%;margin-top:1.2rem" onclick="window.print()">
         <i class="fa fa-print"></i>
-        <span class="t" data-key="certPrint">Imprimir Certificado</span>
+        <span class="t" data-key="certPrint2">Imprimir Certificado</span>
       </button>
     </div>
   </div>
 </div>
- 
+
 <!-- ADMIN LOGIN MODAL -->
 <div class="modal-overlay" id="modalAdmin">
-  <div class="modal-box" style="max-width:380px">
+  <div class="modal-box" style="max-width:360px">
     <div class="modal-header">
       <h3 class="t" data-key="adminTitle">Acesso Administrador</h3>
       <button class="modal-close" onclick="closeModal('modalAdmin')">&times;</button>
@@ -1052,7 +982,7 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
         <label class="t" data-key="adminPwLabel">Palavra-passe de acesso</label>
         <input type="password" id="adminPwInput" placeholder="••••••••">
       </div>
-      <p id="adminError" style="color:#c0392b;font-size:.82rem;margin-bottom:.8rem;display:none" class="t" data-key="adminErr">Palavra-passe incorreta. Tente novamente.</p>
+      <p id="adminError" style="color:#c0392b;font-size:.8rem;margin-bottom:.8rem;display:none" class="t" data-key="adminErr">Palavra-passe incorreta. Tente novamente.</p>
       <button class="btn btn-navy" style="width:100%" onclick="adminLogin()">
         <i class="fa fa-unlock"></i>
         <span class="t" data-key="adminBtn">Entrar</span>
@@ -1060,139 +990,107 @@ hr.divider{border:none;border-top:1px solid var(--sand);margin:1.5rem 0}
     </div>
   </div>
 </div>
- 
+
 <!-- ═══════════════════════════════════════════════════════════
      ADMIN DASHBOARD PAGE
-     ═══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════════════ -->
 <div class="admin-page" id="adminPage">
   <h2 class="t" data-key="adminDashTitle">Painel de Gestão de Sonhos</h2>
   <div class="admin-tabs">
-    <button class="admin-tab active t" data-panel="panelAdd" onclick="switchTab(this,'panelAdd')" data-key="tabAdd">Adicionar / Editar Sonho</button>
-    <button class="admin-tab t" data-panel="panelList" onclick="switchTab(this,'panelList')" data-key="tabList">Ver Todos os Projetos</button>
+    <button class="admin-tab active" onclick="switchTab(this,'panelAdd')"><span class="t" data-key="tabAdd">Adicionar / Editar Sonho</span></button>
+    <button class="admin-tab" onclick="switchTab(this,'panelList')"><span class="t" data-key="tabList">Ver Todos os Projetos</span></button>
   </div>
- 
-  <!-- ADD/EDIT PANEL -->
   <div class="admin-panel active" id="panelAdd">
     <input type="hidden" id="editId">
     <div class="admin-form-grid">
-      <div class="form-group full">
-        <label class="t" data-key="aTitle">Título do Sonho</label>
-        <input type="text" id="aTitle" placeholder="Ex: Novos livros para a biblioteca">
-      </div>
-      <div class="form-group full">
-        <label class="t" data-key="aDesc">Descrição</label>
-        <textarea id="aDesc" placeholder="Descreva o projeto..."></textarea>
-      </div>
-      <div class="form-group">
-        <label class="t" data-key="aCat">Categoria</label>
+      <div class="form-group full"><label class="t" data-key="aTitle">Título do Sonho</label><input type="text" id="aTitle" placeholder="Ex: Novos livros para a biblioteca"></div>
+      <div class="form-group full"><label class="t" data-key="aDesc">Descrição</label><textarea id="aDesc" placeholder="Descreva o projeto..."></textarea></div>
+      <div class="form-group"><label class="t" data-key="aCat">Categoria</label>
         <select id="aCat">
           <option value="child">Crianças</option>
           <option value="senior">Seniores</option>
           <option value="community">Comunidade</option>
         </select>
       </div>
-      <div class="form-group">
-        <label class="t" data-key="aStatus">Estado</label>
+      <div class="form-group"><label class="t" data-key="aStatus">Estado</label>
         <select id="aStatus">
           <option value="progress">Em Progresso</option>
           <option value="fulfilled">Realizado ✓</option>
         </select>
       </div>
-      <div class="form-group">
-        <label class="t" data-key="aGoal">Meta (€)</label>
-        <input type="number" id="aGoal" min="10" placeholder="500">
-      </div>
-      <div class="form-group">
-        <label class="t" data-key="aCollected">Angariado (€)</label>
-        <input type="number" id="aCollected" min="0" value="0">
-      </div>
-      <div class="form-group">
-        <label class="t" data-key="aDonors">Nº de Doadores</label>
-        <input type="number" id="aDonors" min="0" value="0">
-      </div>
-      <div class="form-group">
-        <label class="t" data-key="aTime">Tempo para Concluir</label>
-        <input type="text" id="aTime" placeholder="Ex: 3 meses">
-      </div>
-      <div class="form-group full">
-        <label class="t" data-key="aNat">Nacionalidades (formato: PT:60, EN:25, FR:15)</label>
-        <input type="text" id="aNat" placeholder="PT:60, EN:25, FR:15">
-      </div>
+      <div class="form-group"><label class="t" data-key="aGoal">Meta (€)</label><input type="number" id="aGoal" min="10" placeholder="500"></div>
+      <div class="form-group"><label class="t" data-key="aCollected">Angariado (€)</label><input type="number" id="aCollected" min="0" value="0"></div>
+      <div class="form-group"><label class="t" data-key="aDonors">Nº de Doadores</label><input type="number" id="aDonors" min="0" value="0"></div>
+      <div class="form-group"><label class="t" data-key="aTime">Tempo para Concluir</label><input type="text" id="aTime" placeholder="Ex: 3 meses"></div>
+      <div class="form-group full"><label class="t" data-key="aNat">Nacionalidades (formato: PT:60, EN:25, FR:15)</label><input type="text" id="aNat" placeholder="PT:60, EN:25, FR:15"></div>
     </div>
     <div style="display:flex;gap:.8rem;margin-top:1rem">
-      <button class="btn btn-ghost btn-sm" onclick="clearAdminForm()">
-        <i class="fa fa-rotate"></i> <span class="t" data-key="aClear">Limpar</span>
-      </button>
-      <button class="btn btn-primary" onclick="saveDream()">
-        <i class="fa fa-floppy-disk"></i>
-        <span class="t" data-key="aSave">Guardar Sonho</span>
-      </button>
+      <button class="btn btn-ghost btn-sm" onclick="clearAdminForm()"><i class="fa fa-rotate"></i> <span class="t" data-key="aClear">Limpar</span></button>
+      <button class="btn btn-primary" onclick="saveDream()"><i class="fa fa-floppy-disk"></i> <span class="t" data-key="aSave">Guardar Sonho</span></button>
     </div>
   </div>
- 
-  <!-- LIST PANEL -->
   <div class="admin-panel" id="panelList">
-    <div class="admin-project-list" id="adminProjectList">
-      <!-- Rendered by JS -->
-    </div>
+    <div id="adminProjectList"></div>
   </div>
- 
   <div style="text-align:center;margin-top:2rem">
-    <button class="btn btn-ghost btn-sm" onclick="adminLogout()">
-      <i class="fa fa-arrow-right-from-bracket"></i>
-      <span class="t" data-key="aLogout">Sair do Painel</span>
-    </button>
+    <button class="btn btn-ghost btn-sm" onclick="adminLogout()"><i class="fa fa-arrow-right-from-bracket"></i> <span class="t" data-key="aLogout">Sair do Painel</span></button>
   </div>
 </div>
- 
- 
+
 <!-- ═══════════════════════════════════════════════════════════
      JAVASCRIPT
-     ═══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════════════ -->
 <script>
-/* ── TRANSLATIONS ─────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────
+   TRANSLATIONS
+──────────────────────────────────────────────────────────── */
 const T = {
-  pt: {
-    heroTag:'Celebrando 95 Anos de Compaixão', heroTitle:'Construindo <em>Sonhos,</em><br>Moldando Futuros',
+  pt:{
+    heroTag:'Celebrando 95 Anos de Compaixão',
+    heroTitle:'Construindo <em>Sonhos,</em><br>Moldando Futuros',
     heroSub:'Junte-se à Santa Casa da Misericórdia das Caldas da Rainha para continuar um legado de cuidado, esperança e transformação comunitária.',
-    heroCta1:'Explore os Sonhos', heroCta2:'Doe Agora', scroll:'Scroll',
-    navMission:'A Nossa Missão', navDreams:'Sonhos', navTeam:'Equipa', navImpact:'Impacto', navGift:'Oferta',
+    heroCta1:'Explore os Sonhos', heroCta2:'Doe Agora',
+    navMission:'A Nossa Missão', navDreams:'Sonhos', navTeam:'Equipa', navImpact:'Impacto', navGift:'Presente',
     catLabel:'As Nossas Áreas de Atuação', catTitle:'Torne-se um Realizador de Sonhos',
-    catSub:'Cada categoria representa um pilar da nossa missão. O seu apoio transforma aspirações em realidade.',
+    catSub:'Cada categoria representa um pilar da nossa missão. O seu apoio transforma aspirações em realidade para quem mais precisa.',
     catBadge1:'Infância', catBadge2:'Seniores', catBadge3:'Comunidade',
-    cat1Title:'O Desejo de uma Criança', cat1Text:'Educação, alegria e cuidado para os nossos membros mais jovens.',
-    cat2Title:'O Coração de um Sénior', cat2Text:'Dignidade, conforto e companhia para os nossos idosos.',
-    cat3Title:'Sonhos de Propósito & Paz', cat3Text:'Integração social e bem-estar para uma comunidade mais forte.',
+    cat1Title:'O Desejo de uma Criança', cat1Text:'Educação, segurança e cuidado para os nossos membros mais jovens. O seu apoio constrói fundações sólidas para um futuro promissor.',
+    cat2Title:'O Coração de um Sénior', cat2Text:'Dignidade, conforto e companhia para os nossos idosos. A sua contribuição apoia cuidados diários com qualidade e respeito.',
+    cat3Title:'Sonhos de Propósito & Paz', cat3Text:'Integração social, bem-estar familiar e uma comunidade mais coesa. Juntos construímos uma Caldas da Rainha mais forte.',
     catCta:'Ver Sonhos',
     dreamLabel:'Sonhos que Podemos Realizar Juntos', dreamTitle:'A Nossa Lista de Sonhos',
     dreamSub:'Cada projeto representa uma necessidade real. Selecione um sonho para ver o impacto da sua doação.',
     filterAll:'Todos', filterChild:'Crianças', filterSenior:'Seniores', filterCommunity:'Comunidade',
     filterFulfilled:'Realizados', filterProgress:'Em Progresso',
+    giftLabel:'Uma Ideia Especial', giftTitle:'Doe em Nome de Alguém',
+    giftSub:'Celebre um aniversário, casamento ou ocasião especial com uma doação em nome de alguém querido. Receba um certificado elegante pronto a imprimir.',
+    occ1:'Aniversário', occ2:'Aniversário de Casamento', occ3:'Formatura', occ4:'Em Memória', occ5:'Outra Ocasião',
     teamLabel:'As Nossas Pessoas', teamTitle:'Uma Equipa com Coração',
-    teamSub:'Mulheres dedicadas que todos os dias transformam vidas com profissionalismo, amor e compaixão.',
+    teamSub:'Profissionais dedicadas que todos os dias transformam vidas com competência, cuidado e compaixão — o verdadeiro coração da Santa Casa.',
     role1:'Diretora de Cuidados', role2:'Coordenadora Social', role3:'Enfermeira Chefe', role4:'Técnica de Apoio à Infância',
     impLabel:'O Nosso Legado', impTitle:'95 Anos de Impacto Real',
-    impSub:'Desde 1929, a Santa Casa das Caldas da Rainha tem sido um pilar de esperança e dignidade.',
-    stat1:'Anos de Serviço', stat2:'Vidas Apoiadas/Ano', stat3:'Programas Ativos', stat4:'Transparência Total',
-    impTransp:'Todas as doações são geridas de forma transparente. A Santa Casa é uma IPSS com estatuto de utilidade pública — doações dedutíveis nos impostos.',
-    taxBadge:'IPSS Certificada · Benefícios Fiscais Disponíveis',
-    giftLabel:'Uma Ideia Especial', giftTitle:'Doe em Nome de Alguém',
-    giftSub:'Celebre um aniversário, casamento ou ocasião especial com uma doação em nome de alguém querido. Receba um certificado elegante para imprimir.',
-    occ1:'Aniversário', occ2:'Casamento', occ3:'Formatura', occ4:'Em Memória', occ5:'Outra Ocasião',
-    footerAbout:'SCMCR — instituição de solidariedade social ao serviço da comunidade desde 1929.',
-    footerTax:'IPSS · Doações Dedutíveis', footerNav:'Navegação', footerLegal:'Legal', footerContact:'Contacto',
-    fPrivacy:'Privacidade', fTerms:'Termos de Uso', fTransp:'Transparência', fAdmin:'Acesso Admin',
+    impSub:'Desde 1929, a Santa Casa das Caldas da Rainha tem sido um pilar de esperança, dignidade e solidariedade.',
+    stat1:'Anos de Serviço', stat2:'Vidas Apoiadas / Ano', stat3:'Programas Ativos', stat4:'Transparência Total',
+    impTransp:'Todas as doações são geridas de forma transparente e aplicadas diretamente nos projetos listados. A Santa Casa é uma IPSS com estatuto de utilidade pública — doações elegíveis para benefícios fiscais em Portugal.',
+    taxBadge:'IPSS Certificada · Benefícios Fiscais ao abrigo do CIRC e CIRS',
+    footerAbout:'Santa Casa da Misericórdia das Caldas da Rainha — instituição de solidariedade social ao serviço da comunidade desde 1929.',
+    footerTax:'IPSS · Doações Dedutíveis · RGPD Compliant',
+    footerNav:'Navegação', footerLegal:'Legal & RGPD', footerContact:'Contacto',
+    fPrivacy:'Política de Privacidade', fCookies:'Política de Cookies',
+    fTerms:'Termos de Uso', fTransp:'Transparência', fAdmin:'Acesso Admin',
     copyright:'© 2024 Santa Casa da Misericórdia das Caldas da Rainha. Todos os direitos reservados.',
     modalDonTitle:'Realize Este Sonho', donFor:'A apoiar:', donAmount:'Valor da sua doação', other:'Outro',
-    donName:'Nome (Opcional)', donEmail:'Email *', donIsGift:'É uma oferta? Receba um certificado elegante para imprimir',
+    donName:'Nome (Opcional)', donEmail:'Email *',
+    donIsGift:'É uma oferta? Receba um certificado elegante para imprimir',
     recName:'Nome do Destinatário', occasion:'Ocasião', giftMsg:'Mensagem Pessoal (Opcional)',
-    donPayment:'Método de Pagamento', donPaySel:'Selecione...', payCard:'Cartão de Crédito/Débito',
+    donPayment:'Método de Pagamento', donPaySel:'Selecione...', payCard:'Cartão de Crédito / Débito',
     payMB:'MB Way', payBank:'Transferência Bancária', donSubmit:'Realizar o Sonho',
+    gdprNote:'Os seus dados são tratados de acordo com o RGPD. Não partilhamos informações com terceiros.',
     donNote:'🔒 Processamento seguro · IPSS certificada · Doações dedutíveis',
     dbColl:'Angariado', dbGap2:'Em Falta', dbDon:'Doadores', dbTime2:'Tempo',
     dbNat:'🌍 Top 3 Nacionalidades dos Doadores', dbCta:'Realize Este Sonho',
     certTitle:'Obrigado pela sua Generosidade!', certHead:'Certificado de Oferta',
-    certFor:'Este certificado honra', certDream:'Sonho apoiado', certPrint:'Imprimir Certificado',
+    certFor:'Este certificado honra', certDream:'Sonho apoiado', certPrint2:'Imprimir Certificado',
     adminTitle:'Acesso Administrador', adminPwLabel:'Palavra-passe de acesso',
     adminErr:'Palavra-passe incorreta. Tente novamente.', adminBtn:'Entrar',
     adminDashTitle:'Painel de Gestão de Sonhos', tabAdd:'Adicionar / Editar Sonho', tabList:'Ver Todos os Projetos',
@@ -1202,117 +1100,127 @@ const T = {
     btnViewDetails:'Ver Detalhes', btnMakeDream:'Realizar Este Sonho', btnDreamDone:'Sonho Realizado ✓',
     progressLabel:'progresso',
   },
-  en: {
-    heroTag:'Celebrating 95 Years of Compassion', heroTitle:'Building <em>Dreams,</em><br>Shaping Futures',
+  en:{
+    heroTag:'Celebrating 95 Years of Compassion',
+    heroTitle:'Building <em>Dreams,</em><br>Shaping Futures',
     heroSub:'Join the Santa Casa da Misericórdia das Caldas da Rainha to continue a legacy of care, hope and community transformation.',
-    heroCta1:'Explore Dreams', heroCta2:'Donate Now', scroll:'Scroll',
+    heroCta1:'Explore Dreams', heroCta2:'Donate Now',
     navMission:'Our Mission', navDreams:'Dreams', navTeam:'Team', navImpact:'Impact', navGift:'Gift',
     catLabel:'Our Areas of Action', catTitle:'Become a Dream Maker',
-    catSub:'Each category represents a pillar of our mission. Your support transforms aspirations into reality.',
+    catSub:'Each category represents a pillar of our mission. Your support transforms aspirations into reality for those who need it most.',
     catBadge1:'Childhood', catBadge2:'Seniors', catBadge3:'Community',
-    cat1Title:"A Child's Wish", cat1Text:'Education, joy and care for our youngest community members.',
-    cat2Title:"A Senior's Heart", cat2Text:'Dignity, comfort and companionship for our elderly residents.',
-    cat3Title:'Dreams of Purpose & Peace', cat3Text:'Social integration and wellbeing for a stronger community.',
+    cat1Title:"A Child's Wish", cat1Text:'Education, safety and care for our youngest community members. Your support builds solid foundations for a bright future.',
+    cat2Title:"A Senior's Heart", cat2Text:'Dignity, comfort and companionship for our elderly residents. Your contribution supports daily care with quality and respect.',
+    cat3Title:'Dreams of Purpose & Peace', cat3Text:'Social integration, family wellbeing and a more cohesive community. Together we build a stronger Caldas da Rainha.',
     catCta:'See Dreams',
     dreamLabel:'Dreams We Can Make Come True Together', dreamTitle:'Our Dream List',
-    dreamSub:"Each project represents a real need. Select a dream to see the impact of your donation.",
+    dreamSub:'Each project represents a real need. Select a dream to see the direct impact of your donation.',
     filterAll:'All', filterChild:'Children', filterSenior:'Seniors', filterCommunity:'Community',
     filterFulfilled:'Fulfilled', filterProgress:'In Progress',
-    teamLabel:'Our People', teamTitle:'A Team with Heart',
-    teamSub:'Dedicated women who every day transform lives with professionalism, love and compassion.',
-    role1:'Director of Care', role2:'Social Coordinator', role3:'Head Nurse', role4:'Childhood Support Specialist',
-    impLabel:'Our Legacy', impTitle:'95 Years of Real Impact',
-    impSub:'Since 1929, the Santa Casa das Caldas da Rainha has been a pillar of hope and dignity.',
-    stat1:'Years of Service', stat2:'Lives Supported/Year', stat3:'Active Programs', stat4:'Full Transparency',
-    impTransp:'All donations are managed transparently. Santa Casa is a certified non-profit (IPSS) — donations are tax-deductible in Portugal.',
-    taxBadge:'Certified IPSS · Tax Benefits Available',
     giftLabel:'A Special Idea', giftTitle:'Donate in Someone\'s Name',
     giftSub:'Celebrate a birthday, anniversary or special occasion with a donation in the name of a loved one. Receive an elegant printable certificate.',
     occ1:'Birthday', occ2:'Wedding Anniversary', occ3:'Graduation', occ4:'In Memory', occ5:'Other Occasion',
-    footerAbout:'SCMCR — a social solidarity institution serving the community since 1929.',
-    footerTax:'Certified IPSS · Tax-Deductible Donations', footerNav:'Navigation', footerLegal:'Legal', footerContact:'Contact',
-    fPrivacy:'Privacy Policy', fTerms:'Terms of Use', fTransp:'Transparency', fAdmin:'Admin Access',
+    teamLabel:'Our People', teamTitle:'A Team with Heart',
+    teamSub:'Dedicated professionals who every day transform lives with competence, care and compassion — the true heart of Santa Casa.',
+    role1:'Director of Care', role2:'Social Coordinator', role3:'Head Nurse', role4:'Childhood Support Specialist',
+    impLabel:'Our Legacy', impTitle:'95 Years of Real Impact',
+    impSub:'Since 1929, the Santa Casa das Caldas da Rainha has been a pillar of hope, dignity and solidarity.',
+    stat1:'Years of Service', stat2:'Lives Supported / Year', stat3:'Active Programs', stat4:'Full Transparency',
+    impTransp:'All donations are managed transparently and applied directly to listed projects. Santa Casa is a certified non-profit (IPSS) — donations are tax-deductible in Portugal.',
+    taxBadge:'Certified IPSS · Tax Benefits Available under Portuguese law',
+    footerAbout:'Santa Casa da Misericórdia das Caldas da Rainha — a social solidarity institution serving the community since 1929.',
+    footerTax:'Certified IPSS · Tax-Deductible · GDPR Compliant',
+    footerNav:'Navigation', footerLegal:'Legal & GDPR', footerContact:'Contact',
+    fPrivacy:'Privacy Policy', fCookies:'Cookie Policy',
+    fTerms:'Terms of Use', fTransp:'Transparency', fAdmin:'Admin Access',
     copyright:'© 2024 Santa Casa da Misericórdia das Caldas da Rainha. All rights reserved.',
     modalDonTitle:'Make This Dream Come True', donFor:'Supporting:', donAmount:'Choose your donation amount', other:'Other',
-    donName:'Name (Optional)', donEmail:'Email *', donIsGift:'Is this a gift? Receive an elegant printable certificate',
+    donName:'Name (Optional)', donEmail:'Email *',
+    donIsGift:'Is this a gift? Receive an elegant printable certificate',
     recName:"Recipient's Name", occasion:'Occasion', giftMsg:'Personal Message (Optional)',
-    donPayment:'Payment Method', donPaySel:'Select...', payCard:'Credit/Debit Card',
+    donPayment:'Payment Method', donPaySel:'Select...', payCard:'Credit / Debit Card',
     payMB:'MB Way', payBank:'Bank Transfer', donSubmit:'Make the Dream Come True',
+    gdprNote:'Your data is processed in accordance with GDPR. We do not share your information with third parties.',
     donNote:'🔒 Secure processing · Certified IPSS · Tax-deductible',
     dbColl:'Raised', dbGap2:'Gap', dbDon:'Donors', dbTime2:'Time',
     dbNat:'🌍 Top 3 Donor Nationalities', dbCta:'Make This Dream Real',
     certTitle:'Thank You for Your Generosity!', certHead:'Gift Certificate',
-    certFor:'This certificate honours', certDream:'Dream supported', certPrint:'Print Certificate',
+    certFor:'This certificate honours', certDream:'Dream supported', certPrint2:'Print Certificate',
     adminTitle:'Administrator Access', adminPwLabel:'Access password',
-    adminErr:'Incorrect password. Please try again.', adminBtn:'Login',
+    adminErr:'Incorrect password. Please try again.', adminBtn:'Log In',
     adminDashTitle:'Dream Management Panel', tabAdd:'Add / Edit Dream', tabList:'View All Projects',
     aTitle:'Dream Title', aDesc:'Description', aCat:'Category', aStatus:'Status',
     aGoal:'Goal (€)', aCollected:'Raised (€)', aDonors:'No. of Donors', aTime:'Time to Complete',
-    aNat:'Nationalities (format: PT:60, EN:25, FR:15)', aClear:'Clear', aSave:'Save Dream', aLogout:'Log out',
+    aNat:'Nationalities (format: PT:60, EN:25, FR:15)', aClear:'Clear', aSave:'Save Dream', aLogout:'Log Out',
     btnViewDetails:'View Details', btnMakeDream:'Make This Dream Real', btnDreamDone:'Dream Fulfilled ✓',
     progressLabel:'progress',
   },
-  fr: {
-    heroTag:'Célébrant 95 Ans de Compassion', heroTitle:'Construire des <em>Rêves,</em><br>Façonner des Avenirs',
+  fr:{
+    heroTag:'Célébrant 95 Ans de Compassion',
+    heroTitle:'Construire des <em>Rêves,</em><br>Façonner des Avenirs',
     heroSub:"Rejoignez la Santa Casa da Misericórdia das Caldas da Rainha pour perpétuer un héritage de soin, d'espoir et de transformation communautaire.",
-    heroCta1:'Explorer les Rêves', heroCta2:'Faire un Don', scroll:'Défiler',
+    heroCta1:'Explorer les Rêves', heroCta2:'Faire un Don',
     navMission:'Notre Mission', navDreams:'Rêves', navTeam:'Équipe', navImpact:'Impact', navGift:'Cadeau',
     catLabel:"Nos Domaines d'Action", catTitle:'Devenez Réalisateur de Rêves',
     catSub:'Chaque catégorie représente un pilier de notre mission. Votre soutien transforme les aspirations en réalité.',
     catBadge1:'Enfance', catBadge2:'Aînés', catBadge3:'Communauté',
-    cat1Title:"Le Souhait d'un Enfant", cat1Text:'Éducation, joie et soin pour nos plus jeunes membres.',
+    cat1Title:"Le Souhait d'un Enfant", cat1Text:'Éducation, sécurité et soin pour nos membres les plus jeunes.',
     cat2Title:"Le Cœur d'un Aîné", cat2Text:'Dignité, confort et compagnie pour nos résidents âgés.',
     cat3Title:'Rêves de But et de Paix', cat3Text:'Intégration sociale et bien-être pour une communauté plus forte.',
     catCta:'Voir les Rêves',
     dreamLabel:'Rêves Que Nous Pouvons Réaliser Ensemble', dreamTitle:'Notre Liste de Rêves',
-    dreamSub:'Chaque projet représente un besoin réel. Sélectionnez un rêve pour voir l\'impact de votre don.',
+    dreamSub:"Chaque projet représente un besoin réel. Sélectionnez un rêve pour voir l'impact de votre don.",
     filterAll:'Tous', filterChild:'Enfants', filterSenior:'Aînés', filterCommunity:'Communauté',
     filterFulfilled:'Réalisés', filterProgress:'En Cours',
+    giftLabel:'Une Idée Spéciale', giftTitle:"Donnez au Nom de Quelqu'un",
+    giftSub:"Célébrez un anniversaire ou une occasion spéciale avec un don au nom d'un proche. Recevez un élégant certificat imprimable.",
+    occ1:'Anniversaire', occ2:'Anniversaire de Mariage', occ3:'Remise de Diplôme', occ4:'En Mémoire', occ5:'Autre Occasion',
     teamLabel:'Nos Personnes', teamTitle:'Une Équipe avec Cœur',
-    teamSub:'Des femmes dévouées qui transforment des vies chaque jour avec professionnalisme et amour.',
+    teamSub:"Des professionnelles dévouées qui transforment des vies chaque jour avec compétence et compassion.",
     role1:'Directrice des Soins', role2:'Coordinatrice Sociale', role3:'Infirmière en Chef', role4:'Technicienne Enfance',
     impLabel:'Notre Héritage', impTitle:'95 Ans d\'Impact Réel',
     impSub:'Depuis 1929, la Santa Casa das Caldas da Rainha est un pilier d\'espoir et de dignité.',
-    stat1:'Années de Service', stat2:'Vies Soutenues/An', stat3:'Programmes Actifs', stat4:'Transparence Totale',
+    stat1:'Années de Service', stat2:'Vies Soutenues / An', stat3:'Programmes Actifs', stat4:'Transparence Totale',
     impTransp:"Tous les dons sont gérés de manière transparente. La Santa Casa est une IPSS certifiée — dons déductibles fiscalement au Portugal.",
     taxBadge:'IPSS Certifiée · Avantages Fiscaux Disponibles',
-    giftLabel:'Une Idée Spéciale', giftTitle:"Donnez au Nom de Quelqu'un",
-    giftSub:"Célébrez un anniversaire, un mariage ou une occasion spéciale avec un don au nom d'un proche. Recevez un élégant certificat imprimable.",
-    occ1:'Anniversaire', occ2:'Anniversaire de Mariage', occ3:'Remise de Diplôme', occ4:'En Mémoire', occ5:'Autre Occasion',
     footerAbout:"SCMCR — institution de solidarité sociale au service de la communauté depuis 1929.",
-    footerTax:'IPSS Certifiée · Dons Déductibles', footerNav:'Navigation', footerLegal:'Légal', footerContact:'Contact',
-    fPrivacy:'Politique de Confidentialité', fTerms:"Conditions d'Utilisation", fTransp:'Transparence', fAdmin:'Accès Admin',
+    footerTax:'IPSS Certifiée · Dons Déductibles · Conforme RGPD',
+    footerNav:'Navigation', footerLegal:'Légal & RGPD', footerContact:'Contact',
+    fPrivacy:'Politique de Confidentialité', fCookies:'Politique de Cookies',
+    fTerms:"Conditions d'Utilisation", fTransp:'Transparence', fAdmin:'Accès Admin',
     copyright:'© 2024 Santa Casa da Misericórdia das Caldas da Rainha. Tous droits réservés.',
     modalDonTitle:'Réalisez Ce Rêve', donFor:'En soutien à :', donAmount:'Choisissez votre montant', other:'Autre',
-    donName:'Nom (Optionnel)', donEmail:'Email *', donIsGift:'Est-ce un cadeau ? Recevez un certificat élégant à imprimer',
+    donName:'Nom (Optionnel)', donEmail:'Email *',
+    donIsGift:'Est-ce un cadeau ? Recevez un certificat élégant à imprimer',
     recName:'Nom du Destinataire', occasion:'Occasion', giftMsg:'Message Personnel (Optionnel)',
     donPayment:'Mode de Paiement', donPaySel:'Sélectionnez...', payCard:'Carte Bancaire',
     payMB:'MB Way', payBank:'Virement Bancaire', donSubmit:'Réaliser le Rêve',
+    gdprNote:'Vos données sont traitées conformément au RGPD. Nous ne partageons pas vos informations.',
     donNote:'🔒 Traitement sécurisé · IPSS certifiée · Déductible fiscalement',
     dbColl:'Collecté', dbGap2:'Manquant', dbDon:'Donateurs', dbTime2:'Temps',
     dbNat:'🌍 Top 3 Nationalités des Donateurs', dbCta:'Réalisez Ce Rêve',
     certTitle:'Merci pour Votre Générosité !', certHead:'Certificat de Don',
-    certFor:'Ce certificat honore', certDream:'Rêve soutenu', certPrint:'Imprimer le Certificat',
+    certFor:'Ce certificat honore', certDream:'Rêve soutenu', certPrint2:'Imprimer le Certificat',
     adminTitle:'Accès Administrateur', adminPwLabel:"Mot de passe d'accès",
     adminErr:'Mot de passe incorrect. Veuillez réessayer.', adminBtn:'Connexion',
-    adminDashTitle:'Tableau de Bord de Gestion des Rêves', tabAdd:'Ajouter / Modifier un Rêve', tabList:'Voir Tous les Projets',
+    adminDashTitle:'Tableau de Bord', tabAdd:'Ajouter / Modifier un Rêve', tabList:'Voir Tous les Projets',
     aTitle:'Titre du Rêve', aDesc:'Description', aCat:'Catégorie', aStatus:'Statut',
     aGoal:'Objectif (€)', aCollected:'Collecté (€)', aDonors:'Nb. Donateurs', aTime:'Temps pour Compléter',
-    aNat:'Nationalités (format : PT:60, EN:25, FR:15)', aClear:'Effacer', aSave:'Enregistrer le Rêve', aLogout:'Déconnexion',
+    aNat:'Nationalités (format : PT:60, EN:25, FR:15)', aClear:'Effacer', aSave:'Enregistrer', aLogout:'Déconnexion',
     btnViewDetails:'Voir Détails', btnMakeDream:'Réalisez Ce Rêve', btnDreamDone:'Rêve Réalisé ✓',
     progressLabel:'progression',
   }
 };
- 
+
 let currentLang = 'pt';
- 
+
 function setLang(lang) {
   currentLang = lang;
   document.querySelectorAll('.lang-float button').forEach(b => b.classList.remove('active'));
   document.getElementById('btn-' + lang).classList.add('active');
   document.querySelectorAll('[data-key]').forEach(el => {
     const key = el.dataset.key;
-    if (T[lang][key] !== undefined) {
+    if (T[lang] && T[lang][key] !== undefined) {
       if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
         el.placeholder = T[lang][key];
       } else {
@@ -1322,40 +1230,64 @@ function setLang(lang) {
   });
   renderDreams();
 }
- 
-/* ── DREAM DATA ──────────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   GDPR BANNER
+──────────────────────────────────────────────────────────── */
+function acceptGdpr() {
+  document.getElementById('gdprBanner').classList.add('hidden');
+  try { localStorage.setItem('gdpr_consent','accepted'); } catch(e){}
+}
+function rejectGdpr() {
+  document.getElementById('gdprBanner').classList.add('hidden');
+  try { localStorage.setItem('gdpr_consent','essential'); } catch(e){}
+}
+function showPrivacy() {
+  alert('Política de Privacidade\n\nEste sítio web é operado pela Santa Casa da Misericórdia das Caldas da Rainha, uma IPSS.\n\nCookies: Utilizamos apenas cookies técnicos essenciais (sem rastreamento, sem marketing).\n\nDados pessoais: Os dados fornecidos nos formulários de doação são utilizados exclusivamente para processar a sua contribuição, em conformidade com o RGPD (Regulamento Geral de Proteção de Dados) e a Lei n.º 41/2004.\n\nNão partilhamos dados com terceiros para fins comerciais.\n\nPara exercer os seus direitos (acesso, retificação, apagamento), contacte: geral@scmcr.pt');
+}
+(function(){
+  try {
+    if (localStorage.getItem('gdpr_consent')) {
+      document.getElementById('gdprBanner').classList.add('hidden');
+    }
+  } catch(e){}
+})();
+
+/* ────────────────────────────────────────────────────────────
+   DREAM DATA
+──────────────────────────────────────────────────────────── */
 const defaultDreams = [
   {
     id:1, category:'child', status:'progress',
     title:{pt:'Novos Livros para a Nossa Biblioteca', en:'New Books for Our Library', fr:'Nouveaux Livres pour Notre Bibliothèque'},
-    desc:{pt:'A biblioteca dos nossos filhos precisa de uma atualização! Ajude-nos a adquirir livros que estimulam a imaginação e fomentam o amor pela leitura.',
-          en:"Our children's library needs an update! Help us acquire books that spark imagination and foster a love of reading.",
-          fr:"La bibliothèque de nos enfants a besoin d'une mise à jour ! Aidez-nous à acquérir des livres qui stimulent l'imagination."},
+    desc:{pt:'A biblioteca dos nossos filhos precisa de atualização. Ajude-nos a adquirir livros que estimulam a imaginação e fomentam o amor pela leitura.',
+          en:"Our children's library needs updating. Help us acquire books that spark imagination and foster a love of reading.",
+          fr:"Notre bibliothèque pour enfants a besoin d'une mise à jour. Aidez-nous à acquérir des livres stimulants."},
     goal:500, collected:200, donors:15, time:'2 meses',
     nationalities:[{flag:'🇵🇹',name:'Portugal',pct:70},{flag:'🇬🇧',name:'Reino Unido',pct:20},{flag:'🇫🇷',name:'França',pct:10}]
   },
   {
     id:2, category:'senior', status:'fulfilled',
     title:{pt:'Cadeiras de Rodas para Seniores', en:'Wheelchairs for Seniors', fr:'Fauteuils Roulants pour Aînés'},
-    desc:{pt:'Garantimos mobilidade e conforto aos nossos residentes idosos com cadeiras de rodas novas e ergonomicamente projetadas.',
-          en:'We ensured mobility and comfort for our elderly residents with new, ergonomically designed wheelchairs.',
-          fr:'Nous avons assuré mobilité et confort à nos résidents âgés avec de nouveaux fauteuils roulants ergonomiques.'},
+    desc:{pt:'Garantimos mobilidade e conforto aos nossos residentes idosos com cadeiras de rodas ergonomicamente projetadas, melhorando a sua autonomia.',
+          en:'We secured mobility and comfort for our elderly residents with new ergonomically designed wheelchairs, improving their independence.',
+          fr:"Nous avons assuré mobilité et confort à nos résidents âgés avec de nouveaux fauteuils roulants ergonomiques."},
     goal:1200, collected:1200, donors:30, time:'4 meses',
-    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:60},{flag:'🇺🇸',name:'Estados Unidos',pct:25},{flag:'🇩🇪',name:'Alemanha',pct:15}]
+    nationalities:[{flag:'🇵🇹',name:'Portugal',pct:60},{flag:'🇺🇸',name:'EUA',pct:25},{flag:'🇩🇪',name:'Alemanha',pct:15}]
   },
   {
     id:3, category:'community', status:'progress',
     title:{pt:'Projeto de Horta Comunitária', en:'Community Garden Project', fr:'Projet de Jardin Communautaire'},
-    desc:{pt:'Apoie a criação de uma vibrante horta comunitária, oferecendo produtos frescos, oportunidades educacionais e espaço de convívio.',
-          en:'Support the creation of a vibrant community garden, offering fresh produce, educational opportunities and intergenerational connection.',
-          fr:"Soutenez la création d'un jardin communautaire vibrant, offrant des produits frais et des opportunités éducatives."},
+    desc:{pt:'Apoie a criação de uma horta comunitária, oferecendo produtos frescos, oportunidades educacionais e um espaço de convívio intergeracional.',
+          en:'Support the creation of a community garden offering fresh produce, educational opportunities and intergenerational connection.',
+          fr:"Soutenez la création d'un jardin communautaire avec des produits frais et des opportunités éducatives."},
     goal:2500, collected:1800, donors:22, time:'3 meses',
     nationalities:[{flag:'🇵🇹',name:'Portugal',pct:50},{flag:'🇫🇷',name:'França',pct:30},{flag:'🇪🇸',name:'Espanha',pct:20}]
   },
   {
     id:4, category:'child', status:'progress',
     title:{pt:'Material de Arte para Ateliers Criativos', en:'Art Supplies for Creative Workshops', fr:"Matériel d'Art pour Ateliers Créatifs"},
-    desc:{pt:'Tintas, pincéis, barro e materiais criativos para os nossos ateliers semanais, onde as crianças se expressam livremente.',
+    desc:{pt:'Tintas, pincéis, barro e materiais criativos para os nossos ateliers semanais, onde as crianças se expressam com liberdade e confiança.',
           en:'Paints, brushes, clay and creative materials for our weekly workshops, where children express themselves freely.',
           fr:"Peintures, pinceaux, argile et matériaux créatifs pour nos ateliers hebdomadaires."},
     goal:350, collected:150, donors:10, time:'1 mês',
@@ -1364,66 +1296,65 @@ const defaultDreams = [
   {
     id:5, category:'senior', status:'progress',
     title:{pt:'Programa de Música Terapêutica', en:'Music Therapy Program', fr:'Programme de Musicothérapie'},
-    desc:{pt:'Financie um programa de música terapêutica para os nossos idosos, trazendo alegria, estimulando a memória e promovendo o bem-estar.',
-          en:'Fund a music therapy program for our elderly, bringing joy, stimulating memory and promoting wellbeing.',
-          fr:"Financez un programme de musicothérapie pour nos aînés, apportant joie et bien-être."},
+    desc:{pt:'Financie um programa de musicoterapia para os nossos idosos — estimula a memória, traz serenidade e reforça o sentido de comunidade.',
+          en:'Fund a music therapy program for our elderly — stimulating memory, bringing calm and reinforcing community bonds.',
+          fr:"Financez un programme de musicothérapie pour nos aînés — stimulant la mémoire et apportant sérénité."},
     goal:800, collected:320, donors:18, time:'2 meses',
     nationalities:[{flag:'🇵🇹',name:'Portugal',pct:65},{flag:'🇩🇪',name:'Alemanha',pct:20},{flag:'🇸🇪',name:'Suécia',pct:15}]
   },
   {
     id:6, category:'community', status:'fulfilled',
     title:{pt:'Inclusão Digital para Famílias', en:'Digital Inclusion for Families', fr:'Inclusion Numérique pour les Familles'},
-    desc:{pt:'Computadores e formação em internet para famílias carenciadas, preenchendo o fosso digital e possibilitando novas oportunidades.',
-          en:'Computers and internet training for disadvantaged families, bridging the digital divide and enabling new opportunities.',
-          fr:"Ordinateurs et formation internet pour les familles défavorisées, comblant le fossé numérique."},
+    desc:{pt:'Computadores e formação em literacia digital para famílias com menos recursos, possibilitando novas oportunidades de aprendizagem e emprego.',
+          en:'Computers and digital literacy training for under-resourced families, enabling new learning and employment opportunities.',
+          fr:"Ordinateurs et formation numérique pour les familles défavorisées, ouvrant de nouvelles opportunités."},
     goal:1800, collected:1800, donors:28, time:'5 meses',
     nationalities:[{flag:'🇵🇹',name:'Portugal',pct:55},{flag:'🇬🇧',name:'Reino Unido',pct:30},{flag:'🇧🇪',name:'Bélgica',pct:15}]
   }
 ];
- 
+
 function getDreams() {
   try {
-    const stored = localStorage.getItem('scmcr_dreams');
-    return stored ? JSON.parse(stored) : defaultDreams;
-  } catch(e) { return defaultDreams; }
+    const s = localStorage.getItem('scmcr_dreams');
+    return s ? JSON.parse(s) : defaultDreams;
+  } catch(e){ return defaultDreams; }
 }
 function saveDreams(dreams) {
   try { localStorage.setItem('scmcr_dreams', JSON.stringify(dreams)); } catch(e){}
 }
- 
-/* ── RENDER DREAMS ───────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   RENDER DREAMS
+──────────────────────────────────────────────────────────── */
 let currentFilter = 'all';
- 
+
 function renderDreams() {
   const dreams = getDreams();
   const lang = currentLang;
   const t = T[lang];
   const grid = document.getElementById('dreamGrid');
   grid.innerHTML = '';
- 
+
   dreams.forEach(d => {
     const pct = Math.min(100, Math.round((d.collected / d.goal) * 100));
     const isFulfilled = d.status === 'fulfilled';
     const title = d.title[lang] || d.title.pt;
-    const desc = d.desc[lang] || d.desc.pt;
- 
-    const show = (currentFilter === 'all') ||
-                 (currentFilter === d.category) ||
-                 (currentFilter === d.status);
- 
+    const desc  = d.desc[lang]  || d.desc.pt;
+    const show  = currentFilter === 'all' || currentFilter === d.category || currentFilter === d.status;
+
     const el = document.createElement('div');
     el.className = 'dream-item' + (show ? '' : ' hidden');
     el.dataset.category = d.category;
     el.dataset.status = d.status;
     el.dataset.id = d.id;
- 
+
     el.innerHTML = `
       <div class="dream-item__inner">
         <h4>${title}</h4>
         <p>${desc}</p>
-        <div class="dream-progress">
+        <div>
           <div class="progress-label">
-            <span>€${d.collected.toLocaleString()} / €${d.goal.toLocaleString()}</span>
+            <span>€${d.collected.toLocaleString('pt-PT')} / €${d.goal.toLocaleString('pt-PT')}</span>
             <span>${pct}% ${t.progressLabel}</span>
           </div>
           <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
@@ -1431,27 +1362,25 @@ function renderDreams() {
       </div>
       <div class="dream-item__footer">
         <span class="status-badge ${isFulfilled ? 'fulfilled' : 'progress'}">
-          ${isFulfilled ? '✓ ' + (t.filterFulfilled||'Realizado') : '⏳ ' + (t.filterProgress||'Em Progresso')}
+          ${isFulfilled ? '✓ ' + t.filterFulfilled : '⏳ ' + t.filterProgress}
         </span>
         <button class="btn btn-ghost btn-sm" onclick="openDashboard(${d.id})">${t.btnViewDetails}</button>
         ${isFulfilled
-          ? `<button class="btn btn-sm" disabled style="background:var(--sand);color:var(--text-lt);border:none">${t.btnDreamDone}</button>`
-          : `<button class="btn btn-primary btn-sm open-donation" data-dream-id="${d.id}">${t.btnMakeDream}</button>`
+          ? `<button class="btn btn-sm" disabled style="background:var(--sand);color:var(--text-lt);border:none;margin-left:auto">${t.btnDreamDone}</button>`
+          : `<button class="btn btn-primary btn-sm open-donation" data-dream-id="${d.id}" style="margin-left:auto">${t.btnMakeDream}</button>`
         }
-      </div>
-    `;
+      </div>`;
     grid.appendChild(el);
   });
- 
-  // Re-attach donation button listeners
+
   document.querySelectorAll('.open-donation').forEach(btn => {
-    btn.addEventListener('click', function() {
-      openDonation(this.dataset.dreamId);
-    });
+    btn.addEventListener('click', function(){ openDonation(this.dataset.dreamId); });
   });
 }
- 
-/* ── FILTER BUTTONS ──────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   FILTERS
+──────────────────────────────────────────────────────────── */
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1460,8 +1389,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     renderDreams();
   });
 });
- 
-/* ── MODALS ──────────────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   MODALS
+──────────────────────────────────────────────────────────── */
 function openModal(id) {
   document.getElementById(id).classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1473,176 +1404,168 @@ function closeModal(id) {
 document.querySelectorAll('.modal-overlay').forEach(m => {
   m.addEventListener('click', e => { if(e.target === m) closeModal(m.id); });
 });
- 
-/* ── DONATION MODAL ──────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   DONATION
+──────────────────────────────────────────────────────────── */
 let activeDreamId = 0;
- 
+
 function openDonation(dreamId) {
   activeDreamId = dreamId;
   const dreams = getDreams();
   const d = dreams.find(x => x.id == dreamId);
-  const t = T[currentLang];
-  const nameEl = document.getElementById('donDreamName');
-  if (d) {
-    nameEl.textContent = ' ' + (d.title[currentLang] || d.title.pt);
-  } else {
-    nameEl.textContent = ' ' + (currentLang==='en'?'General Fund':currentLang==='fr'?'Fonds Général':'Fundo Geral');
-  }
+  const fallback = {pt:'Fundo Geral', en:'General Fund', fr:'Fonds Général'};
+  document.getElementById('donDreamName').textContent = ' ' + (d ? (d.title[currentLang]||d.title.pt) : fallback[currentLang]);
   openModal('modalDonation');
 }
- 
+
 function selectAmount(el, val) {
   document.querySelectorAll('.amount-pill').forEach(p => p.classList.remove('selected'));
   el.classList.add('selected');
-  const custom = document.getElementById('customAmount');
-  custom.style.display = val === 'other' ? 'block' : 'none';
+  document.getElementById('customAmount').style.display = val === 'other' ? 'block' : 'none';
 }
- 
+
 function toggleGift() {
   const cb = document.getElementById('isGift');
   cb.checked = !cb.checked;
   document.getElementById('giftFields').style.display = cb.checked ? 'block' : 'none';
 }
- 
+
 function submitDonation() {
-  const email = document.getElementById('donorEmail').value;
-  if (!email) { alert(currentLang==='en'?'Please enter your email.':currentLang==='fr'?'Veuillez entrer votre email.':'Por favor insira o seu email.'); return; }
- 
+  const email = document.getElementById('donorEmail').value.trim();
+  if (!email) {
+    const msg = {pt:'Por favor insira o seu email.', en:'Please enter your email.', fr:'Veuillez entrer votre email.'};
+    alert(msg[currentLang]); return;
+  }
   const isGift = document.getElementById('isGift').checked;
- 
   if (isGift) {
-    const recipient = document.getElementById('recipientName').value || '—';
-    const occasion = document.getElementById('giftOccasion').value || '—';
-    const msg = document.getElementById('giftMessage').value;
-    const dreams = getDreams();
-    const d = dreams.find(x => x.id == activeDreamId);
-    const dreamName = d ? (d.title[currentLang]||d.title.pt) : (currentLang==='en'?'General Fund':'Fundo Geral');
- 
+    const recipient = document.getElementById('recipientName').value.trim() || '—';
+    const occasion  = document.getElementById('giftOccasion').value.trim() || '—';
+    const msg       = document.getElementById('giftMessage').value.trim();
+    const dreams    = getDreams();
+    const d         = dreams.find(x => x.id == activeDreamId);
+    const fallback  = {pt:'Fundo Geral', en:'General Fund', fr:'Fonds Général'};
     document.getElementById('certRecipient').textContent = recipient;
-    document.getElementById('certOccasion').textContent = occasion;
-    document.getElementById('certDreamName').textContent = dreamName;
+    document.getElementById('certOccasion').textContent  = occasion;
+    document.getElementById('certDreamName').textContent = d ? (d.title[currentLang]||d.title.pt) : fallback[currentLang];
     const msgEl = document.getElementById('certMsg');
     if (msg) { msgEl.textContent = '"' + msg + '"'; msgEl.style.display = 'block'; }
     else { msgEl.style.display = 'none'; }
- 
     closeModal('modalDonation');
     openModal('modalCert');
   } else {
     closeModal('modalDonation');
-    const thanks = {pt:'Obrigado pela sua donação! 💛', en:'Thank you for your donation! 💛', fr:'Merci pour votre don ! 💛'};
+    const thanks = {pt:'Obrigado pela sua generosidade! 💛', en:'Thank you for your generosity! 💛', fr:'Merci pour votre générosité ! 💛'};
     alert(thanks[currentLang]);
   }
 }
- 
-/* ── GIFT DONATION (from gift section) ───────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   GIFT OCCASIONS
+──────────────────────────────────────────────────────────── */
 function openGiftDonation(occasion) {
   openDonation(0);
   setTimeout(() => {
     const cb = document.getElementById('isGift');
     if (!cb.checked) toggleGift();
-    const occMap = {
-      birthday: {pt:'Aniversário', en:'Birthday', fr:'Anniversaire'},
+    const map = {
+      birthday:    {pt:'Aniversário', en:'Birthday', fr:'Anniversaire'},
       anniversary: {pt:'Aniversário de Casamento', en:'Wedding Anniversary', fr:'Anniversaire de Mariage'},
-      graduation: {pt:'Formatura', en:'Graduation', fr:'Remise de Diplôme'},
-      memory: {pt:'Em Memória', en:'In Memory', fr:'En Mémoire'},
-      other: {pt:'Ocasião Especial', en:'Special Occasion', fr:'Occasion Spéciale'},
+      graduation:  {pt:'Formatura', en:'Graduation', fr:'Remise de Diplôme'},
+      memory:      {pt:'Em Memória', en:'In Memory', fr:'En Mémoire'},
+      other:       {pt:'Ocasião Especial', en:'Special Occasion', fr:'Occasion Spéciale'},
     };
-    document.getElementById('giftOccasion').value = occMap[occasion]?.[currentLang] || occasion;
-  }, 100);
+    document.getElementById('giftOccasion').value = (map[occasion]||map.other)[currentLang];
+  }, 120);
 }
- 
-/* ── DREAM DASHBOARD ─────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   DASHBOARD
+──────────────────────────────────────────────────────────── */
 function openDashboard(dreamId) {
   const dreams = getDreams();
   const d = dreams.find(x => x.id == dreamId);
   if (!d) return;
   const lang = currentLang;
   const title = d.title[lang] || d.title.pt;
-  const desc = d.desc[lang] || d.desc.pt;
-  const pct = Math.min(100, Math.round((d.collected / d.goal) * 100));
-  const gap = Math.max(0, d.goal - d.collected);
+  const desc  = d.desc[lang]  || d.desc.pt;
+  const pct   = Math.min(100, Math.round((d.collected / d.goal) * 100));
+  const gap   = Math.max(0, d.goal - d.collected);
   const isFulfilled = d.status === 'fulfilled';
- 
+
   document.getElementById('dbTitle').textContent = title;
-  document.getElementById('dbDesc').textContent = desc;
-  document.getElementById('dbCollected').textContent = '€' + d.collected.toLocaleString();
-  document.getElementById('dbDonors').textContent = d.donors;
-  document.getElementById('dbTime').textContent = d.time || 'N/A';
- 
-  const gapStat = document.getElementById('dbGapStat');
-  document.getElementById('dbGap').textContent = '€' + gap.toLocaleString();
-  gapStat.style.display = isFulfilled ? 'none' : 'block';
- 
-  document.getElementById('dbProgAmt').textContent = '€' + d.collected.toLocaleString() + ' / €' + d.goal.toLocaleString();
+  document.getElementById('dbDesc').textContent  = desc;
+  document.getElementById('dbCollected').textContent = '€' + d.collected.toLocaleString('pt-PT');
+  document.getElementById('dbDonors').textContent    = d.donors;
+  document.getElementById('dbTime').textContent      = d.time || 'N/A';
+  document.getElementById('dbGap').textContent       = '€' + gap.toLocaleString('pt-PT');
+  document.getElementById('dbGapStat').style.display = isFulfilled ? 'none' : 'block';
+
+  document.getElementById('dbProgAmt').textContent = '€' + d.collected.toLocaleString('pt-PT') + ' / €' + d.goal.toLocaleString('pt-PT');
   document.getElementById('dbProgPct').textContent = pct + '%';
- 
+
   const fill = document.getElementById('dbProgFill');
   fill.style.width = '0%';
-  setTimeout(() => { fill.style.width = pct + '%'; }, 60);
- 
-  const dbBox = document.getElementById('dashboardBox');
-  dbBox.className = 'modal-box modal-lg' + (isFulfilled ? ' fulfilled' : '');
- 
-  // Nationalities
+  setTimeout(() => { fill.style.width = pct + '%'; }, 80);
+
+  const box = document.getElementById('dashboardBox');
+  box.className = 'modal-box modal-lg' + (isFulfilled ? ' fulfilled' : '');
+
   const natList = document.getElementById('dbNatList');
   natList.innerHTML = '';
   (d.nationalities || []).forEach(n => {
     const row = document.createElement('div');
     row.className = 'nat-row';
-    row.innerHTML = `
-      <span class="nat-flag">${n.flag||'🌍'}</span>
-      <span class="nat-name">${n.name}</span>
-      <div class="nat-bar-wrap"><div class="nat-bar" style="width:${n.pct}%"></div></div>
-      <span class="nat-pct">${n.pct}%</span>
-    `;
+    row.innerHTML = `<span class="nat-flag">${n.flag||'🌍'}</span><span class="nat-name">${n.name}</span><div class="nat-bar-wrap"><div class="nat-bar" style="width:${n.pct}%"></div></div><span class="nat-pct">${n.pct}%</span>`;
     natList.appendChild(row);
   });
- 
-  const donBtn = document.getElementById('dbDonateBtn');
-  donBtn.dataset.dreamId = dreamId;
-  donBtn.style.display = isFulfilled ? 'none' : 'inline-flex';
- 
+
+  const btn = document.getElementById('dbDonateBtn');
+  btn.dataset.dreamId = dreamId;
+  btn.style.display = isFulfilled ? 'none' : 'inline-flex';
+
   openModal('modalDashboard');
 }
- 
-// Dashboard donate button
+
 document.getElementById('dbDonateBtn').addEventListener('click', function() {
   closeModal('modalDashboard');
   openDonation(this.dataset.dreamId);
 });
- 
-/* ── ADMIN ───────────────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   ADMIN
+──────────────────────────────────────────────────────────── */
 const ADMIN_PW = 'scmcr2024';
- 
+
 document.getElementById('adminLink').addEventListener('click', e => {
   e.preventDefault();
   openModal('modalAdmin');
 });
- 
 document.getElementById('adminPwInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') adminLogin();
 });
- 
+
 function adminLogin() {
-  const pw = document.getElementById('adminPwInput').value;
+  const pw  = document.getElementById('adminPwInput').value;
   const err = document.getElementById('adminError');
   if (pw === ADMIN_PW) {
     closeModal('modalAdmin');
     document.getElementById('adminPwInput').value = '';
     err.style.display = 'none';
-    document.getElementById('adminPage').classList.add('open');
-    document.getElementById('adminPage').scrollIntoView({behavior:'smooth'});
+    const pg = document.getElementById('adminPage');
+    pg.classList.add('open');
+    pg.scrollIntoView({behavior:'smooth', block:'start'});
     renderAdminList();
   } else {
     err.style.display = 'block';
   }
 }
- 
+
 function adminLogout() {
   document.getElementById('adminPage').classList.remove('open');
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0, behavior:'smooth'});
 }
- 
+
 function switchTab(btn, panelId) {
   document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
@@ -1650,105 +1573,90 @@ function switchTab(btn, panelId) {
   document.getElementById(panelId).classList.add('active');
   if (panelId === 'panelList') renderAdminList();
 }
- 
+
 function clearAdminForm() {
   document.getElementById('editId').value = '';
-  ['aTitle','aDesc','aGoal','aCollected','aDonors','aTime','aNat'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
+  ['aTitle','aDesc','aGoal','aTime','aNat'].forEach(id => { document.getElementById(id).value = ''; });
   document.getElementById('aCollected').value = '0';
   document.getElementById('aDonors').value = '0';
   document.getElementById('aCat').value = 'child';
   document.getElementById('aStatus').value = 'progress';
 }
- 
+
 function saveDream() {
   const title = document.getElementById('aTitle').value.trim();
-  const desc = document.getElementById('aDesc').value.trim();
-  const goal = parseFloat(document.getElementById('aGoal').value) || 0;
+  const desc  = document.getElementById('aDesc').value.trim();
+  const goal  = parseFloat(document.getElementById('aGoal').value) || 0;
   if (!title || !desc || !goal) {
-    alert(currentLang==='en'?'Please fill in all required fields.':currentLang==='fr'?'Veuillez remplir tous les champs requis.':'Por favor preencha todos os campos obrigatórios.');
-    return;
+    const msg = {pt:'Por favor preencha Título, Descrição e Meta.', en:'Please fill in Title, Description and Goal.', fr:'Veuillez remplir Titre, Description et Objectif.'};
+    alert(msg[currentLang]); return;
   }
- 
   const collected = parseFloat(document.getElementById('aCollected').value) || 0;
-  const donors = parseInt(document.getElementById('aDonors').value) || 0;
-  const time = document.getElementById('aTime').value.trim() || '—';
-  const cat = document.getElementById('aCat').value;
-  const status = document.getElementById('aStatus').value;
-  const natRaw = document.getElementById('aNat').value.trim();
- 
-  // Parse nationalities
-  const natMap = {PT:'🇵🇹',EN:'🇬🇧',FR:'🇫🇷',ES:'🇪🇸',DE:'🇩🇪',US:'🇺🇸',NL:'🇳🇱',BE:'🇧🇪',SE:'🇸🇪'};
+  const donors    = parseInt(document.getElementById('aDonors').value) || 0;
+  const time      = document.getElementById('aTime').value.trim() || '—';
+  const cat       = document.getElementById('aCat').value;
+  const status    = document.getElementById('aStatus').value;
+  const natRaw    = document.getElementById('aNat').value.trim();
+  const flagMap   = {PT:'🇵🇹',EN:'🇬🇧',GB:'🇬🇧',FR:'🇫🇷',ES:'🇪🇸',DE:'🇩🇪',US:'🇺🇸',NL:'🇳🇱',BE:'🇧🇪',SE:'🇸🇪',IT:'🇮🇹',BR:'🇧🇷'};
   const nats = natRaw ? natRaw.split(',').map(s => {
     const [code, pct] = s.trim().split(':');
-    return {flag: natMap[code.trim().toUpperCase()]||'🌍', name: code.trim().toUpperCase(), pct: parseInt(pct)||0};
-  }) : [{flag:'🇵🇹',name:'Portugal',pct:100}];
- 
-  const dreams = getDreams();
-  const editId = document.getElementById('editId').value;
- 
+    const c = code.trim().toUpperCase();
+    return {flag: flagMap[c]||'🌍', name: c, pct: parseInt(pct)||0};
+  }) : [{flag:'🇵🇹', name:'PT', pct:100}];
+
+  const dreams  = getDreams();
+  const editId  = document.getElementById('editId').value;
+
   if (editId) {
-    // Edit existing
     const idx = dreams.findIndex(d => d.id == editId);
     if (idx >= 0) {
       dreams[idx] = {...dreams[idx], status, category:cat, goal, collected, donors, time, nationalities:nats,
-        title:{...dreams[idx].title, pt:title, en:title, fr:title},
-        desc:{...dreams[idx].desc, pt:desc, en:desc, fr:desc}
-      };
+        title:{pt:title,en:title,fr:title}, desc:{pt:desc,en:desc,fr:desc}};
     }
   } else {
-    // New dream
     const newId = Math.max(0, ...dreams.map(d => d.id)) + 1;
-    dreams.push({
-      id:newId, category:cat, status, goal, collected, donors, time, nationalities:nats,
-      title:{pt:title, en:title, fr:title},
-      desc:{pt:desc, en:desc, fr:desc}
-    });
+    dreams.push({id:newId, category:cat, status, goal, collected, donors, time, nationalities:nats,
+      title:{pt:title,en:title,fr:title}, desc:{pt:desc,en:desc,fr:desc}});
   }
- 
+
   saveDreams(dreams);
   renderDreams();
   clearAdminForm();
-  const saved = {pt:'Sonho guardado com sucesso! ✓', en:'Dream saved successfully! ✓', fr:'Rêve enregistré avec succès ! ✓'};
-  alert(saved[currentLang]);
+  const ok = {pt:'Sonho guardado com sucesso! ✓', en:'Dream saved successfully! ✓', fr:'Rêve enregistré avec succès ! ✓'};
+  alert(ok[currentLang]);
 }
- 
+
 function editDream(id) {
-  const dreams = getDreams();
-  const d = dreams.find(x => x.id == id);
+  const d = getDreams().find(x => x.id == id);
   if (!d) return;
-  document.getElementById('editId').value = id;
-  document.getElementById('aTitle').value = d.title.pt;
-  document.getElementById('aDesc').value = d.desc.pt;
-  document.getElementById('aGoal').value = d.goal;
-  document.getElementById('aCollected').value = d.collected;
-  document.getElementById('aDonors').value = d.donors;
-  document.getElementById('aTime').value = d.time;
-  document.getElementById('aCat').value = d.category;
-  document.getElementById('aStatus').value = d.status;
-  const natStr = (d.nationalities||[]).map(n => n.name + ':' + n.pct).join(', ');
-  document.getElementById('aNat').value = natStr;
-  switchTab(document.querySelector('.admin-tab'), 'panelAdd');
-  document.getElementById('panelAdd').classList.add('active');
-  document.getElementById('panelList').classList.remove('active');
+  document.getElementById('editId').value      = id;
+  document.getElementById('aTitle').value      = d.title.pt;
+  document.getElementById('aDesc').value       = d.desc.pt;
+  document.getElementById('aGoal').value       = d.goal;
+  document.getElementById('aCollected').value  = d.collected;
+  document.getElementById('aDonors').value     = d.donors;
+  document.getElementById('aTime').value       = d.time;
+  document.getElementById('aCat').value        = d.category;
+  document.getElementById('aStatus').value     = d.status;
+  document.getElementById('aNat').value        = (d.nationalities||[]).map(n => n.name+':'+n.pct).join(', ');
+  // switch to add panel
   document.querySelectorAll('.admin-tab').forEach((t,i) => t.classList.toggle('active', i===0));
+  document.querySelectorAll('.admin-panel').forEach((p,i) => p.classList.toggle('active', i===0));
+  document.getElementById('adminPage').scrollIntoView({behavior:'smooth'});
 }
- 
+
 function deleteDream(id) {
-  const confirm_msg = {pt:'Tem a certeza que quer apagar este sonho?', en:'Are you sure you want to delete this dream?', fr:'Êtes-vous sûr de vouloir supprimer ce rêve ?'};
-  if (!confirm(confirm_msg[currentLang])) return;
-  const dreams = getDreams().filter(d => d.id != id);
-  saveDreams(dreams);
+  const msg = {pt:'Tem a certeza que quer apagar este sonho?', en:'Are you sure you want to delete this dream?', fr:'Êtes-vous sûr de vouloir supprimer ce rêve ?'};
+  if (!confirm(msg[currentLang])) return;
+  saveDreams(getDreams().filter(d => d.id != id));
   renderAdminList();
   renderDreams();
 }
- 
+
 function renderAdminList() {
-  const dreams = getDreams();
   const container = document.getElementById('adminProjectList');
   container.innerHTML = '';
-  dreams.forEach(d => {
+  getDreams().forEach(d => {
     const pct = Math.min(100, Math.round((d.collected/d.goal)*100));
     const row = document.createElement('div');
     row.className = 'admin-proj-row';
@@ -1761,15 +1669,15 @@ function renderAdminList() {
       <div class="admin-proj-actions">
         <button onclick="editDream(${d.id})"><i class="fa fa-pen"></i> Editar</button>
         <button class="del-btn" onclick="deleteDream(${d.id})"><i class="fa fa-trash"></i> Apagar</button>
-      </div>
-    `;
+      </div>`;
     container.appendChild(row);
   });
 }
- 
-/* ── INIT ─────────────────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────
+   INIT
+──────────────────────────────────────────────────────────── */
 setLang('pt');
 </script>
 </body>
 </html>
- 
